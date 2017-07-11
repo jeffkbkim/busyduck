@@ -4,6 +4,12 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+
+var uri = "mongodb://superuser:G2fOzqDqKIb8yTIC@pocha-shard-00-00-upvmz.mongodb.net:27017,pocha-shard-00-01-upvmz.mongodb.net:27017,pocha-shard-00-01-upvmz.mongodb.net:27017/admin?ssl=true&replicaSet=Pocha-shard-0&authSource=admin";
+mongoose.connect(uri, {
+    useMongoClient: true
+});
 
 var indexRoutes = require('./routes/index');
 
