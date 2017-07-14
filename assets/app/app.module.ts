@@ -11,6 +11,7 @@ import {SigninComponent} from "../auth/signin.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {AuthService} from "../auth/auth.service";
+import {MainpageComponent} from "./mainpage/mainpage.component";
 @NgModule ({
     declarations: [
         AppComponent,
@@ -18,7 +19,8 @@ import {AuthService} from "../auth/auth.service";
         HeaderComponent,
         LogoutComponent,
         SignupComponent,
-        SigninComponent
+        SigninComponent,
+        MainpageComponent
     ],
     imports: [BrowserModule,
         routing,
