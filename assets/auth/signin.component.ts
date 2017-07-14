@@ -31,7 +31,7 @@ export class SigninComponent {
             .subscribe(
                 data => {
                     localStorage.setItem('token', data.token);
-                    localStorage.setItem('userId', data.data);
+                    localStorage.setItem('userId', data.userId);
                     this.router.navigateByUrl('/');
                 },
                 error => console.error(error)
