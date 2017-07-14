@@ -2,3 +2,7 @@
 /node_modules
 npm-debug.log
 /public/js
+/assets/app/app.component.ngfactory.ts
+/assets/app/app.component.ngsummary.json
+/assets/app/app.module.ngfactory.ts
+/assets/app/app.module.ngsummary.json
