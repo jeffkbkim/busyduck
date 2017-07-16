@@ -12,6 +12,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {AuthService} from "../auth/auth.service";
 import {MainpageComponent} from "./mainpage/mainpage.component";
+import {AuthGuardService} from "./auth-guard-service";
 @NgModule ({
     declarations: [
         AppComponent,
@@ -27,7 +28,7 @@ import {MainpageComponent} from "./mainpage/mainpage.component";
         ReactiveFormsModule,
         HttpModule
     ],
-    providers: [AuthService],
+    providers: [AuthService, AuthGuardService],
     bootstrap: [AppComponent]
 })
 

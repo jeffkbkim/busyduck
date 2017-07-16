@@ -28,6 +28,6 @@ export class AuthService {
     }
 
     isLoggedIn() {
-        return localStorage.getItem('token') !== NULL;
+        return localStorage.getItem('token') !== null;
     }
 }
