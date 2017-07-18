@@ -2,37 +2,27 @@
     <title>Busyduck</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
 </head>
 <body>
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-default bg-faded navbar-toggleable-sm">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <button type="button" class="navbar-toggle navbar-toggle-right"
+                    (click)="isCollapsed = !isCollapsed">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" [routerLink]="['/auth']">Busyduck</a>
+            <a class="navbar-brand" [routerLink]="['/']">Busyduck</a>
         </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
+        <div class="collapse navbar-collapse" id="myNavbar" [collapse]="isCollapsed">
             <ul class="nav navbar-nav navbar-right">
-                <li><a routerLinkActive="active" [routerLink] = "['/auth/signup']"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a routerLinkActive="active" [routerLink] = "['/auth/signin']"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                <li><a routerLinkActive="active" [routerLink] = "['/auth/logout']"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                <li><a [routerLink] = "['/auth/signup']" (click)="isCollapsed = true"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a [routerLink] = "['/auth/signin']" (click)="isCollapsed = true"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a [routerLink] = "['/auth/logout']" (click)="isCollapsed = true"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 
             </ul>
         </div>
     </div>
 </nav>
-
-
-<!--<header class="row">-->
-    <!--<nav class="col-md-8 col-md-offset-2">-->
-        <!--<ul class="nav nav-pills">-->
-            <!--<li routerLinkActive="active"><a [routerLink]="['/login']">Login</a> </li>-->
-            <!--<li routerLinkActive="active"><a href="">HI</a> </li>-->
-        <!--</ul>-->
-    <!--</nav>-->
-<!--</header>-->

@@ -1,4 +1,4 @@
-<div class="col-md-8 col-md-offset-2">
+<div *ngIf="!isLoggedIn()" class="col-md-8 col-md-offset-2">
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label for="email">Email</label>

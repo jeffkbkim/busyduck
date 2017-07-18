@@ -39,4 +39,8 @@ export class SigninComponent {
 
         this.registerForm.reset();
     }
+
+    isLoggedIn() {
+        return this.authService.isLoggedIn();
+    }
 }

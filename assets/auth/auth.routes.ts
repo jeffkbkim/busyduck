@@ -11,6 +11,6 @@ export const AUTH_ROUTES: Routes = [
     { path: 'signup', component: SignupComponent },
     { path: 'signin', component: SigninComponent },
     { path: 'logout', component: LogoutComponent },
-    { path: '', redirectTo: 'signin', pathMatch: 'full', canActivate:[AuthGuardService] }
+    { path: '', redirectTo: 'signup', pathMatch: 'full'}
 ];
 

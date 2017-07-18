@@ -13,20 +13,27 @@ import {HttpModule} from "@angular/http";
 import {AuthService} from "../auth/auth.service";
 import {MainpageComponent} from "./mainpage/mainpage.component";
 import {AuthGuardService} from "./auth-guard-service";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {CollapseDirective} from "ng-bootstrap";
+import {SchedulerComponent} from "./mainpage/scheduler.component";
+
 @NgModule ({
     declarations: [
+        CollapseDirective,
         AppComponent,
         AuthenticationComponent,
         HeaderComponent,
         LogoutComponent,
         SignupComponent,
         SigninComponent,
-        MainpageComponent
+        MainpageComponent,
+        SchedulerComponent
     ],
     imports: [BrowserModule,
         routing,
         ReactiveFormsModule,
-        HttpModule
+        HttpModule,
+        NgbModule.forRoot()
     ],
     providers: [AuthService, AuthGuardService],
     bootstrap: [AppComponent]

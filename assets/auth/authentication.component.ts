@@ -8,9 +8,5 @@ import {AuthService} from "./auth.service";
 })
 
 export class AuthenticationComponent {
-    constructor(private authService: AuthService) {}
 
-    isLoggedIn() {
-        return this.authService.isLoggedIn();
-    }
 }
