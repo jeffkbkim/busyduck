@@ -1,6 +1,6 @@
 import {User} from "./user.model";
 import {Injectable} from "@angular/core";
-import {Http, Headers, Response} from "@angular/http";
+import {Http, Headers, Response, Response} from "@angular/http";
 import 'rxjs/Rx';
 import {Observable} from "rxjs";
 
@@ -28,6 +28,21 @@ export class AuthService {
     }
 
     isLoggedIn() {
-        return localStorage.getItem('token') !== NULL;
+        return localStorage.getItem('token') !== null;
+    }
+
+    getCurrUser() {
+        //const headers = new Headers({'Content-Type': 'application/json'});
+        const token = localStorage.getItem('token') ?
+            '?token=' + localStorage.getItem('token')
+            : '';
+
+        return this.http.get('http://localhost:3000/user' + token)
+            .map((response: Response) => {
+                const user =  response.json().user;
+                return new User(user.email, user.password, user.firstName, user.lastName);
+            })
+            .catch((error: Response) => Observable.throw(error.json()));
+
     }
 }

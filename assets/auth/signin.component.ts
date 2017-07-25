@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnInit, Input} from "@angular/core";
 import {FormGroup, FormControl, Validators} from "@angular/forms";
 import {User} from "./user.model";
 import {AuthService} from "./auth.service";
@@ -10,7 +10,8 @@ import {Router} from "@angular/router";
     templateUrl: './signin.component.html'
 })
 
-export class SigninComponent {
+export class SigninComponent implements OnInit{
+    @Input() user: User;
     registerForm: FormGroup;
 
     constructor(private authService: AuthService, private router: Router) {}
@@ -23,6 +24,15 @@ export class SigninComponent {
             ]),
             password: new FormControl(null, Validators.required)
         });
+
+        if (this.isLoggedIn()) {
+            this.authService.getCurrUser()
+                .subscribe(
+                    (currUser: User) => this.user = currUser
+                );
+
+        }
+
     }
 
     onSubmit() {
@@ -38,5 +48,9 @@ export class SigninComponent {
             );
 
         this.registerForm.reset();
+    }
+
+    isLoggedIn() {
+        return this.authService.isLoggedIn();
     }
 }

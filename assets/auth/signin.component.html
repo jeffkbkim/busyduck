@@ -1,4 +1,4 @@
-<div class="col-md-8 col-md-offset-2">
+<div *ngIf="!isLoggedIn()" class="col-md-8 col-md-offset-2">
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label for="email">Email</label>
@@ -10,4 +10,9 @@
         </div>
         <button [disabled]="!registerForm.valid" class="btn btn-primary" type="submit">Submit</button>
     </form>
+</div>
+
+<div *ngIf="isLoggedIn()" class="col-md-8 col-md-offset-2">
+    <p> You are already logged in!</p>
+    <p> Not {{ user?.firstName }} ?</p>
 </div>
