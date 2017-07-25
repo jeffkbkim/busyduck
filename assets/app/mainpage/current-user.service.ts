@@ -5,8 +5,6 @@ import {Observable, Subject} from "rxjs";
 @Injectable()
 
 export class CurrentUserService {
-    //private currUser : Subject<User> = new Subject<User>();
-    //currUser$ = this.currUser.asObservable();
     curr_User: User;
     constructor(private http: Http) {}
 
@@ -15,7 +13,6 @@ export class CurrentUserService {
     }
 
     getCurrUser() {
-        //const headers = new Headers({'Content-Type': 'application/json'});
         const token = localStorage.getItem('token') ?
             '?token=' + localStorage.getItem('token')
             : '';

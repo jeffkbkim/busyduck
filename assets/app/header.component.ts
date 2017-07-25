@@ -1,8 +1,10 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {AuthService} from "../auth/auth.service";
+import {CurrentUserService} from "./mainpage/current-user.service";
 
 @Component({
     selector: 'app-header',
+
     templateUrl: './header.component.html'
 })
 
@@ -13,4 +15,5 @@ export class HeaderComponent {
     isLoggedIn() {
         return this.authService.isLoggedIn();
     }
+
 }
