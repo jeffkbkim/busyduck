@@ -10,8 +10,9 @@ import {MAINPAGE_ROUTES} from "./mainpage/mainpage.routes";
 
 const APP_ROUTES: Routes = [
     {path: 'auth', component: AuthenticationComponent, children: AUTH_ROUTES },
-    {path: 'mainpage', component: MainpageComponent, children: MAINPAGE_ROUTES},
-    {path: '', component: MainpageComponent, canActivate: [AuthGuardService] }
+    {path: 'mainpage', component: MainpageComponent, children: MAINPAGE_ROUTES, canActivate:[AuthGuardService]},
+    {path: '', redirectTo: 'mainpage', pathMatch: 'full'},
+    {path: '**', redirectTo: '' }
 ];
 
 //make angular aware

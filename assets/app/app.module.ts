@@ -5,7 +5,7 @@ import {BrowserModule} from "@angular/platform-browser";
 import {AuthenticationComponent} from "../auth/authentication.component";
 import {HeaderComponent} from "./header.component";
 import {routing} from "./app.routing";
-import {LogoutComponent} from "../auth/logout.component";
+import {LogoutComponent} from "./mainpage/logout.component";
 import {SignupComponent} from "../auth/signup.component";
 import {SigninComponent} from "../auth/signin.component";
 import {ReactiveFormsModule} from "@angular/forms";
@@ -15,7 +15,9 @@ import {MainpageComponent} from "./mainpage/mainpage.component";
 import {AuthGuardService} from "./auth-guard-service";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {CollapseDirective} from "ng-bootstrap";
-import {SchedulerComponent} from "./mainpage/scheduler.component";
+import {SchedulerComponent} from "./mainpage/scheduler/scheduler.component";
+import {ChatComponent} from "./mainpage/chat/chat.component";
+import {ProfileComponent} from "./mainpage/profile/profile.component";
 
 @NgModule ({
     declarations: [
@@ -27,7 +29,9 @@ import {SchedulerComponent} from "./mainpage/scheduler.component";
         SignupComponent,
         SigninComponent,
         MainpageComponent,
-        SchedulerComponent
+        SchedulerComponent,
+        ChatComponent,
+        ProfileComponent
     ],
     imports: [BrowserModule,
         routing,

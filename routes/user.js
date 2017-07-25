@@ -63,4 +63,35 @@ router.post('/signin', function(req, res, next) {
    });
 });
 
+
+//
+// router.use('/', function (req, res, next) {
+//     jwt.verify(req.query.token, 'secret', function (err, decoded) {
+//         if (err) {
+//             return res.status(401).json({
+//                 title: 'HI Authenticated',
+//                 error: err
+//             });
+//         }
+//         next();
+//     })
+// });
+
+router.get('/', function (req, res, next) {
+    var decoded = jwt.decode(req.query.token);
+    User.findById(decoded.user._id, function(err, user) {
+        if (err) {
+            return res.status(500).json({
+                title: 'and error has occurred',
+                error: err
+            })
+        }
+        res.status(201).json({
+            title: 'User retrieved',
+            user: user
+        });
+    });
+});
+
+
 module.exports = router;
