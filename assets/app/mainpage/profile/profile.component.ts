@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {CurrentUserService} from "../current-user.service";
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {User} from "../../../auth/user.model";
 
 
@@ -10,8 +11,24 @@ import {User} from "../../../auth/user.model";
 
 export class ProfileComponent implements OnInit {
     @Input() currUser : User;
-    constructor(private currUserService : CurrentUserService) {
+    rForm : FormGroup;
+    post:any;
+    description : string = '';
+    name : string = '';
+
+    constructor(private currUserService : CurrentUserService, private fb: FormBuilder) {
         this.currUser = this.currUserService.curr_User;
+
+        this.rForm = fb.group({
+            'name' : [null, Validators.required],
+            'description' : [null, Validators.compose([Validators.required, Validators.minLength(30) , Validators.maxLength(500)])],
+            'validate' : ''
+        });
+    }
+
+    addPost(post) {
+        this.description = post.description;
+        this.name = post.name;
     }
 
     ngOnInit() {

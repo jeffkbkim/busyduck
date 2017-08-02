@@ -1,15 +1,43 @@
-<h1> {{ currUser?.firstName }} </h1>
+<div class="container my-profile-body">
+    <div class="container col-xs-6 col-xs-offset-3">
+        <div class="panel panel-primary text-center">
+            <div class="panel-heading">
+                My Profile
+            </div>
+            <div class="panel-body">
+                <div>
+                    <img src="/img/profile-user.jpg" alt="User Image" style="width:128px;height:128px;">
+                </div>
+                <div *ngIf="!name; else forminfo">
+                    <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+                        <div>
+                            <div class="row columns">
+                                <label>Name
+                                    <input type="text" formControlName="name" value="{{ currUser?.firstName }}">
+                                </label>
 
-<div class="container col-xs-6 col-xs-offset-3">
-    <div class="panel panel-primary text-center">
-        <div class="panel-heading">
-            My Profile
-        </div>
-        <div class="panel-body">
-            <div>
+                                <label>Description
+                                    <textarea formControlName="description"></textarea>
+                                </label>
+
+                                <label for="validate"> Minimum of 3 Characters </label>
+                                <input type="checkbox" name="validate" formControlName="validate" value="1">On
+                                <input type="submit" class="button expanded" value="Submit Form" [disabled]="!rForm.valid">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <ng-template #forminfo>
+                    <div class="form-container">
+                        <div class="row columns">
+                            <h1> {{ name }} </h1>
+                            <p> {{ description }} </p>
+                        </div>
+                    </div>
+                </ng-template>
             </div>
         </div>
     </div>
 </div>
 
-<img src="https://image.freepik.com/free-icon/male-user-shadow_318-34042.jpg" alt="User Image" style="width:128px;height:128px;">
