@@ -1,1 +1,81 @@
-<h1>HELLO</h1>
+<div class="header" style="background-color:#07889B; color:azure; height:100px;">
+    <h1 style="padding-top: 15px; margin-left: 5%">Set your preferred schedule</h1>
+</div>
+<div class="scheduler-container">
+    <div class="work-container">
+        <div class='square-box' style="background-color: #07889B;" id='one'>
+            <div class='square-content'>
+                <div>
+                    <span class="glyphicon glyphicon-ice-lolly" style="padding-left:15%"></span>
+                    <span id='one-text' style="text-align: left">White Windmill</span>
+                </div>
+            </div>
+        </div>
+        <div class='square-box' style="background-color: #718D79;" id='two'>
+            <div class='square-content'>
+                <div>
+                    <span class="glyphicon glyphicon-cutlery" style="padding-left:15%"></span>
+                    <span id='two-text' style="text-align: left">Jang Su Jang</span>
+                </div>
+            </div>
+        </div>
+        <div class='square-box' style="border: 4px dashed rgba(81,81,81,0.7)" id='add-new'>
+            <div class='square-content'>
+                <div>
+                    <span class="glyphicon glyphicon-plus" style="color: #414141; padding-left:15%"></span>
+                    <span id='add-new-text' style="color: #414141; text-align:left"> Got a new job?</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-container" style="margin-left: 25%; width: 75%">
+        <!--Should be able to use ng-repeat somehow-->
+        <table>
+            <thead>
+                <tr>
+                    <th id="Date"> </th>
+                    <th>8</th>
+                    <th>9</th>
+                    <th>10</th>
+                    <th>11</th>
+                    <th>12</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                    <th>7</th>
+                    <th>8</th>
+                    <th>9</th>
+                    <th>10</th>
+                    <th>11</th>
+                    <th>12</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let date of dates">
+                    <td id="Date">{{ date.day }}</td>
+                    <td id="1_{{date.id}}"></td>
+                    <td id="2_{{date.id}}"></td>
+                    <td id="3_{{date.id}}"></td>
+                    <td id="4_{{date.id}}"></td>
+                    <td id="5_{{date.id}}"></td>
+                    <td id="6_{{date.id}}"></td>
+                    <td id="7_{{date.id}}"></td>
+                    <td id="8_{{date.id}}"></td>
+                    <td id="9_{{date.id}}"></td>
+                    <td id="10_{{date.id}}"></td>
+                    <td id="11_{{date.id}}"></td>
+                    <td id="12_{{date.id}}"></td>
+                    <td id="13_{{date.id}}"></td>
+                    <td id="14_{{date.id}}"></td>
+                    <td id="15_{{date.id}}"></td>
+                    <td id="16_{{date.id}}"></td>    
+                    <td id="17_{{date.id}}"></td> 
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
