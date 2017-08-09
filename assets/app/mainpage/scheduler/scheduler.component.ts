@@ -1,5 +1,6 @@
 
 import {Component, Input, AfterViewInit} from "@angular/core";
+import {FormGroup, Validators, FormControl} from "@angular/forms";
 @Component({
     selector: "app-scheduler",
     templateUrl: "./scheduler.component.html",
@@ -7,6 +8,18 @@ import {Component, Input, AfterViewInit} from "@angular/core";
 })
 
 export class SchedulerComponent {
+    newJobForm: FormGroup;
+    onSubmit() {
+        alert("YO");
+    }
+
+    ngOnInit() {
+        this.newJobForm = new FormGroup({
+            location: new FormControl(null, Validators.required),
+            position: new FormControl(null, Validators.required)
+        });
+    }
+
     dates = [{"day" : "Monday", "id": 1},
             {"day" : "Tuesday", "id": 2},
             {"day" : "Wednesday", "id": 3},
@@ -14,6 +27,43 @@ export class SchedulerComponent {
             {"day" : "Friday", "id":  5},
             {"day" : "Saturday", "id":  6},
             {"day" : "Sunday", "id": 7}];
+
+    colorSchemaArray : Array<string> = ["#A8185F", "#E7D016", "#18A819"];
+
+    tempPositions: any = [
+        {
+            "workid": "0xbed0",
+            "workName": "White Windmill",
+            "type": "cashier",
+            "status": "approved",
+            "color": "#eee"
+        },
+        {
+            "workid": "0xff3b",
+            "workName": "Jang Su Jang",
+            "type": "cook",
+            "status": "approved",
+            "color": "#eee"
+        },
+        {
+            "workid": "0x0car",
+            "workName": "Emily J",
+            "type": "hair",
+            "status": "waiting_for_approval",
+            "color": "#eee"
+        }
+    ];
+
+    tempPositionsNew = this.tempPositions.map(
+        function(x:any, index:number):object {
+            x.color = ["#A8185F", "#E7D016", "#18A819"][index];
+            x.glyphicon = {"cashier": "glyphicon glyphicon-credit-card",
+                            "cook": "glyphicon glyphicon-cutlery",
+                            "hair": "glyphicon glyphicon-scissors"
+                        }[x.type];
+            return x;
+        }
+    );
 
     @Input() tempPreferredSchedule = [
         {
@@ -67,7 +117,7 @@ export class SchedulerComponent {
         }
     ];
 
-    colorSchemaArray : Array<string> = ["#A8185F", "#E7D016", "#18A819"];
+
 
     ngAfterViewInit(): void {
         for (let i : number = 0; i < this. tempPreferredSchedule.length; i++) {
@@ -84,5 +134,5 @@ export class SchedulerComponent {
         }
     }
 
-    // ngOnChanges(): 
+    // ngOnChanges():
 }
