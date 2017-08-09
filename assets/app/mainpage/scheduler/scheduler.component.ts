@@ -1,5 +1,5 @@
 
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 @Component({
     selector: "app-scheduler",
     templateUrl: "./scheduler.component.html",
@@ -15,4 +15,32 @@ export class SchedulerComponent {
             {"day" : "Saturday", "id":  6},
             {"day" : "Sunday", "id": 7}];
 
+    tempSchedule = [
+        {
+            "work": "White Windmill",
+            "schedule":
+            [
+                {
+                    "day": 1,
+                    "start": 10,
+                    "duration": 8
+                },
+                {
+                    "day": 2,
+                    "start": 14,
+                    "duraton": 4
+                }
+            ]
+        }
+    ];
+
+    ngOnInit(): void {
+        for (let i : number = 0; i < this.tempSchedule[0].schedule.length; i++) {
+            let day : number = this.tempSchedule[0].schedule[i].day;
+            let start : number = this.tempSchedule[0].schedule[i].start - 7;
+            let targetID : string = start.toString() + "_" + day.toString();
+            console.log(targetID);
+            console.log(document.getElementById(targetID));
+        }
+    }
 }
