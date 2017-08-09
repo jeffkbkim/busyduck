@@ -18,6 +18,10 @@ import {CollapseDirective} from "ng-bootstrap";
 import {SchedulerComponent} from "./mainpage/scheduler/scheduler.component";
 import {ChatComponent} from "./mainpage/chat/chat.component";
 import {ProfileComponent} from "./mainpage/profile/profile.component";
+import {SigninAdminComponent} from "../auth/signin_signup_Forms/login/signin.admin.component";
+import {SigninUserComponent} from "../auth/signin_signup_Forms/login/signin.user.component";
+import {SignupUserComponent} from "../auth/signin_signup_Forms/signup/signup.user.component";
+import {SignupAdminComponent} from "../auth/signin_signup_Forms/signup/signup.admin.component";
 
 @NgModule ({
     declarations: [
@@ -28,6 +32,10 @@ import {ProfileComponent} from "./mainpage/profile/profile.component";
         LogoutComponent,
         SignupComponent,
         SigninComponent,
+        SigninAdminComponent,
+        SigninUserComponent,
+        SignupUserComponent,
+        SignupAdminComponent,
         MainpageComponent,
         SchedulerComponent,
         ChatComponent,

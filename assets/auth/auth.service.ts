@@ -1,4 +1,4 @@
-import {User} from "./user.model";
+import {User} from "../app/user.model";
 import {Injectable} from "@angular/core";
 import {Http, Headers, Response, Response} from "@angular/http";
 import 'rxjs/Rx';
