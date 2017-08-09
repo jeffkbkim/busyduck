@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {CurrentUserService} from "../current-user.service";
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {User} from "../../../auth/user.model";
+import {User} from "../../user.model";
 
 
 @Component({
@@ -21,13 +21,13 @@ export class ProfileComponent implements OnInit {
 
         this.rForm = fb.group({
             'name' : [null, Validators.required],
-            'description' : [null, Validators.compose([Validators.required, Validators.minLength(30) , Validators.maxLength(500)])],
+            'email' : [null, Validators.required],
             'validate' : ''
         });
     }
 
     addPost(post) {
-        this.description = post.description;
+        this.description = post.email;
         this.name = post.name;
     }
 
