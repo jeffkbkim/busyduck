@@ -1,12 +1,15 @@
+<div class="header" style="background-color:#07889B; color:azure; height:100px;">
+    <h1 style="padding-top: 15px; text-align:center">Check and manage your profile</h1>
+</div>
 <div class="container my-profile-body">
-    <div class="container col-xs-6 col-xs-offset-3" style="margin-top: 30px">
-        <div class="panel panel-primary text-center">
-            <div class="panel-heading">
+    <div class="container col-xs-6" style="margin-top: 30px">
+        <div class="panel panel-primary text-center" style="border: 0">
+            <div class="panel-heading" style="background-color: #A8185F; border: 0">
                 My Profile
             </div>
             <div class="panel-body">
                 <div>
-                    <img src="/img/profile-user.jpg" alt="User Image" style="width:128px;height:128px;">
+                    <span class="glyphicon glyphicon-user" style="color: #414141; font-size: 6em"></span>
                 </div>
                 <div *ngIf="!name; else forminfo">
                     <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
@@ -39,5 +42,50 @@
             </div>
         </div>
     </div>
+
+    <div class="container col-xs-6" style="margin-top: 30px">
+        <div class="panel panel-primary text-center" style="border: 0">
+            <div class="panel-heading" style="background-color: #079B08">
+                My Work
+            </div>
+            <div class="panel-body">
+                <div>
+                    <span class="glyphicon glyphicon-briefcase" style="color: #414141; font-size: 6em"></span>
+                </div>
+                <div style="margin-top:3%">
+                    <div class="row columns" style="margin-bottom:5%">
+                        <button type="button" class="btn btn" data-toggle="modal" data-target="#work1modal" style="width:200px; border: 1px solid #079B08; background-color: rgba(7,155,8,0.6); border-radius: 3px">
+                            Work 1
+                        </button>
+                    </div>
+                    <div class="row columns" style="margin-bottom:5%">
+                        <button type="button" class="btn btn" data-toggle="modal" data-target="#work1modal" style="width:200px; border: 1px solid #079B08; background-color: rgba(7,155,8,0.6); border-radius: 3px">
+                            Work 2
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
+
+
+ <div class="modal" id="work1modal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Work 1</h4>
+        </div>
+        <div class="modal-body">
+            <p>Here are some info about your work</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>

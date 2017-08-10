@@ -11,6 +11,8 @@ mongoose.connect(uri, {
     useMongoClient: true
 });
 
+console.log("Mongoose connection state " + mongoose.connection.readyState); // Output - 0 = disconnected, 1 = connected, 2 = connecting, 3 = disconnecting
+
 var indexRoutes = require('./routes/index');
 var userRoutes = require('./routes/user');
 

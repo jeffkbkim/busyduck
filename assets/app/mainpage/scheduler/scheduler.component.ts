@@ -10,7 +10,7 @@ import {FormGroup, Validators, FormControl} from "@angular/forms";
 export class SchedulerComponent {
     newJobForm: FormGroup;
     onSubmit() {
-        alert("YO");
+        alert(this.newJobForm.value.location + this.newJobForm.value.position);
     }
 
     ngOnInit() {
