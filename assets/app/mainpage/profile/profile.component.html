@@ -1,7 +1,7 @@
 <div class="header" style="background-color:#07889B; color:azure; height:100px;">
     <h1 style="padding-top: 15px; text-align:center">Check and manage your profile</h1>
 </div>
-<div class="container my-profile-body">
+<div class="container my-profile-body" style="height: 100vh">
     <div class="container col-xs-6" style="margin-top: 30px">
         <div class="panel panel-primary text-center" style="border: 0">
             <div class="panel-heading" style="background-color: #02454E; border: 0">
@@ -11,14 +11,16 @@
                 <div>
                     <span class="glyphicon glyphicon-user" style="color: #414141; font-size: 6em"></span>
                 </div>
-                <div *ngIf="!name; else forminfo">
+                <div *ngIf="!firstName; else forminfo">
                     <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
                         <div>
                             <div class="row columns">
-                                <label>Name
-                                    <input type="text" formControlName="name" value="{{ currUser?.firstName }}">
+                                <label>First Name
+                                    <input type="text" formControlName="firstName" value="{{ currUser?.firstName }}">
                                 </label>
-
+                                <label>Last Name
+                                    <input type="text" formControlName="lastName" value="{{ currUser?.lastName }}">
+                                </label>
                                 <label>Email
                                     <input type="text" formControlName="email" value="{{ currUser?.email }}">
                                 </label>
@@ -34,7 +36,8 @@
                 <ng-template #forminfo>
                     <div class="form-container">
                         <div class="row columns">
-                            <h1> {{ name }} </h1>
+                            <h1> {{ firstName }} </h1>
+                            <h1> {{ lastName }} </h1>
                             <p> {{ description }} </p>
                         </div>
                     </div>

@@ -47,7 +47,6 @@ export class SigninAdminComponent implements OnInit {
                 },
                 error => console.error(error)
             );
-
         this.registerForm.reset();
     }
 

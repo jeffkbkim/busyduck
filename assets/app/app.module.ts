@@ -4,6 +4,7 @@ import {AppComponent} from "./app.component";
 import {BrowserModule} from "@angular/platform-browser";
 import {AuthenticationComponent} from "../auth/authentication.component";
 import {HeaderComponent} from "./header.component";
+import {FooterComponent} from "./footer.component";
 import {routing} from "./app.routing";
 import {LogoutComponent} from "./mainpage/logout.component";
 import {SignupComponent} from "../auth/signup.component";
@@ -29,6 +30,7 @@ import {SignupAdminComponent} from "../auth/signin_signup_Forms/signup/signup.ad
         AppComponent,
         AuthenticationComponent,
         HeaderComponent,
+        FooterComponent,
         LogoutComponent,
         SignupComponent,
         SigninComponent,

@@ -13,22 +13,25 @@ export class ProfileComponent implements OnInit {
     @Input() currUser : User;
     rForm : FormGroup;
     post:any;
-    description : string = '';
-    name : string = '';
+    description : string = "";
+    firstName : string = "";
+    lastName : string = "";
 
     constructor(private currUserService : CurrentUserService, private fb: FormBuilder) {
         this.currUser = this.currUserService.curr_User;
 
         this.rForm = fb.group({
-            'name' : [null, Validators.required],
-            'email' : [null, Validators.required],
-            'validate' : ''
+            "firstName" : [null, Validators.required],
+            "lastName" : [null, Validators.required],
+            "email" : [null, Validators.required],
+            "validate" : ""
         });
     }
 
     addPost(post) {
         this.description = post.email;
-        this.name = post.name;
+        this.firstName = post.firstName;
+        this.lastName = post.lastName;
     }
 
     ngOnInit() {
