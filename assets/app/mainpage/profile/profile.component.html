@@ -26,8 +26,15 @@
                                 </label>
 
                                 <label for="validate"> Minimum of 3 Characters </label>
-                                <input type="checkbox" name="validate" formControlName="validate" value="1">On
-                                <input type="submit" class="button expanded" value="Submit Form" [disabled]="!rForm.valid">
+                                <input type="checkbox" name="validate" formControlName="validate" value="1">
+                                <div class="button-container">
+                                <div class="container col-xs-6">
+                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addModal">Change your Password</button>
+                                </div>
+                                <div class="container col-xs-6">
+                                    <input type="submit" class="button expanded" value="Submit Form" [disabled]="!rForm.valid">
+                                </div>
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -94,22 +101,22 @@
 
 
 
- <div class="modal" id="work1modal" role="dialog">
+
+ <div class="modal" id="addModal" role="dialog">
     <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Work 1</h4>
+          <h4 class="modal-title">Please enter your new password</h4>
         </div>
         <div class="modal-body">
-            <p>Here are some info about your work</p>
+
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Leave Work</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
         </div>
       </div>
-      
-    </div>
+    
   </div>
+</div>

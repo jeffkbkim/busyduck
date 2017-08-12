@@ -1,8 +1,8 @@
-<div style=''>
+<div>
 <div class="header" style="background-color:#07889B; color:azure; height:100px;">
     <h1 style="padding-top: 15px; text-align:center">Set your preferred schedule or add a new job</h1>
 </div>
-<div class="scheduler-container" style="height:90vh">
+<div class="scheduler-container" style="height:63vh">
     <div class="work-container">
       <div *ngFor="let tempPosition of tempPositionsNew; let i = index" [attr.data-index]="i">
         <div class='square-box' [style.backgroundColor]="tempPosition.color" id='work_box_{{i}}'>
