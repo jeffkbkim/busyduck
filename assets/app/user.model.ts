@@ -3,5 +3,6 @@ export class User {
                 public password: string,
                 public isAdmin: boolean,
                 public firstName?: string,
-                public lastName?: string) {}
+                public lastName?: string,
+                public positions?: Array<Object>) {}
 }

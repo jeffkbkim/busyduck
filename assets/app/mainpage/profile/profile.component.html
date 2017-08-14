@@ -29,10 +29,10 @@
                                 <input type="checkbox" name="validate" formControlName="validate" value="1">
                                 <div class="button-container">
                                 <div class="container col-xs-6">
-                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addModal">Change your Password</button>
+                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addModal" style="height: 7vh">Change Password</button>
                                 </div>
                                 <div class="container col-xs-6">
-                                    <input type="submit" class="button expanded" value="Submit Form" [disabled]="!rForm.valid">
+                                    <input type="submit" class="button btn-primary" value="Save Changes" style="height: 7vh">
                                 </div>
                                 </div>
                             </div>
@@ -63,35 +63,25 @@
                     <span class="glyphicon glyphicon-briefcase" style="color: #414141; font-size: 6em"></span>
                 </div>
                 <div style="margin-top:3%">
-                    <div class="row columns" style="margin-bottom:5%">
-                        <div class="container col-xs-4" >
-                            <button type="button" class="btn btn" data-toggle="modal" data-target="#work1modal" style="width:150px; background-color: #A8185F; color: white; border-radius: 3px">
-                                Work 1
-                            </button>
-                        </div>
-                        <div class="container col-xs-6 col-xs-offset-2" style="text-align:left">
-                            <p>Yo insert a text here</p>
-                        </div>                    
-                    </div>
-                    <div class="row columns" style="margin-bottom:5%">
+                    <div class="row columns" style="margin-bottom:5%" *ngFor="let tempPosition of tempPositionsNew; let i = index" [attr.data-index]="i">
+                        <div *ngIf="tempPosition.status === 'approved'; else waiting">
                         <div class="container col-xs-4">
-                            <button type="button" class="btn btn" data-toggle="modal" data-target="#work1modal" style="width:150px; background-color: #E7D016; color: white; border-radius: 3px">
-                                Work 2
+                            <button type="button" class="btn btn" data-toggle="modal" data-target="#workmodal" [style.backgroundColor]="tempPosition.color" style="width:150px; color: white; border-radius: 3px; font-size: 16px">
+                                {{ tempPosition.workName }}
                             </button>
                         </div>
                         <div class="container col-xs-6 col-xs-offset-2" style="text-align:left">
-                            <p>Insert another text here</p>
-                        </div>
-                    </div>
-                    <div class="row columns" style="margin-bottom:5%">
-                        <div class="container col-xs-4">
-                            <button type="button" class="btn btn" data-toggle="modal" data-target="#work1modal" style="width:150px; background-color: #18A819; color: white; border-radius: 3px">
-                                Work 3
-                            </button>
-                        </div>
-                        <div class="container col-xs-6 col-xs-offset-2" style="text-align:left">
-                            <p>Last time inserting some text here </p>
-                        </div>
+                            <p> I'm the best <strong>{{ tempPosition.type }} </strong> ever</p>
+                        </div>    
+                        </div>                
+                        <ng-template #waiting>
+                            <div class="container col-xs-4">
+                                <button type="button" class="btn btn-secondary" style="border: 3px dashed rgba(81,81,81,0.7); width:150px; border-radius: 3px;" > {{ tempPosition.workName }} </button>
+                            </div>
+                            <div class="container col-xs-6 col-xs-offset-2" style="text-align:left">
+                                <p>Not yet the best {{tempPosition.type}}. Waiting for approval.</p>
+                            </div>
+                        </ng-template>
                     </div>
                 </div>
             </div>
