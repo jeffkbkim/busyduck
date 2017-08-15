@@ -1,12 +1,12 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {CurrentUserService} from "../current-user.service";
-import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../user.model";
 
 
 @Component({
-    selector: 'my-profile',
-    templateUrl: './profile.component.html'
+    selector: "my-profile",
+    templateUrl: "./profile.component.html"
 })
 
 export class ProfileComponent implements OnInit {

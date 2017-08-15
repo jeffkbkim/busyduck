@@ -4,14 +4,18 @@ import {Router} from "@angular/router";
 @Component({
     selector: 'app-logout',
     template: `
-    <div class="header" style="background-color:#07889B; color:azure; height:100px;">
-        <h1 style="padding-top: 15px; text-align:center">Are you sure you want to leave us?😢</h1>
+    <div style="height: 90vh">
+    <div style="margin:2% 4% 2% 4%;border: 0.3px solid #07889B; background-color:rgba(5,91,104,0); height: 50vh">
+        <div class="header" style="background-color:#07889B; color:azure; height:40px;">
+            <p style="font-size: 20px; padding-top:0.4%; margin-left: 3%">Are you sure you want to leave us?😢</p>
+        </div>
+        <div style='text-align:center;'>
+            <button class="btn btn-warning" style='margin: auto; margin-top: 5%; width:150px; height:50px; display:block' (click)="onLogout()">
+                😈
+                Yes
+            </button>
+        </div>
     </div>
-    <div class="col-xs-12" style='text-align:center'>
-        <button class="btn btn-danger" style='margin: auto; margin-top: 5%; width:150px; height:50px; display:block' (click)="onLogout()">
-            <span class="glyphicon glyphicon-erase" style=""></span>
-            Yes
-        </button>
     </div>
 `
 })

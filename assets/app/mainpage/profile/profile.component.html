@@ -1,13 +1,15 @@
-<div class="header" style="background-color:#07889B; color:azure; height:100px;">
-    <h1 style="padding-top: 15px; text-align:center">Check and manage your profile</h1>
+<div style="margin:2% 4% 2% 4%;">
+
+<div class="header" style="background-color:#07889B; color:azure; height:40px;">
+    <p style="font-size: 20px; padding-top:0.4%; margin-left: 3%">Check and manage your profile</p>
 </div>
-<div class="container my-profile-body" style="height: 100vh">
+<div class="container my-profile-body" style="height: 100vh; border: 0.3px solid #07889B; background-color:rgba(5,91,104,0.1)">
     <div class="container col-xs-6" style="margin-top: 30px">
         <div class="panel panel-primary text-center" style="border: 0">
             <div class="panel-heading" style="background-color: #02454E; border: 0">
                 My Profile
             </div>
-            <div class="panel-body">
+            <div class="panel-body" style= "border: 0.3px solid #02454E">
                 <div>
                     <span class="glyphicon glyphicon-user" style="color: #414141; font-size: 6em"></span>
                 </div>
@@ -58,30 +60,35 @@
             <div class="panel-heading" style="background-color: #02454E; border: 0">
                 My Work
             </div>
-            <div class="panel-body">
+            <div class="panel-body" style= "border: 0.3px solid #02454E">
                 <div>
                     <span class="glyphicon glyphicon-briefcase" style="color: #414141; font-size: 6em"></span>
                 </div>
                 <div style="margin-top:3%">
-                    <div class="row columns" style="margin-bottom:5%" *ngFor="let tempPosition of tempPositionsNew; let i = index" [attr.data-index]="i">
-                        <div *ngIf="tempPosition.status === 'approved'; else waiting">
-                        <div class="container col-xs-4">
-                            <button type="button" class="btn btn" data-toggle="modal" data-target="#workmodal" [style.backgroundColor]="tempPosition.color" style="width:150px; color: white; border-radius: 3px; font-size: 16px">
-                                {{ tempPosition.workName }}
-                            </button>
+                    <div class="list-group">   
+                        <div class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let tempPosition of tempPositionsNew; let i = index" [attr.data-index]="i">
+                            <div *ngIf="tempPosition.status === 'approved'; else waiting">
+                            <div class="d-flex w-100 justify-content-between" style="text-align:left; ">
+                                <h5 class="mb-1" style="margin-left:0px">
+                                    <span class="{{ tempPosition.glyphicon }}" [style.color]="tempPosition.color"></span> {{ tempPosition.workName }}
+                                </h5>
+                                <small style="position: absolute; top:5px; right:50px"><a href="#">Edit</a></small>
+                                <small style="position: absolute; top:5px; right:10px"><a href="#">Delete</a></small>
+                            </div>
+                            <p class="mb-1"> I'm the best <strong>{{ tempPosition.type }} </strong> ever </p> 
+                            </div>
+
+                            <ng-template #waiting>
+                                <div class="d-flex w-100 justify-content-between" style="text-align: left;">
+                                    <h5 class="mb-1" style="margin-left: 0px" >  <span class="{{ tempPosition.glyphicon }}" [style.color]="tempPosition.color"></span> {{ tempPosition.workName }} </h5>
+                                    <small style="position: absolute; top:5px; right:50px"><a href="#">Remind</a></small>
+                                    <small style="position: absolute; top:5px; right:10px"><a href="#">Delete</a></small>
+                                </div>
+                                <div class="mb-1" style="background-color:rgba(242,114,69,0.1);">
+                                    <p>Not yet the best {{tempPosition.type}}. Waiting for approval.</p>
+                                </div>
+                            </ng-template>
                         </div>
-                        <div class="container col-xs-6 col-xs-offset-2" style="text-align:left">
-                            <p> I'm the best <strong>{{ tempPosition.type }} </strong> ever</p>
-                        </div>    
-                        </div>                
-                        <ng-template #waiting>
-                            <div class="container col-xs-4">
-                                <button type="button" class="btn btn-secondary" style="border: 3px dashed rgba(81,81,81,0.7); width:150px; border-radius: 3px;" > {{ tempPosition.workName }} </button>
-                            </div>
-                            <div class="container col-xs-6 col-xs-offset-2" style="text-align:left">
-                                <p>Not yet the best {{tempPosition.type}}. Waiting for approval.</p>
-                            </div>
-                        </ng-template>
                     </div>
                 </div>
             </div>
@@ -109,4 +116,6 @@
       </div>
     
   </div>
+</div>
+
 </div>
