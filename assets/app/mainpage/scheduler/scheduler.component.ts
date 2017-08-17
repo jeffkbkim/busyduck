@@ -40,6 +40,27 @@ export class SchedulerComponent {
         let clickedID : string = event.target.id;
     }
 
+    downId : string;
+    downAction(downId) {
+        this.downId = downId;
+        //alert(this.downId);
+    }
+
+    upAction(upId) {
+        let upIdArray = upId.split("_");
+        let downIdArray = this.downId.split("_");
+
+        // make sure a user inputs a day's schedule
+        if (upIdArray[1] === downIdArray[1]) {
+            let startTime: string = (Number(downIdArray[0]) + 7).toString();
+            let startDay : number = Number(downIdArray[1]);
+            let duration : string = (1 + Number(upIdArray[0]) - Number(downIdArray[0])).toString();
+            alert ("Work on " + this.dates[startDay].day + " at " + startTime + " for " + duration + " hours");
+        }
+    }
+
+    hours = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17];
+
     ngOnInit() {
         this.newJobForm = new FormGroup({
             location: new FormControl(null, Validators.required),
@@ -47,13 +68,13 @@ export class SchedulerComponent {
         });
     }
 
-    dates = [{"day" : "Monday", "id": 1},
-            {"day" : "Tuesday", "id": 2},
-            {"day" : "Wednesday", "id": 3},
-            {"day" : "Thursday", "id": 4},
-            {"day" : "Friday", "id":  5},
-            {"day" : "Saturday", "id":  6},
-            {"day" : "Sunday", "id": 7}];
+    dates = [{"day" : "Monday", "id": 0},
+            {"day" : "Tuesday", "id": 1},
+            {"day" : "Wednesday", "id": 2},
+            {"day" : "Thursday", "id": 3},
+            {"day" : "Friday", "id":  4},
+            {"day" : "Saturday", "id":  5},
+            {"day" : "Sunday", "id": 6}];
 
     colorSchemaArray : Array<string> = ["#A8185F", "#E7D016", "#18A819"];
 
@@ -98,12 +119,12 @@ export class SchedulerComponent {
             "schedule":
             [
                 {
-                    "day": 1,
+                    "day": 0,
                     "start": 10,
                     "duration": 5
                 },
                 {
-                    "day": 2,
+                    "day": 1,
                     "start": 14,
                     "duration": 4
                 }
@@ -115,17 +136,17 @@ export class SchedulerComponent {
             "schedule":
             [
                 {
-                    "day": 3,
+                    "day": 2,
                     "start": 8,
                     "duration": 5
                 },
                 {
-                    "day": 4,
+                    "day": 3,
                     "start": 16,
                     "duration": 6
                 },
                 {
-                    "day": 6,
+                    "day": 5,
                     "start": 14,
                     "duration": 8
                 }
@@ -136,7 +157,7 @@ export class SchedulerComponent {
             "schedule":
             [
                 {
-                    "day": 1,
+                    "day": 0,
                     "start": 17,
                     "duration": 2
                 }
