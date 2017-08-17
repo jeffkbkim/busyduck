@@ -1,6 +1,6 @@
 <div style="margin:2% 4% 2% 4%;">
 
-<div class="header" style="background-color:#07889B; color:azure; height:40px;">
+<div class="header" style="background-color:#07889B; color:azure; height: 40px">
     <p style="font-size: 20px; padding-top:0.4%; margin-left: 3%">Check and manage your profile</p>
 </div>
 <div class="container my-profile-body" style="height: 100vh; border: 0.3px solid #07889B; background-color:rgba(5,91,104,0.1)">
@@ -108,6 +108,23 @@
           <h4 class="modal-title">Please enter your new password</h4>
         </div>
         <div class="modal-body">
+            <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+                <div>
+                    <div class="row columns">
+                        <label>Password
+                            <input type="password" formControlName="firstName" value="{{ currUser?.firstName }}">
+                        </label>
+                        <label>Password Check
+                            <input type="password" formControlName="lastName" value="{{ currUser?.lastName }}">
+                        </label>
+                        <div class="button-container">
+                        <div class="container col-xs-6">
+                            <input type="submit" class="button btn-primary" value="Save Changes" style="height: 7vh">
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
 
         </div>
         <div class="modal-footer">

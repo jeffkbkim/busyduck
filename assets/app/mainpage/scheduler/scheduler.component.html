@@ -4,28 +4,34 @@
 </div>
 <div class="scheduler-container" style="height:63vh">
     <div class="work-container">
-      <div *ngFor="let tempPosition of tempPositionsNew; let i = index" [attr.data-index]="i">
-        <div class='square-box' [style.backgroundColor]="tempPosition.color" id='work_box_{{i}}'>
-            <div class='square-content'>
-                <div>
-                    <span [ngClass]="tempPosition.glyphicon" style="padding-left:15%"></span>
-                    <span id='text_{{i}}' style="text-align: left">{{tempPosition.workName}}</span>
-                </div>
+        <p style="margin-bottom:0"><b>Which schedule?</b></p>
+        <div style="width:17.5vw; height: 6vh;">  
+            <div class="radio radio-info radio-inline">
+                <input type="radio" id="inlineRadio1" value="option1" name="radioInline" checked="" (ngModelChange)='onChange()'>
+                <label for="inlineRadio1"> Actual </label>
+            </div>
+            <div class="radio radio-info radio-inline">
+                <input type="radio" id="inlineRadio2" value="option1" name="radioInline">
+                <label for="inlineRadio2"> Preferred </label>
             </div>
         </div>
-      </div>
-
-        <button type="button" class="square-box" data-toggle="modal" data-target="#addModal">
-            <div class='square-content' style="border: 4px dashed rgba(81,81,81,0.7);" id='new-work_box'>
-                <div style="margin-top:0.5%">
-                    <span class="glyphicon glyphicon-plus" style="color: #414141; padding-left:17%"></span>
-                    <span id='new-text' style="color: #414141; text-align:left;"> Got a new job?</span>
-                </div>
+        <div *ngFor="let tempPosition of tempPositionsNew; let i = index" [attr.data-index]="i" style="height:8vh; padding-left:1.5vw; padding-top: 2vh">
+            <div class='square-box' [style.backgroundColor]="tempPosition.color" id='work_box_{{i}}' style="float:left">
+            </div>
+            <div style="margin-left: 2.5vw; padding-top:1.3vh">
+                <span [ngClass]="tempPosition.glyphicon"></span>
+                <span id='text_{{i}}' style="text-align: left">{{tempPosition.workName}}</span>
+            </div>
+        </div>
+        <button type="button" data-toggle="modal" data-target="#addModal" style="height: 7vh; margin-top: 4.5vh; border: 4px dashed rgba(81,81,81,0.7); width:15vw; margin-left: 1vw">
+            <div style="margin-left:2.5vw; float:left">
+                <span class="glyphicon glyphicon-plus" style="color: #414141; "></span>
+                <span id='new-text' style="color: #414141; text-align:left;"> Got a new job?</span>
             </div>
         </button>
     </div>
 
-    <div class="table-container" style="margin-left: 19vw; width: 100%">
+    <div class="table-container" style="margin-left: 21vw; width: 70vw">
         <table>
             <thead>
                 <tr>
