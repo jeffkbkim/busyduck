@@ -61,7 +61,7 @@
             <tbody>
                 <tr *ngFor="let date of dates; let i = index" >
                     <td id="Date">{{ date.day }}</td>
-                    <td *ngFor="let hour of hours" id="{{hour}}_{{i}}" (click)="toggle($event)" (mousedown)="downAction(hour+'_'+i)" (mouseup)="upAction(hour+'_'+i)"></td>
+                    <td *ngFor="let hour of hours" id="{{hour}}_{{i}}" (click)="toggle($event)" (mousedown)="downAction(hour+'_'+i)" (mouseup)="upAction(hour+'_'+i)" (mouseover)="colorCell(hour+'_'+i)"></td>
                 </tr>
             </tbody>
         </table>

@@ -43,7 +43,15 @@ export class SchedulerComponent {
     downId : string;
     downAction(downId) {
         this.downId = downId;
-        //alert(this.downId);
+        this.colorCell(downId);
+    }
+
+    colorCell(hover_id) {
+        let hover_idArray = hover_id.split("_");
+        let downIdArray = this.downId.split("_");
+        if (hover_idArray[1] === downIdArray[1]) {
+            document.getElementById(hover_id).style.backgroundColor = this.colorSchemaArray[0];
+        }
     }
 
     upAction(upId) {
@@ -52,10 +60,11 @@ export class SchedulerComponent {
 
         // make sure a user inputs a day's schedule
         if (upIdArray[1] === downIdArray[1]) {
+            this.colorCell(this.downId);
             let startTime: string = (Number(downIdArray[0]) + 7).toString();
             let startDay : number = Number(downIdArray[1]);
             let duration : string = (1 + Number(upIdArray[0]) - Number(downIdArray[0])).toString();
-            alert ("Work on " + this.dates[startDay].day + " at " + startTime + " for " + duration + " hours");
+            alert ("Work on " + this.dates[startDay].day + " starts at " + startTime + " for " + duration + " hours");
         }
     }
 
