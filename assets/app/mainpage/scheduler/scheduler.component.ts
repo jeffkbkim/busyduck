@@ -13,6 +13,33 @@ export class SchedulerComponent {
         alert(this.newJobForm.value.location + this.newJobForm.value.position);
     }
 
+    _actual: boolean = true;
+    _preferred: boolean = false;
+
+    actualChecked(evt) {
+      if (evt.target.checked) {
+        this._actual = true;
+        this._preferred = false;
+      } else {
+        this._actual = false;
+        this._preferred = true;
+      }
+    }
+
+    preferredChecked(event) {
+      if (event.target.checked) {
+        this._actual = false;
+        this._preferred = true;
+      } else {
+        this._actual = true;
+        this._preferred = false;
+      }
+    }
+
+    toggle(event) {
+        let clickedID : string = event.target.id;
+    }
+
     ngOnInit() {
         this.newJobForm = new FormGroup({
             location: new FormControl(null, Validators.required),

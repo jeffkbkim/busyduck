@@ -1,17 +1,20 @@
 <div style="margin:2% 4% 2% 4%;border: 0.3px solid #07889B; background-color:rgba(5,91,104,0)">
 <div class="header" style="background-color:#07889B; color:azure; height:40px;">
-    <p style="font-size: 20px; padding-top:0.4%; margin-left: 3%">Set your preferred schedule or add a new job</p>
+    <p *ngIf="_actual; else preferred" style="font-size: 20px; padding-top:0.4%; margin-left: 2%">Check your actual schedule or add a new job</p>
+    <ng-template #preferred>
+        <p style="font-size: 20px; padding-top:0.4%; margin-left: 2%">Set your preferred schedule or add a new job</p>       
+    </ng-template>
 </div>
 <div class="scheduler-container" style="height:63vh">
     <div class="work-container">
         <p style="margin-bottom:0"><b>Which schedule?</b></p>
         <div style="width:17.5vw; height: 6vh;">  
             <div class="radio radio-info radio-inline">
-                <input type="radio" id="inlineRadio1" value="option1" name="radioInline" checked="" (ngModelChange)='onChange()'>
+                <input type="radio" id="inlineRadio1" value="option1" name="radioInline" checked="" (change)="actualChecked($event)">
                 <label for="inlineRadio1"> Actual </label>
             </div>
             <div class="radio radio-info radio-inline">
-                <input type="radio" id="inlineRadio2" value="option1" name="radioInline">
+                <input type="radio" id="inlineRadio2" value="option1" name="radioInline" (change)="preferredChecked($event)">
                 <label for="inlineRadio2"> Preferred </label>
             </div>
         </div>
@@ -58,7 +61,7 @@
             <tbody>
                 <tr *ngFor="let date of dates">
                     <td id="Date">{{ date.day }}</td>
-                    <td id="1_{{date.id}}"></td>
+                    <td id="1_{{date.id}}" (click)="toggle($event)"></td>
                     <td id="2_{{date.id}}"></td>
                     <td id="3_{{date.id}}"></td>
                     <td id="4_{{date.id}}"></td>
