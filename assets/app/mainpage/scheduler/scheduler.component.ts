@@ -296,8 +296,18 @@ export class SchedulerComponent {
             [
                 {
                     "day": 0,
+                    "start": 13,
+                    "duration": 8
+                },
+                {
+                    "day": 3,
                     "start": 10,
-                    "duration": 5
+                    "duration": 8
+                },
+                {
+                    "day": 6,
+                    "start": 13,
+                    "duration": 8
                 }
             ]
         }
@@ -308,18 +318,13 @@ export class SchedulerComponent {
             [
                 {
                     "day": 2,
-                    "start": 8,
+                    "start": 9,
                     "duration": 6
                 },
                 {
-                    "day": 3,
-                    "start": 16,
-                    "duration": 10
-                },
-                {
-                    "day": 5,
-                    "start": 14,
-                    "duration": 8
+                    "day": 4,
+                    "start": 9,
+                    "duration": 6
                 }
             ]
         },
