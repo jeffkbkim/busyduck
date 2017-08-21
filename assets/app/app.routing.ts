@@ -17,6 +17,6 @@ const APP_ROUTES: Routes = [
 
 //make angular aware
 //re-export modified routes
-export const routing = RouterModule.forRoot(APP_ROUTES, {enableTracing: true});
+export const routing = RouterModule.forRoot(APP_ROUTES);
 
 
