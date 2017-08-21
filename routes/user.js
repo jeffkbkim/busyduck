@@ -9,6 +9,7 @@ router.post('/', function(req, res, next) {
     var user = new User({
         firstName : req.body.firstName,
         lastName : req.body.lastName,
+        isAdmin : req.body.isAdmin,
         password : bcrypt.hashSync(req.body.password, 10), //should use SSL
         email : req.body.email
     });
@@ -51,6 +52,16 @@ router.post('/signin', function(req, res, next) {
                title: 'Login Failed',
                error: {message: 'Invalid login credentials.'}
            });
+       }
+
+       //if admin level is incorrect
+       console.log(req.body.isAdmin);
+       console.log(user.isAdmin);
+       if (req.body.isAdmin !== user.isAdmin) {
+           return res.status(401).json({
+               title: 'Login Failed!!!',
+               error: {message: 'Invalid login credentials.'}
+           })
        }
 
        //if password is correct

@@ -18,14 +18,15 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar" [collapse]="isCollapsed">
             <ul class="nav navbar-nav navbar-right">
-                <li><a [routerLink] = "['/auth/signup']" *ngIf="!isLoggedIn()" (click)="isCollapsed = true"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a [routerLink] = "['/auth/signin']" *ngIf="isLoggedIn()" (click)="isCollapsed = true"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                <li><a [routerLink] = "['/mainpage/scheduler']" *ngIf="isLoggedIn()" (click)="isCollapsed = true"><span class="glyphicon glyphicon-calendar"></span> Schedule</a></li>
-                <li><a [routerLink] = "['/mainpage/chat']" *ngIf="isLoggedIn()" (click)="isCollapsed = true"><span class="fa fa-comment-o"></span> Chat</a></li>
-                <li><a [routerLink] = "['/mainpage/profile']" *ngIf="isLoggedIn()" (click)="isCollapsed = true"><span class="fa fa-user-circle"></span> Profile</a></li>
-                <li><a [routerLink] = "['/mainpage/logout']" *ngIf="isLoggedIn()" (click)="isCollapsed = true"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                <li><a [routerLink] = "['/auth/signup']" *ngIf="!isLoggedIn()" (click)="isCollapsed = true"><span class="glyphicon glyphicon-user"></span> SIGN UP</a></li>
+                <li><a [routerLink] = "['/auth/signin']" *ngIf="!isLoggedIn()" (click)="isCollapsed = true"><span class="glyphicon glyphicon-log-in"></span> LOGIN</a></li>
+                <li><a [routerLink] = "['/mainpage/scheduler']" *ngIf="isLoggedIn()" (click)="isCollapsed = true"><span class="glyphicon glyphicon-calendar"></span> SCHEDULE</a></li>
+                <li><a [routerLink] = "['/mainpage/chat']" *ngIf="isLoggedIn()" (click)="isCollapsed = true"><span class="fa fa-comment-o"></span> CHAT</a></li>
+                <li><a [routerLink] = "['/mainpage/profile']" *ngIf="isLoggedIn()" (click)="isCollapsed = true"><span class="fa fa-user-circle"></span> PROFILE</a></li>
+                <li><a [routerLink] = "['/mainpage/logout']" *ngIf="isLoggedIn()" (click)="isCollapsed = true"><span class="glyphicon glyphicon-log-out"></span> LOGOUT</a></li>
 
             </ul>
         </div>
     </div>
 </nav>
+</body>

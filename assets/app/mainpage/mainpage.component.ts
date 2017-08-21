@@ -1,7 +1,7 @@
 
 import {Component, OnInit} from "@angular/core";
 import {CurrentUserService} from "./current-user.service";
-import {User} from "../../auth/user.model";
+
 @Component ({
     selector: 'app-mainpage',
     providers: [CurrentUserService],
