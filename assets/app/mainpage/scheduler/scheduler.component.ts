@@ -9,14 +9,14 @@ import {FormGroup, Validators, FormControl} from "@angular/forms";
 
 export class SchedulerComponent {
     newJobForm: FormGroup;
-    onSubmit() {
+    onSubmit(): void {
         alert(this.newJobForm.value.location + this.newJobForm.value.position);
     }
 
     _actual: boolean = true;
     _preferred: boolean = false;
 
-    actualChecked(evt) {
+    actualChecked(evt: any): void {
       if (evt.target.checked) {
         this._actual = true;
         this._preferred = false;
@@ -26,7 +26,7 @@ export class SchedulerComponent {
       }
     }
 
-    preferredChecked(event) {
+    preferredChecked(event: any): void {
       if (event.target.checked) {
         this._actual = false;
         this._preferred = true;
@@ -38,8 +38,8 @@ export class SchedulerComponent {
 
     // paint select
     paintColorIndex : number = 0;
-    paintColor(index : number) {
-        let div = document.getElementById("text_div_"+index);
+    paintColor(index : number): void {
+        let div : any= document.getElementById("text_div_"+index);
         for (let i:number=0; i < this.tempPositions.length; i++) {
             if (i !== index) {
                 document.getElementById("text_div_"+i).style.color = "#0a0a0a";
@@ -50,7 +50,7 @@ export class SchedulerComponent {
         this.paintColorIndex = index;
     }
 
-    deleteColor() {
+    deleteColor(): void {
         for (let i:number=0; i < this.tempPositions.length; i++) {
             document.getElementById("text_div_"+i).style.color = "#0a0a0a";
         }
@@ -60,7 +60,7 @@ export class SchedulerComponent {
     //
 
     // scheduler
-    toggle(event) {
+    toggle(event: any): void {
         let clickedID : string = event.target.id;
     }
 
@@ -88,10 +88,9 @@ export class SchedulerComponent {
                     this.affected.push(newID);
                 }
             } catch(e) {
-                ;
+                // empty
             }
         }
-
     }
 
     upAction(upId : string): void {
@@ -111,7 +110,7 @@ export class SchedulerComponent {
         this.clicked = false;
     }
 
-    entireDay(id) {
+    entireDay(id: string): void {
         for (let i:number=0; i < this.hours.length; i++) {
             let color_id : string = this.hours[i].toString() + "_" + id.toString();
             document.getElementById(color_id).style.backgroundColor = this.colorSchemaArray[this.paintColorIndex];
@@ -120,7 +119,7 @@ export class SchedulerComponent {
     //
 
     // button actions
-    clearAll() {
+    clearAll(): void {
         for (let i:number=0; i < this.hours.length; i++) {
             for (let j:number=0; j < this.dates.length; j++) {
                 let cell_id : string = this.hours[i].toString() + "_" + j.toString();
@@ -134,9 +133,9 @@ export class SchedulerComponent {
         this.ngAfterViewInit();
     }
 
-    colorToHex(color): string {
+    colorToHex(color: string): string {
         try {
-            let colorArray: Array<number> = color.split("(")[1].split(")")[0].split(",");
+            let colorArray: Array<string> = color.split("(")[1].split(")")[0].split(",");
             let r : string = Number(colorArray[0]).toString(16).toUpperCase();
             let g : string = Number(colorArray[1]).toString(16).toUpperCase();
             let b : string = Number(colorArray[2]).toString(16).toUpperCase();
@@ -148,8 +147,11 @@ export class SchedulerComponent {
 
     }
 
-    saveAll() {
+    saveAll(): void {
+        // reset the schedule
         this.tempPreferredSchedule.forEach(i => i.schedule.length = 0);
+
+        // generate a new JSON based on current schedule
         for (let i:number = 0; i < this.dates.length; i++) {
             let start : number = 0;
             let duration : number = 0;
@@ -175,8 +177,8 @@ export class SchedulerComponent {
                 }
                 start ++;
             }
-            console.log(JSON.stringify(this.tempPreferredSchedule));
         }
+        alert(JSON.stringify(this.tempPreferredSchedule));
     }
     //
 
@@ -203,21 +205,21 @@ export class SchedulerComponent {
     tempPositions: any = [
         {
             "workid": "0xbed0",
-            "workName": "White Windmill",
+            "workName": "American Deli",
             "type": "cashier",
             "status": "approved",
             "color": "#eee"
         },
         {
             "workid": "0xff3b",
-            "workName": "Jang Su Jang",
+            "workName": "Taco Mac",
             "type": "cook",
             "status": "approved",
             "color": "#eee"
         },
         {
             "workid": "0x0car",
-            "workName": "Emily J",
+            "workName": "Crazy Cutz",
             "type": "hair",
             "status": "waiting_for_approval",
             "color": "#eee"
@@ -237,7 +239,7 @@ export class SchedulerComponent {
 
     @Input() tempPreferredSchedule = [
         {
-            "work": "White Windmill",
+            "work": "American Deli",
             "schedule":
             [
                 {
@@ -254,7 +256,7 @@ export class SchedulerComponent {
         }
         ,
         {
-            "work": "Jang Su Jang",
+            "work": "Taco Mac",
             "schedule":
             [
                 {
@@ -275,7 +277,7 @@ export class SchedulerComponent {
             ]
         },
         {
-            "work": "Emily J",
+            "work": "Crazy Cutz",
             "schedule":
             [
                 {
