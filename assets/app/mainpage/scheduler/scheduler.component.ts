@@ -124,18 +124,59 @@ export class SchedulerComponent {
         for (let i:number=0; i < this.hours.length; i++) {
             for (let j:number=0; j < this.dates.length; j++) {
                 let cell_id : string = this.hours[i].toString() + "_" + j.toString();
-                 document.getElementById(cell_id).style.backgroundColor = "#eee";
+                 document.getElementById(cell_id).style.backgroundColor = this.colorSchemaArray[this.colorSchemaArray.length-1];
             }
         }
     }
 
-    resetAll() {
+    resetAll(): void {
         this.clearAll();
-        this.ngAfterViewInit()
+        this.ngAfterViewInit();
+    }
+
+    colorToHex(color): string {
+        try {
+            let colorArray: Array<number> = color.split("(")[1].split(")")[0].split(",");
+            let r : string = Number(colorArray[0]).toString(16).toUpperCase();
+            let g : string = Number(colorArray[1]).toString(16).toUpperCase();
+            let b : string = Number(colorArray[2]).toString(16).toUpperCase();
+            let rgb : string = "#" + r + g + b;
+            return rgb;
+        } catch(e) {
+            return "";
+        }
+
     }
 
     saveAll() {
-        // TODO : update tempSchedule
+        this.tempPreferredSchedule.forEach(i => i.schedule.length = 0);
+        for (let i:number = 0; i < this.dates.length; i++) {
+            let start : number = 0;
+            let duration : number = 0;
+            let lastWorkID : number = -1;
+            let scheduleArray : Array<number> = [];
+            for (let j:number = 0; j < this.hours.length; j++) {
+                let id: string = this.hours[j].toString() + "_" + i.toString();
+                let color: string = document.getElementById(id).style.backgroundColor;
+                let hexColor : string = this.colorToHex(color);
+                let workID : number = this.colorSchemaArray.indexOf(hexColor);
+                scheduleArray.push(workID); // e.g. [1, 2, 2, -1, -1, 1, 0, 0, -1, -1]
+            }
+
+            let currentWork : number;
+            while (start < this.hours.length) {
+                duration = 0;
+                if (scheduleArray[start] !== -1) {
+                    while (scheduleArray[start] === scheduleArray[start + duration]) {
+                        duration++;
+                    }
+                    this.tempPreferredSchedule[scheduleArray[start]].schedule.push({"day": i, "start": start+8, "duration": duration});
+                    start += duration;
+                }
+                start ++;
+            }
+            console.log(JSON.stringify(this.tempPreferredSchedule));
+        }
     }
     //
 
