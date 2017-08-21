@@ -81,6 +81,10 @@ td, th {
   text-align: center; 
 }
 
+td {
+  cursor: pointer;
+}
+
 th#Date, td#Date {
     width:8.3vw;
 }

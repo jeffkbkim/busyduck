@@ -36,41 +36,113 @@ export class SchedulerComponent {
       }
     }
 
+    // paint select
+    paintColorIndex : number = 0;
+    paintColor(index : number) {
+        let div = document.getElementById("text_div_"+index);
+        for (let i:number=0; i < this.tempPositions.length; i++) {
+            if (i !== index) {
+                document.getElementById("text_div_"+i).style.color = "#0a0a0a";
+            }
+        }
+        div.style.color = "#4360FF";
+        document.getElementById("delete_color").style.color = "#0a0a0a";
+        this.paintColorIndex = index;
+    }
+
+    deleteColor() {
+        for (let i:number=0; i < this.tempPositions.length; i++) {
+            document.getElementById("text_div_"+i).style.color = "#0a0a0a";
+        }
+        document.getElementById("delete_color").style.color = "#4360FF";
+        this.paintColorIndex = this.colorSchemaArray.length -1;
+    }
+    //
+
+    // scheduler
     toggle(event) {
         let clickedID : string = event.target.id;
     }
 
+    clicked : boolean;
+
     downId : string;
-    downAction(downId) {
+    downAction(downId : string): void {
         this.downId = downId;
+        this.clicked = true;
         this.colorCell(downId);
     }
 
-    colorCell(hover_id) {
-        let hover_idArray = hover_id.split("_");
-        let downIdArray = this.downId.split("_");
-        if (hover_idArray[1] === downIdArray[1]) {
-            document.getElementById(hover_id).style.backgroundColor = this.colorSchemaArray[0];
+    affected: Array<string> = [];
+    colorCell(hover_id : string): void {
+        if (this.clicked) {
+            try {
+                let hover_idArray : Array<string> = hover_id.split("_");
+                let downIdArray : Array<string> = this.downId.split("_");
+                let newID : string = hover_idArray[0] + "_" + downIdArray[1];
+                if (hover_idArray[1] === downIdArray[1]) {
+                    document.getElementById(hover_id).style.backgroundColor = this.colorSchemaArray[this.paintColorIndex];
+                    this.affected.push(hover_id);
+                } else {
+                    document.getElementById(newID).style.backgroundColor = this.colorSchemaArray[this.paintColorIndex];
+                    this.affected.push(newID);
+                }
+            } catch(e) {
+                ;
+            }
+        }
+
+    }
+
+    upAction(upId : string): void {
+        let upIdArray : Array<string> = upId.split("_");
+        let downIdArray : Array<string> = this.downId.split("_");
+        let newID : string = upIdArray[0] + "_" + downIdArray[1];
+
+        this.colorCell(newID);
+        let startTime: string = (Number(downIdArray[0]) + 7).toString();
+        let startDay : number = Number(downIdArray[1]);
+        let duration : string = (1 + Number(upIdArray[0]) - Number(downIdArray[0])).toString();
+        if (this.paintColorIndex !== this.colorSchemaArray.length-1) {
+            console.log("Work on " + this.dates[startDay].day + " starts at " + startTime + " for " + duration + " hours");
+        }
+        this.affected = [];
+
+        this.clicked = false;
+    }
+
+    entireDay(id) {
+        for (let i:number=0; i < this.hours.length; i++) {
+            let color_id : string = this.hours[i].toString() + "_" + id.toString();
+            document.getElementById(color_id).style.backgroundColor = this.colorSchemaArray[this.paintColorIndex];
+        }
+    }
+    //
+
+    // button actions
+    clearAll() {
+        for (let i:number=0; i < this.hours.length; i++) {
+            for (let j:number=0; j < this.dates.length; j++) {
+                let cell_id : string = this.hours[i].toString() + "_" + j.toString();
+                 document.getElementById(cell_id).style.backgroundColor = "#eee";
+            }
         }
     }
 
-    upAction(upId) {
-        let upIdArray = upId.split("_");
-        let downIdArray = this.downId.split("_");
-
-        // make sure a user inputs a day's schedule
-        if (upIdArray[1] === downIdArray[1]) {
-            this.colorCell(this.downId);
-            let startTime: string = (Number(downIdArray[0]) + 7).toString();
-            let startDay : number = Number(downIdArray[1]);
-            let duration : string = (1 + Number(upIdArray[0]) - Number(downIdArray[0])).toString();
-            alert ("Work on " + this.dates[startDay].day + " starts at " + startTime + " for " + duration + " hours");
-        }
+    resetAll() {
+        this.clearAll();
+        this.ngAfterViewInit()
     }
+
+    saveAll() {
+        // TODO : update tempSchedule
+    }
+    //
+
 
     hours = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17];
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.newJobForm = new FormGroup({
             location: new FormControl(null, Validators.required),
             position: new FormControl(null, Validators.required)
@@ -85,7 +157,7 @@ export class SchedulerComponent {
             {"day" : "Saturday", "id":  5},
             {"day" : "Sunday", "id": 6}];
 
-    colorSchemaArray : Array<string> = ["#A8185F", "#E7D016", "#18A819"];
+    colorSchemaArray : Array<string> = ["#A8185F", "#E7D016", "#18A819", "#F47917", "#0091A7", "#eee"]; // last element is to delete
 
     tempPositions: any = [
         {
