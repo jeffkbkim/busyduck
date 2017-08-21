@@ -1,34 +1,71 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {CurrentUserService} from "../current-user.service";
-import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../user.model";
 
 
 @Component({
-    selector: 'my-profile',
-    templateUrl: './profile.component.html'
+    selector: "my-profile",
+    templateUrl: "./profile.component.html"
 })
 
 export class ProfileComponent implements OnInit {
     @Input() currUser : User;
     rForm : FormGroup;
     post:any;
-    description : string = '';
-    name : string = '';
+    description : string = "";
+    firstName : string = "";
+    lastName : string = "";
+    tempPositions: any = [
+        {
+            "workid": "0xbed0",
+            "workName": "White Windmill",
+            "type": "cashier",
+            "status": "approved",
+            "color": "#eee"
+        },
+        {
+            "workid": "0xff3b",
+            "workName": "Jang Su Jang",
+            "type": "cook",
+            "status": "approved",
+            "color": "#eee"
+        },
+        {
+            "workid": "0x0car",
+            "workName": "Emily J",
+            "type": "hair designer",
+            "status": "waiting_for_approval",
+            "color": "#eee"
+        }
+    ];
+
+    tempPositionsNew = this.tempPositions.map(
+        function(x:any, index:number):object {
+            x.color = ["#A8185F", "#E7D016", "#18A819"][index];
+            x.glyphicon = {"cashier": "glyphicon glyphicon-credit-card",
+                            "cook": "glyphicon glyphicon-cutlery",
+                            "hair designer": "glyphicon glyphicon-scissors"
+                        }[x.type];
+            return x;
+        }
+    );
 
     constructor(private currUserService : CurrentUserService, private fb: FormBuilder) {
         this.currUser = this.currUserService.curr_User;
 
         this.rForm = fb.group({
-            'name' : [null, Validators.required],
-            'email' : [null, Validators.required],
-            'validate' : ''
+            "firstName" : [null, Validators.required],
+            "lastName" : [null, Validators.required],
+            "email" : [null, Validators.required],
+            "validate" : ""
         });
     }
 
     addPost(post) {
         this.description = post.email;
-        this.name = post.name;
+        this.firstName = post.firstName;
+        this.lastName = post.lastName;
     }
 
     ngOnInit() {

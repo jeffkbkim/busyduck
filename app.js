@@ -11,6 +11,8 @@ mongoose.connect(uri, {
     useMongoClient: true
 });
 
+console.log("Mongoose connection state " + mongoose.connection.readyState); // Output - 0 = disconnected, 1 = connected, 2 = connecting, 3 = disconnecting
+
 var indexRoutes = require('./routes/index');
 var userRoutes = require('./routes/user');
 
@@ -21,7 +23,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

@@ -36,7 +36,6 @@ export class SigninUserComponent implements OnInit {
 
     onSubmit() {
         const user = new User(this.registerForm.value.email, this.registerForm.value.password, this.isAdmin);
-
         this.authService.signin(user)
             .subscribe(
                 data => {

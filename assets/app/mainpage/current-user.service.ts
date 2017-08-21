@@ -20,7 +20,7 @@ export class CurrentUserService {
         return this.http.get('http://localhost:3000/user' + token)
             .map((response: Response) => {
                 const user =  response.json().user;
-                return new User(user.email, user.password, user.firstName, user.lastName);
+                return new User(user.email, user.password, user.isAdmin, user.firstName, user.lastName);
             })
             .catch((error: Response) => Observable.throw(error.json()));
 
