@@ -130,7 +130,7 @@ export class SchedulerComponent {
 
     resetAll(): void {
         this.clearAll();
-        this.ngAfterViewInit();
+        this.buildPreferredSchedule();
     }
 
     colorToHex(color: string): string {
@@ -289,10 +289,51 @@ export class SchedulerComponent {
         }
     ];
 
+    @Input() tempActualSchedule = [
+        {
+            "work": "American Deli",
+            "schedule":
+            [
+                {
+                    "day": 0,
+                    "start": 10,
+                    "duration": 5
+                }
+            ]
+        }
+        ,
+        {
+            "work": "Taco Mac",
+            "schedule":
+            [
+                {
+                    "day": 2,
+                    "start": 8,
+                    "duration": 6
+                },
+                {
+                    "day": 3,
+                    "start": 16,
+                    "duration": 10
+                },
+                {
+                    "day": 5,
+                    "start": 14,
+                    "duration": 8
+                }
+            ]
+        },
+        {
+            "work": "Crazy Cutz",
+            "schedule":
+            [
+            ]
+        }
+    ];
 
-
-    ngAfterViewInit(): void {
-        for (let i : number = 0; i < this. tempPreferredSchedule.length; i++) {
+    buildPreferredSchedule(): void {
+        this.clearAll();
+        for (let i : number = 0; i < this.tempPreferredSchedule.length; i++) {
             for (let j : number = 0; j < this.tempPreferredSchedule[i].schedule.length; j++) {
                 let day : number = this.tempPreferredSchedule[i].schedule[j].day;
                 let start : number = this.tempPreferredSchedule[i].schedule[j].start - 7;
@@ -304,6 +345,25 @@ export class SchedulerComponent {
                 }
             }
         }
+    }
+    buildActualSchedule(): void {
+        this.clearAll();
+        for (let i : number = 0; i < this. tempActualSchedule.length; i++) {
+            for (let j : number = 0; j < this.tempActualSchedule[i].schedule.length; j++) {
+                let day : number = this.tempActualSchedule[i].schedule[j].day;
+                let start : number = this.tempActualSchedule[i].schedule[j].start - 7;
+                let duration : number = this.tempActualSchedule[i].schedule[j].duration;
+
+                for (let offset : number = 0; offset < duration; offset++) {
+                    let targetID : string = (start + offset).toString() + "_" + (day).toString();
+                    document.getElementById(targetID).style.backgroundColor = this.colorSchemaArray[i];
+                }
+            }
+        }
+    }
+
+    ngAfterViewInit(): void {
+        this.buildActualSchedule();
     }
 
     // ngOnChanges():

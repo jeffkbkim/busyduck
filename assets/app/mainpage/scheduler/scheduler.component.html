@@ -2,18 +2,18 @@
 <div class="header" style="background-color:#07889B; color:azure; height:40px;">
     <p *ngIf="_actual; else preferred" style="font-size: 20px; padding-top:0.4%; margin-left: 2%">Check your actual schedule or add a new job</p>
     <ng-template #preferred>
-        <p style="font-size: 20px; padding-top:0.4%; margin-left: 2%">Set your preferred schedule or add a new job</p>       
+        <p style="font-size: 20px; padding-top:0.4%; margin-left: 2%">Change your preferred schedule or add a new job</p>       
     </ng-template>
 </div>
 <div class="scheduler-container" style="height:63vh">
     <div class="work-container">
         <p style="margin-bottom:0"><b>Which schedule?</b></p>
         <div style="width:17.5vw; height: 6vh;">  
-            <div class="radio radio-info radio-inline">
+            <div class="radio radio-info radio-inline" (click)="buildActualSchedule()">
                 <input type="radio" id="inlineRadio1" value="option1" name="radioInline" checked="" (change)="actualChecked($event)">
                 <label for="inlineRadio1"> Actual </label>
             </div>
-            <div class="radio radio-info radio-inline">
+            <div class="radio radio-info radio-inline" (click)="buildPreferredSchedule()">
                 <input type="radio" id="inlineRadio2" value="option1" name="radioInline" (change)="preferredChecked($event)">
                 <label for="inlineRadio2"> Preferred </label>
             </div>
@@ -24,12 +24,18 @@
             </div>
             <div *ngIf="i!==0;else first" style="margin-left: 2.5vw; padding-top:1.3vh;" id="text_div_{{i}}">
                 <span [ngClass]="tempPosition.glyphicon"></span>
-                <span id='text_{{i}}' style="text-align: left;">{{tempPosition.workName}}</span>
+                <span *ngIf="tempPosition.status === 'approved'; else waiting" id='text_{{i}}' style="text-align: left;">{{tempPosition.workName}}</span>
+                <ng-template #waiting>
+                    <span id='text_{{i}}' style="text-align: left; background-color: rgba(242,114,69,0.1)">{{tempPosition.workName}} - not approved</span>
+                </ng-template>
             </div>
             <ng-template #first>
             <div style="margin-left: 2.5vw; padding-top:1.3vh; color:#4360FF" id="text_div_{{i}}">
                 <span [ngClass]="tempPosition.glyphicon"></span>
-                <span id='text_{{i}}' style="text-align: left;">{{tempPosition.workName}}</span>
+                <span *ngIf="tempPosition.status === 'approved'; else waitingfirst" id='text_{{i}}' style="text-align: left;">{{tempPosition.workName}}</span>
+                <ng-template #waitingfirst>
+                    <span id='text_{{i}}' style="text-align: left; background-color: rgba(242,114,69,0.1)">{{tempPosition.workName}} - not approved</span>
+                </ng-template>
             </div>
             </ng-template>
         </div>
@@ -41,7 +47,7 @@
                 <span id='delete_color' style="text-align: left;">Schedule Eraser</span>
             </div>
         </div>
-        <button type="button" data-toggle="modal" data-target="#addModal" style="height: 7vh; margin-top: 4.5vh; border: 4px dashed rgba(81,81,81,0.7); width:15vw; margin-left: 1vw">
+        <button *ngIf="_preferred" type="button" data-toggle="modal" data-target="#addModal" style="height: 7vh; margin-top: 4.5vh; border: 4px dashed rgba(81,81,81,0.7); width:15vw; margin-left: 1vw">
             <div style="margin-left:2.5vw; float:left">
                 <span class="glyphicon glyphicon-plus" style="color: #414141; "></span>
                 <span id='new-text' style="color: #414141; text-align:left;"> Got a new job?</span>
@@ -81,10 +87,10 @@
             </tbody>
         </table>
     </div>
-    <div class="button-container" style="margin-left: 74vw;">
+    <div *ngIf="_preferred" class="button-container" style="margin-left: 74.5vw;">
         <button (click) = "clearAll()" style="border: 1px solid #565CB2; color: white; background-color: #565CB2;width: 4vw; height: 4vh">Clear</button>
         <button (click) = "resetAll()" style="margin-left: 0.5vw; border: 1px solid #FF773C; color: white; background-color: #FF773C;width: 4vw; height: 4vh">Reset</button>
-        <button (click) = "saveAll()" style="margin-left: 1.5vw; border: 1px solid #44B20F; color: white; background-color: #44B20F; width: 4vw; height: 4vh">Save</button>
+        <button (click) = "saveAll()" style="margin-left: 1vw; border: 1px solid #44B20F; color: white; background-color: #44B20F; width: 4vw; height: 4vh">Save</button>
     </div>
 </div>
 
