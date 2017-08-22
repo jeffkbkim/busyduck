@@ -24,6 +24,10 @@ export class SchedulerComponent {
         this._actual = false;
         this._preferred = true;
       }
+      let tds = document.getElementsByTagName("td");
+      for(let i:number=0; i < tds.length; i++) {
+          tds[i].style.cursor = "default";
+      }
     }
 
     preferredChecked(event: any): void {
@@ -33,6 +37,10 @@ export class SchedulerComponent {
       } else {
         this._actual = true;
         this._preferred = false;
+      }
+      let tds = document.getElementsByTagName("td");
+      for(let i:number=0; i < tds.length; i++) {
+          tds[i].style.cursor = "pointer";
       }
     }
 
@@ -68,9 +76,12 @@ export class SchedulerComponent {
 
     downId : string;
     downAction(downId : string): void {
-        this.downId = downId;
-        this.clicked = true;
-        this.colorCell(downId);
+        if (this._preferred) {
+            this.downId = downId;
+            this.clicked = true;
+            this.colorCell(downId);
+        }
+
     }
 
     affected: Array<string> = [];
@@ -111,10 +122,13 @@ export class SchedulerComponent {
     }
 
     entireDay(id: string): void {
-        for (let i:number=0; i < this.hours.length; i++) {
-            let color_id : string = this.hours[i].toString() + "_" + id.toString();
-            document.getElementById(color_id).style.backgroundColor = this.colorSchemaArray[this.paintColorIndex];
+        if (this._preferred) {
+            for (let i:number=0; i < this.hours.length; i++) {
+                let color_id : string = this.hours[i].toString() + "_" + id.toString();
+                document.getElementById(color_id).style.backgroundColor = this.colorSchemaArray[this.paintColorIndex];
+            }
         }
+
     }
     //
 
