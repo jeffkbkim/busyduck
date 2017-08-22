@@ -351,6 +351,7 @@ export class SchedulerComponent {
     ];
 
     buildPreferredSchedule(): void {
+        this.deleteColor();
         this.clearAll();
         for (let i : number = 0; i < this.tempPreferredSchedule.length; i++) {
             for (let j : number = 0; j < this.tempPreferredSchedule[i].schedule.length; j++) {

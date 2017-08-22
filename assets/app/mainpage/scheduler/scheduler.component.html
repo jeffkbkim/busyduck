@@ -23,10 +23,19 @@
             <div class='square-box' [style.backgroundColor]="tempPosition.color" id='work_box_{{i}}' style="float:left">
             </div>
             <div *ngIf="i!==0;else first" style="margin-left: 2.5vw; padding-top:1.3vh;" id="text_div_{{i}}">
-                <span [ngClass]="tempPosition.glyphicon"></span>
-                <span *ngIf="tempPosition.status === 'approved'; else waiting" id='text_{{i}}' style="text-align: left;">{{tempPosition.workName}}</span>
-                <ng-template #waiting>
-                    <span id='text_{{i}}' style="text-align: left;">{{tempPosition.workName}} - not approved</span>
+                <div *ngIf="_actual;else preferred1" style="color:#414141">
+                    <span [ngClass]="tempPosition.glyphicon"></span>
+                    <span *ngIf="tempPosition.status === 'approved'; else waiting1" id='text_{{i}}' style="text-align: left;">{{tempPosition.workName}}</span>
+                    <ng-template #waiting1>
+                        <span id='text_{{i}}' style="text-align: left;">{{tempPosition.workName}} - not approved</span>
+                    </ng-template>
+                </div>
+                <ng-template #preferred1>
+                    <span [ngClass]="tempPosition.glyphicon"></span>
+                    <span *ngIf="tempPosition.status === 'approved'; else waiting" id='text_{{i}}' style="text-align: left;">{{tempPosition.workName}}</span>
+                    <ng-template #waiting>
+                        <span id='text_{{i}}' style="text-align: left;">{{tempPosition.workName}} - not approved</span>
+                    </ng-template>
                 </ng-template>
             </div>
             <ng-template #first>
@@ -38,7 +47,7 @@
                 </ng-template>
             </div>
             <ng-template #nohighlight>
-                <div style="margin-left: 2.5vw; padding-top:1.3vh;" id="text_div_{{i}}">
+                <div style="margin-left: 2.5vw; padding-top:1.3vh; color: #414141" id="text_div_{{i}}">
                 <span [ngClass]="tempPosition.glyphicon"></span>
                 <span *ngIf="tempPosition.status === 'approved'; else waitingfirst" id='text_{{i}}' style="text-align: left;">{{tempPosition.workName}}</span>
                 <ng-template #waitingfirst>
