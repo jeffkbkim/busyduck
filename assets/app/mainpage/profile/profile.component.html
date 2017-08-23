@@ -27,11 +27,9 @@
                                     <input type="text" formControlName="email" value="{{ currUser?.email }}">
                                 </label>
 
-                                <label for="validate"> Minimum of 3 Characters </label>
-                                <input type="checkbox" name="validate" formControlName="validate" value="1">
                                 <div class="button-container">
                                 <div class="container col-xs-6">
-                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addModal" style="height: 7vh">Change Password</button>
+                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addModal" style="height: 7vh;">Change Password</button>
                                 </div>
                                 <div class="container col-xs-6">
                                     <input type="submit" class="button btn-primary" value="Save Changes" style="height: 7vh">
@@ -108,18 +106,22 @@
           <h4 class="modal-title">Please enter your new password</h4>
         </div>
         <div class="modal-body">
-            <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+            <form [formGroup]="passwordForm" (ngSubmit)="submitPassword(passwordForm.value)">
                 <div>
                     <div class="row columns">
-                        <label>Password
-                            <input type="password" formControlName="firstName" value="{{ currUser?.firstName }}">
+                        <label>Current Password
+                            <input type="password" formControlName="oldPassword">
                         </label>
-                        <label>Password Check
-                            <input type="password" formControlName="lastName" value="{{ currUser?.lastName }}">
+                        <label>New Password
+                            <input type="password" formControlName="newPassword">
                         </label>
+                        <label>Confirm New Password
+                            <input type="password" formControlName="confirmPassword">
+                        </label>
+                        <div class="alert alert-danger" *ngIf="!passwordConfirmed">Password does not match</div>
                         <div class="button-container">
                         <div class="container col-xs-6">
-                            <input type="submit" class="button btn-primary" value="Save Changes" style="height: 7vh">
+                            <button [disabled]="!passwordForm.valid" type="submit" class="button btn-primary" style="height: 7vh">Save Changes</button>
                         </div>
                         </div>
                     </div>

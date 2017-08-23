@@ -26,13 +26,13 @@ export class SigninAdminComponent implements OnInit {
             password: new FormControl(null, Validators.required)
         });
 
-        if (this.isLoggedIn()) {
-            this.authService.getCurrUser()
-                .subscribe(
-                    (currUser: User) => this.user = currUser
-                );
-
-        }
+        // if (this.isLoggedIn()) {
+        //     this.authService.getCurrUser()
+        //         .subscribe(
+        //             (currUser: User) => this.user = currUser
+        //         );
+        //
+        // }
 
     }
 
@@ -43,6 +43,7 @@ export class SigninAdminComponent implements OnInit {
                 data => {
                     localStorage.setItem('token', data.token);
                     localStorage.setItem('userId', data.userId);
+                    localStorage.setItem('isAdmin', data.isAdmin);
                     this.router.navigateByUrl('/mainpage');
                 },
                 error => console.error(error)

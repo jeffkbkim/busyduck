@@ -23,6 +23,7 @@ import {SigninAdminComponent} from "../auth/signin_signup_Forms/login/signin.adm
 import {SigninUserComponent} from "../auth/signin_signup_Forms/login/signin.user.component";
 import {SignupUserComponent} from "../auth/signin_signup_Forms/signup/signup.user.component";
 import {SignupAdminComponent} from "../auth/signin_signup_Forms/signup/signup.admin.component";
+import {CurrentUserService} from "./mainpage/current-user.service";
 
 @NgModule ({
     declarations: [
@@ -49,7 +50,7 @@ import {SignupAdminComponent} from "../auth/signin_signup_Forms/signup/signup.ad
         HttpModule,
         NgbModule.forRoot()
     ],
-    providers: [AuthService, AuthGuardService],
+    providers: [AuthService, CurrentUserService, AuthGuardService],
     bootstrap: [AppComponent]
 })
 
