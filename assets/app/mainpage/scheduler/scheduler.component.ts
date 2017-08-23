@@ -8,6 +8,9 @@ import {FormGroup, Validators, FormControl} from "@angular/forms";
 })
 
 export class SchedulerComponent {
+    workplaceIsCollapsed = false;
+    funcIsCollapsed = false;
+
     newJobForm: FormGroup;
     onSubmit(): void {
         alert(this.newJobForm.value.location + this.newJobForm.value.position);
@@ -329,6 +332,10 @@ export class SchedulerComponent {
     buildPreferredSchedule(): void {
         this._actual = false;
         this._preferred = true;
+        document.getElementById("preferredbutton").style.backgroundColor = "#428bca";
+        document.getElementById("preferredbutton").style.color = "white";
+        document.getElementById("actualbutton").style.backgroundColor = "white";
+        document.getElementById("actualbutton").style.color = "#428bca";
         let tds = document.getElementsByTagName("td");
         for(let i:number=0; i < tds.length; i++) {
             tds[i].style.cursor = "pointer";
@@ -351,6 +358,10 @@ export class SchedulerComponent {
     buildActualSchedule(): void {
         this._actual = true;
         this._preferred = false;
+        document.getElementById("actualbutton").style.backgroundColor = "#428bca";
+        document.getElementById("actualbutton").style.color = "white";
+        document.getElementById("preferredbutton").style.backgroundColor = "white";
+        document.getElementById("preferredbutton").style.color = "#428bca";
         let tds = document.getElementsByTagName("td");
         for(let i:number=0; i < tds.length; i++) {
             tds[i].style.cursor = "default";
