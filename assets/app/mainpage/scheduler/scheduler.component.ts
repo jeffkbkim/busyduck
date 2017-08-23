@@ -44,6 +44,13 @@ export class SchedulerComponent {
         document.getElementById("delete_color").style.color = "#4360FF";
         this.paintColorIndex = this.colorSchemaArray.length -1;
     }
+
+    blackoutFunc(): void {
+        this.deleteColor();
+        document.getElementById("delete_color").style.color = "#0a0a0a";
+        document.getElementById("blackout").style.color = "#4360FF";
+        this.paintColorIndex = this.colorSchemaArray.length -2;
+    }
     //
 
     // scheduler
@@ -122,7 +129,6 @@ export class SchedulerComponent {
     }
 
     resetAll(): void {
-        this.clearAll();
         this.buildPreferredSchedule();
     }
 
@@ -143,6 +149,7 @@ export class SchedulerComponent {
     saveAll(): void {
         // reset the schedule
         this.tempPreferredSchedule.forEach(i => i.schedule.length = 0);
+        this.blackoutSchedule[0].schedule.length = 0;
 
         // generate a new JSON based on current schedule
         for (let i:number = 0; i < this.dates.length; i++) {
@@ -165,7 +172,11 @@ export class SchedulerComponent {
                     while (scheduleArray[start] === scheduleArray[start + duration]) {
                         duration++;
                     }
-                    this.tempPreferredSchedule[scheduleArray[start]].schedule.push({"day": i, "start": start+8, "duration": duration});
+                    if (scheduleArray[start] === this.colorSchemaArray.length -2) {
+                        this.blackoutSchedule[0].schedule.push({"day": i, "start": start+8, "duration": duration});
+                    } else {
+                        this.tempPreferredSchedule[scheduleArray[start]].schedule.push({"day": i, "start": start+8, "duration": duration});
+                    }
                     start += duration;
                 }
                 start ++;
@@ -193,7 +204,8 @@ export class SchedulerComponent {
             {"day" : "Saturday", "id":  5},
             {"day" : "Sunday", "id": 6}];
 
-    colorSchemaArray : Array<string> = ["#A8185F", "#E7D016", "#18A819", "#F47917", "#0091A7", "#eee"]; // last element is to delete
+    colorSchemaArray : Array<string> = ["#A8185F", "#E7D016", "#18A819", "#F47917", "#0091A7", "#414141", "#eee"];
+    // last two elements are special
 
     tempPositions: any = [
         {
@@ -229,6 +241,19 @@ export class SchedulerComponent {
             return x;
         }
     );
+
+    @Input() blackoutSchedule = [
+        {
+            "schedule":
+            [
+                {
+                    "day": 0,
+                    "start": 0,
+                    "duration": 0
+                }
+            ]
+        }
+    ]
 
     @Input() tempPreferredSchedule = [
         {
@@ -329,6 +354,19 @@ export class SchedulerComponent {
         }
     ];
 
+    buildBlackoutSchedule(): void {
+        for (let j : number = 0; j < this.blackoutSchedule[0].schedule.length; j++) {
+            let day : number = this.blackoutSchedule[0].schedule[j].day;
+            let start : number = this.blackoutSchedule[0].schedule[j].start - 7;
+            let duration : number = this.blackoutSchedule[0].schedule[j].duration;
+
+            for (let offset : number = 0; offset < duration; offset++) {
+                let targetID : string = (start + offset).toString() + "_" + (day).toString();
+                document.getElementById(targetID).style.backgroundColor = "#414141";
+            }
+        }
+    }
+
     buildPreferredSchedule(): void {
         this._actual = false;
         this._preferred = true;
@@ -354,7 +392,9 @@ export class SchedulerComponent {
                 }
             }
         }
+        this.buildBlackoutSchedule();
     }
+
     buildActualSchedule(): void {
         this._actual = true;
         this._preferred = false;

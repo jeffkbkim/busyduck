@@ -20,7 +20,7 @@
                 </ng-template>
             </button>
 
-            <div id="workplaceCollapse" [ngbCollapse]="workplaceIsCollapsed">
+            <div id="workplaceCollapse" [ngbCollapse]="workplaceIsCollapsed" style="height: 22vh; overflow-y: scroll">
                 <div *ngFor="let tempPosition of tempPositionsNew; let i = index" [attr.data-index]="i" class="box-item" (click)=paintColor(i)>
                     <div class='square-box' [style.backgroundColor]="tempPosition.color" id='work_box_{{i}}' style="float:left">
                     </div>
@@ -80,12 +80,12 @@
                         <span id='delete_color' style="text-align: left;">Eraser</span>
                     </div>
                 </div>
-                <div class="box-item">
+                <div class="box-item" (click)=blackoutFunc()>
                     <div class='square-box' id='work_box_{{i}}' style="float:left; background-color: #414141">
                     </div>
                     <div style="margin-left: 2vw; padding-top:1.3vh;">
                         <span class="glyphicon glyphicon-lock"></span>
-                        <span id='delete_color' style="text-align: left;">Blackout</span>
+                        <span id='blackout' style="text-align: left;">Blackout</span>
                     </div>
                 </div>
             </div>
