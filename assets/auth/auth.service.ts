@@ -31,18 +31,18 @@ export class AuthService {
         return localStorage.getItem('token') !== null;
     }
 
-    getCurrUser() {
-        //const headers = new Headers({'Content-Type': 'application/json'});
-        const token = localStorage.getItem('token') ?
-            '?token=' + localStorage.getItem('token')
-            : '';
-
-        return this.http.get('http://localhost:3000/user' + token)
-            .map((response: Response) => {
-                const user =  response.json().user;
-                return new User(user.email, user.password, user.firstName, user.lastName);
-            })
-            .catch((error: Response) => Observable.throw(error.json()));
-
-    }
+    // getCurrUser() {
+    //     //const headers = new Headers({'Content-Type': 'application/json'});
+    //     const token = localStorage.getItem('token') ?
+    //         '?token=' + localStorage.getItem('token')
+    //         : '';
+    //
+    //     return this.http.get('http://localhost:3000/user' + token)
+    //         .map((response: Response) => {
+    //             const user =  response.json().user;
+    //             return new User(user.email, user.password, user.firstName, user.lastName);
+    //         })
+    //         .catch((error: Response) => Observable.throw(error.json()));
+    //
+    // }
 }

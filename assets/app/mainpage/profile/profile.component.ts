@@ -1,8 +1,7 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {CurrentUserService} from "../current-user.service";
-import { FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators, FormControl} from "@angular/forms";
 import {User} from "../../user.model";
-
 
 @Component({
     selector: "my-profile",
@@ -16,6 +15,10 @@ export class ProfileComponent implements OnInit {
     description : string = "";
     firstName : string = "";
     lastName : string = "";
+
+    passwordForm : FormGroup;
+    passwordConfirmed : boolean = true;
+
     tempPositions: any = [
         {
             "workid": "0xbed0",
@@ -60,12 +63,46 @@ export class ProfileComponent implements OnInit {
             "email" : [null, Validators.required],
             "validate" : ""
         });
+
+
     }
 
     addPost(post) {
         this.description = post.email;
         this.firstName = post.firstName;
         this.lastName = post.lastName;
+    }
+
+    submitPassword(post) {
+        if (post.newPassword != post.confirmPassword) {
+            this.passwordConfirmed = false;
+
+        } else {
+            const user = new User(this.currUser.email, this.passwordForm.value.oldPassword, this.currUser.isAdmin);
+            this.currUserService.updatePassword(user, post.newPassword)
+                .subscribe(
+                    (token) => {
+                        localStorage.setItem('token', token);
+                        console.log("Updated Successfully!");
+                    },
+                    err => {
+                        console.log(err);
+                    }
+                );
+        }
+        // if (this.currUserService.curr_User == null) {
+        //     this.currUserService.getCurrUser()
+        //         .subscribe(
+        //             (curr_user) => {
+        //                 this.currUserService.setCurrUser(curr_user);
+        //                 this.currUser = curr_user;
+        //             },
+        //             err => {
+        //                 console.log(err);
+        //             }
+        //         );
+        // }
+        this.passwordForm.reset();
     }
 
     ngOnInit() {
@@ -81,6 +118,11 @@ export class ProfileComponent implements OnInit {
                     }
                 );
         }
-    }
 
+        this.passwordForm = new FormGroup({
+            oldPassword: new FormControl(null, Validators.required),
+            newPassword: new FormControl(null, Validators.required),
+            confirmPassword: new FormControl(null, Validators.required)
+        });
+    }
 }

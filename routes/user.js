@@ -55,11 +55,9 @@ router.post('/signin', function(req, res, next) {
        }
 
        //if admin level is incorrect
-       console.log(req.body.isAdmin);
-       console.log(user.isAdmin);
        if (req.body.isAdmin !== user.isAdmin) {
            return res.status(401).json({
-               title: 'Login Failed!!!',
+               title: 'Login Failed',
                error: {message: 'Invalid login credentials.'}
            })
        }
@@ -69,7 +67,8 @@ router.post('/signin', function(req, res, next) {
        res.status(200).json({
            message: 'Successfully logged in!',
            token: token,
-           userId: user._id
+           userId: user._id,
+           isAdmin: user.isAdmin
        });
    });
 });
@@ -103,6 +102,50 @@ router.get('/', function (req, res, next) {
         });
     });
 });
+
+router.put('/updatePassword', function (req, res, next) {
+    console.log(req.body);
+    console.log(req.body.email);
+    console.log(req.body.newPassword);
+
+    //if user does not exist
+    User.findOne({email: req.body.email}, function(err, user) {
+        if (err) {
+            return res.status(500).json({
+                title: 'An error occurred',
+                error: err
+            });
+        }
+
+        //if password is incorrect
+        if (!bcrypt.compareSync(req.body.password, user.password)) {
+            return res.status(401).json({
+                title: 'Login Failed',
+                error: {message: 'Invalid login credentials.'}
+            });
+        }
+
+
+        //if password is correct -> change password
+        user.password = bcrypt.hashSync(req.body.newPassword);
+        user.save(function (error, user) {
+            if (err) {
+                return res.status(500).json({
+                    title: 'An error occurred',
+                    error: error
+                });
+            }
+
+            var token = jwt.sign({user: user}, 'secret', {expiresIn: 7200});
+            res.status(200).json({
+                message: 'Successfully updated password!',
+                token: token
+            });
+        });
+    });
+});
+
+
 
 
 module.exports = router;
