@@ -3,8 +3,7 @@
 /*07889B*/
 
 .scheduler-container {
-  margin: 1%;
-  margin-top: 3%;
+  margin-top: 1%;
 }
 
 .work-container {
@@ -74,83 +73,51 @@ th {
 
 td, th { 
   display:inline-block;
-  width: 3.5vw; /*47px*/
-  height: 6vh;
+  width: 3.8vw; /*47px*/
+  height: 6.2vh;
   padding: 5px; 
   border: 0.2px solid #ccc; 
   text-align: center; 
 }
 
-td {
-  cursor: pointer;
-}
+
 
 th#Date, td#Date {
-    width:8.3vw;
+    width:8.5vw;
 }
 
-.radio {
-  padding-left: 20px; 
-  padding-top: 5px;}
-  .radio label {
-    display: inline-block;
-    position: relative;
-    padding-left: 9px;
-    color:#02454E}
-    .radio label::before {
-      content: "";
-      display: inline-block;
-      position: absolute;
-      width: 24px;
-      height: 20px;
-      left: 0;
-      margin-left: -20px;
-      border: 1px solid #cccccc;
-      border-radius: 0%;
-      background-color: rgba(255,255,255,0);
-      -webkit-transition: border 0.15s ease-in-out;
-      -o-transition: border 0.15s ease-in-out;
-      transition: border 0.15s ease-in-out; }
-    .radio label::after {
-      display: inline-block;
-      position: absolute;
-      content: " ";
-      width: 20px;
-      height: 16px;
-      left: 2px;
-      top: 2px;
-      margin-left: -20px;
-      border-radius: 0%;
-      background-color: #555555;
-      -webkit-transform: scale(0, 0);
-      -ms-transform: scale(0, 0);
-      -o-transform: scale(0, 0);
-      transform: scale(0, 0);
-      -webkit-transition: -webkit-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
-      -moz-transition: -moz-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
-      -o-transition: -o-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
-      transition: transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33); }
-  .radio input[type="radio"] {
-    opacity: 0; }
-    .radio input[type="radio"]:focus + label::before {
-      outline: thin dotted;
-      outline: 5px auto -webkit-focus-ring-color;
-      outline-offset: -2px; }
-    .radio input[type="radio"]:checked + label::after {
-      -webkit-transform: scale(1, 1);
-      -ms-transform: scale(1, 1);
-      -o-transform: scale(1, 1);
-      transform: scale(1, 1); }
-    .radio input[type="radio"]:disabled + label {
-      opacity: 0.65; }
-      .radio input[type="radio"]:disabled + label::before {
-        cursor: not-allowed; }
-  .radio.radio-inline {
-    margin-top: 0; }
+/*Bootstrap button outline override*/
+.btn-outline {
+    background-color: transparent;
+    color: inherit;
+    transition: all .1s;
+}
 
-.radio-info input[type="radio"] + label::after {
-  background-color: #02454E; }
-.radio-info input[type="radio"]:checked + label::before {
-  border-color: #02454E; }
-.radio-info input[type="radio"]:checked + label::after {
-  background-color: #02454E; }
+.btn-primary.btn-outline {
+    color: #428bca;
+}
+
+.btn-success.btn-outline {
+    color: #5cb85c;
+}
+
+.btn-info.btn-outline {
+    color: #5bc0de;
+}
+
+.btn-warning.btn-outline {
+    color: #f0ad4e;
+}
+
+.btn-danger.btn-outline {
+    color: #d9534f;
+}
+
+.btn-primary.btn-outline:hover,
+.btn-success.btn-outline:hover,
+.btn-info.btn-outline:hover,
+.btn-warning.btn-outline:hover,
+.btn-danger.btn-outline:hover {
+    background-color: #428bca;
+    color: white;
+}
