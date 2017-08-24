@@ -1,3 +1,7 @@
+*:focus {
+    outline: 0 !important;
+}
+
 /* Left side */
 
 /*07889B*/
@@ -6,54 +10,18 @@
   margin-top: 1%;
 }
 
-.work-container {
-  width: 15%; 
-  float: left; 
-  position: relative;
-  margin-left:1%;
-}
-
 .square-box{
     position: relative;
-    width: 4%;
+    width: 3%;
     height: 5vh;
     border-radius: 7px 7px 7px 7px;
-    margin: 2%;
-    margin-left: 5%;
-}
-
-.square-box:before{
-    content: "";
-    display: block;
-    padding-top: 100%;
-}
-
-.square-content{
-    position:  absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    color: white;
-    font-size: 16px;
-}
-
-.square-content div {
-   display: table;
-   width: 100%;
-   height: 100%;
-}
-
-.square-content span {
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
-    color: white
+    margin: 1%;
+    margin-left: 0%;
 }
 
 .box-item {
     height:7vh;
-    padding-left:2vw;
+    padding-left:1.2vw;
     padding-top: 0.4vh; 
     cursor: pointer;
 }
@@ -61,6 +29,18 @@
 ::-webkit-scrollbar {
     width: 0px;
     background: transparent; /* make scrollbar transparent */
+}
+
+#workplaceCollapse, #toolsCollapse {
+    height: 21vh; 
+    width: 16.4vw; 
+    overflow-y: scroll; 
+    background-color: rgba(141,141,141,0.2);
+    margin-left: 10%
+}
+
+#toolsCollapse {
+    height: 14vh;
 }
 
 /* Right Side */
@@ -85,17 +65,15 @@ th {
 
 td, th { 
   display:inline-block;
-  width: 3.8vw; /*47px*/
-  height: 6.2vh;
-  padding: 5px; 
-  border: 0.2px solid #ccc; 
+  width: 3.9vw; /*47px*/
+  height: 6.1vh;
+  padding: 4px; 
+  border: 0.1px solid #ccc; 
   text-align: center; 
 }
 
-
-
 th#Date, td#Date {
-    width:8.5vw;
+    width:6.5vw;
 }
 
 /*Bootstrap button outline override*/

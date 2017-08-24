@@ -30,6 +30,7 @@ export class SchedulerComponent {
         }
         div.style.color = "#4360FF";
         document.getElementById("delete_color").style.color = "#0a0a0a";
+        document.getElementById("blackout").style.color = "#0a0a0a";
         this.paintColorIndex = index;
     }
 
@@ -42,6 +43,7 @@ export class SchedulerComponent {
     eraserFunc(): void {
         this.deleteColor();
         document.getElementById("delete_color").style.color = "#4360FF";
+        document.getElementById("blackout").style.color = "#0a0a0a";
         this.paintColorIndex = this.colorSchemaArray.length -1;
     }
 
@@ -182,7 +184,7 @@ export class SchedulerComponent {
                 start ++;
             }
         }
-        alert(JSON.stringify(this.tempPreferredSchedule));
+        alert(JSON.stringify(this.tempPreferredSchedule) + JSON.stringify(this.blackoutSchedule));
     }
     //
 
@@ -196,13 +198,13 @@ export class SchedulerComponent {
         });
     }
 
-    dates = [{"day" : "Monday", "id": 0},
-            {"day" : "Tuesday", "id": 1},
-            {"day" : "Wednesday", "id": 2},
-            {"day" : "Thursday", "id": 3},
-            {"day" : "Friday", "id":  4},
-            {"day" : "Saturday", "id":  5},
-            {"day" : "Sunday", "id": 6}];
+    dates = [{"day" : "Mon", "id": 0},
+            {"day" : "Tue", "id": 1},
+            {"day" : "Wed", "id": 2},
+            {"day" : "Thu", "id": 3},
+            {"day" : "Fri", "id":  4},
+            {"day" : "Sat", "id":  5},
+            {"day" : "Sun", "id": 6}];
 
     colorSchemaArray : Array<string> = ["#A8185F", "#E7D016", "#18A819", "#F47917", "#0091A7", "#414141", "#eee"];
     // last two elements are special
