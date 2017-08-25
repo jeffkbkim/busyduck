@@ -31,6 +31,10 @@ export class AuthService {
         return localStorage.getItem('token') !== null;
     }
 
+    isAdmin() {
+        return localStorage.getItem('isAdmin');
+    }
+
     // getCurrUser() {
     //     //const headers = new Headers({'Content-Type': 'application/json'});
     //     const token = localStorage.getItem('token') ?
