@@ -32,7 +32,7 @@ export class AuthService {
     }
 
     isAdmin() {
-        return localStorage.getItem('isAdmin');
+        return localStorage.getItem('isAdmin') === 'true';
     }
 
     // getCurrUser() {

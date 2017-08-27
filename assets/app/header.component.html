@@ -20,8 +20,8 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a [routerLink] = "['/auth/signup']" *ngIf="!isLoggedIn()" (click)="isCollapsed = true"><span class="glyphicon glyphicon-user"></span> SIGN UP</a></li>
                 <li><a [routerLink] = "['/auth/signin']" *ngIf="!isLoggedIn()" (click)="isCollapsed = true"><span class="glyphicon glyphicon-log-in"></span> LOGIN</a></li>
-                <li><a [routerLink] = "['/mainpage/scheduler']" *ngIf="(isLoggedIn() && !isAdmin())" (click)="isCollapsed = true"><span class="glyphicon glyphicon-calendar"></span> SCHEDULE</a></li>
-                <li><a [routerLink] = "['/mainpage/admin-scheduler']" *ngIf="(isLoggedIn() && isAdmin())" (click)="isCollapsed = true"><span class="glyphicon glyphicon-calendar"></span> SCHEDULE</a></li>
+                <li><a [routerLink] = "['/mainpage/scheduler']" *ngIf="isLoggedIn() && !isAdmin()" (click)="isCollapsed = true"><span class="glyphicon glyphicon-calendar"></span> SCHEDULE</a></li>
+                <li><a [routerLink] = "['/mainpage/admin-scheduler']" *ngIf="isLoggedIn() && isAdmin()" (click)="isCollapsed = true"><span class="glyphicon glyphicon-calendar"></span> SCHEDULE</a></li>
                 <li><a [routerLink] = "['/mainpage/chat']" *ngIf="isLoggedIn()" (click)="isCollapsed = true"><span class="fa fa-comment-o"></span> CHAT</a></li>
                 <li><a [routerLink] = "['/mainpage/employees']" *ngIf="(isLoggedIn() && isAdmin())" (click)="isCollapsed = true"><span class="fa fa-users"></span> EMPLOYEES</a></li>
                 <li><a [routerLink] = "['/mainpage/profile']" *ngIf="isLoggedIn()" (click)="isCollapsed = true"><span class="fa fa-user-circle"></span> PROFILE</a></li>

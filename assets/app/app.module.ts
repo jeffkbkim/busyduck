@@ -26,6 +26,7 @@ import {SignupAdminComponent} from "../auth/signin_signup_Forms/signup/signup.ad
 import {CurrentUserService} from "./mainpage/current-user.service";
 import {AdminSchedulerComponent} from "./mainpage/scheduler/admin-scheduler.component";
 import {EmployeesComponent} from "./mainpage/employees/employees.component";
+import {AdminGuardService} from "./mainpage/scheduler/admin-guard-service";
 
 @NgModule ({
     declarations: [
@@ -54,7 +55,7 @@ import {EmployeesComponent} from "./mainpage/employees/employees.component";
         HttpModule,
         NgbModule.forRoot()
     ],
-    providers: [AuthService, CurrentUserService, AuthGuardService],
+    providers: [AuthService, CurrentUserService, AuthGuardService, AdminGuardService],
     bootstrap: [AppComponent]
 })
 
