@@ -24,6 +24,8 @@ import {SigninUserComponent} from "../auth/signin_signup_Forms/login/signin.user
 import {SignupUserComponent} from "../auth/signin_signup_Forms/signup/signup.user.component";
 import {SignupAdminComponent} from "../auth/signin_signup_Forms/signup/signup.admin.component";
 import {CurrentUserService} from "./mainpage/current-user.service";
+import {AdminSchedulerComponent} from "./mainpage/scheduler/admin-scheduler.component";
+import {EmployeesComponent} from "./mainpage/employees/employees.component";
 
 @NgModule ({
     declarations: [
@@ -41,7 +43,9 @@ import {CurrentUserService} from "./mainpage/current-user.service";
         SignupAdminComponent,
         MainpageComponent,
         SchedulerComponent,
+        AdminSchedulerComponent,
         ChatComponent,
+        EmployeesComponent,
         ProfileComponent
     ],
     imports: [BrowserModule,
