@@ -1,3 +1,22 @@
+<style>
+    label {
+         color: #5E4625
+    }
+
+    button {
+        background-color: #C64D07;
+        color: #F8F8F8;
+        border: 0px solid #C64D07;
+        float: right;
+    }
+
+    div.col-md-8.col-md-offset-2 {
+        background-color: rgba(140,154,124, 0.5);
+        padding: 30px 40px 140px 40px
+    }
+</style>
+
+<div class="col-md-8 col-md-offset-2">
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label for="email">Email</label>
@@ -9,3 +28,4 @@
     </div>
     <button [disabled]="!registerForm.valid" class="btn btn-primary" type="submit">Submit</button>
 </form>
+</div>

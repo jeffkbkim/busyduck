@@ -1,14 +1,25 @@
-<div style="height:88vh">
+<style>
+    .color .active a,
+    .color .active a:hover {
+        background-color: #D6812D;
+        color: #F8F8F8;
+    }
+    .color a {
+        color: black
+    }
+</style>
+
+<div style="height:90vh">
 <header class="row spacing">
-    <nav class="col-md-8 col-md-offset-2">
-        <ul class="nav nav-tabs">
+    <nav class="col-md-6 col-md-offset-4" style="margin-top:4vh;">
+        <ul class="nav nav-pills color">
             <li routerLinkActive="active"><a [routerLink]="['user']">User</a></li>
             <li routerLinkActive="active"><a [routerLink]="['admin']">Admin</a></li>
         </ul>
     </nav>
 </header>
 
-<div class="col-md-8 col-md-offset-2">
+<div class="col-md-6 col-md-offset-3" style="margin-top: 4vh">
     <router-outlet></router-outlet>
 </div>
 </div>

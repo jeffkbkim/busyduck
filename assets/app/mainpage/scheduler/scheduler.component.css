@@ -33,10 +33,10 @@
 
 #workplaceCollapse, #toolsCollapse {
     height: 21vh; 
-    width: 16.4vw; 
+    width: 16vw; 
     overflow-y: scroll; 
-    background-color: rgba(141,141,141,0.2);
-    margin-left: 10%
+    margin-left: 10%;
+    border: 1px solid rgb(141,141,141);
 }
 
 #toolsCollapse {
@@ -52,7 +52,7 @@ table {
   display: block;
 }
 
-  /* Zebra striping */
+/* Zebra striping */
 tr:nth-of-type(odd) { 
   background: #eee; 
 }
@@ -68,7 +68,7 @@ td, th {
   width: 3.9vw; /*47px*/
   height: 6.1vh;
   padding: 4px; 
-  border: 0.1px solid #ccc; 
+  border-bottom: 0.1px solid #ccc; border-right: 0.1px solid #ccc; 
   text-align: center; 
 }
 
