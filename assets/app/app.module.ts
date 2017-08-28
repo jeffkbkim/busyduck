@@ -27,6 +27,7 @@ import {CurrentUserService} from "./mainpage/current-user.service";
 import {AdminSchedulerComponent} from "./mainpage/scheduler/admin-scheduler.component";
 import {EmployeesComponent} from "./mainpage/employees/employees.component";
 import {AdminGuardService} from "./mainpage/scheduler/admin-guard-service";
+import {WorkPositionService} from "./work-position/work-position.service";
 
 @NgModule ({
     declarations: [
@@ -55,7 +56,7 @@ import {AdminGuardService} from "./mainpage/scheduler/admin-guard-service";
         HttpModule,
         NgbModule.forRoot()
     ],
-    providers: [AuthService, CurrentUserService, AuthGuardService, AdminGuardService],
+    providers: [AuthService, WorkPositionService, CurrentUserService, AuthGuardService, AdminGuardService],
     bootstrap: [AppComponent]
 })
 

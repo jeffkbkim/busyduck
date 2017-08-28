@@ -1,19 +1,33 @@
 
-import {Component, Input, AfterViewInit} from "@angular/core";
+import {Component, Input, AfterViewInit, OnInit} from "@angular/core";
 import {FormGroup, Validators, FormControl} from "@angular/forms";
+import {WorkPosition} from "../../work-position/work-position.model";
+import {WorkPositionService} from "../../work-position/work-position.service";
 @Component({
     selector: "app-scheduler",
     templateUrl: "./scheduler.component.html",
     styleUrls: ["./scheduler.component.css"]
 })
 
-export class SchedulerComponent {
+export class SchedulerComponent implements OnInit {
+    constructor(private workPositionService : WorkPositionService) {}
     workplaceIsCollapsed = false;
     funcIsCollapsed = false;
 
     newJobForm: FormGroup;
-    onSubmit(): void {
-        alert(this.newJobForm.value.location + this.newJobForm.value.position);
+    onSubmit() {
+        const workPosition = new WorkPosition(this.newJobForm.value.workplace, this.newJobForm.value.type, 'approved', '#eee');
+        this.workPositionService.requestPosition(workPosition)
+            .subscribe(
+                (data) => {
+                    console.log("Updated Successfully!");
+                    console.log(data);
+                },
+                error => {
+                    console.log(error);
+                }
+            );
+        //alert(this.newJobForm.value.workplace + this.newJobForm.value.type);
     }
 
     _actual: boolean = true;
@@ -193,8 +207,8 @@ export class SchedulerComponent {
 
     ngOnInit(): void {
         this.newJobForm = new FormGroup({
-            location: new FormControl(null, Validators.required),
-            position: new FormControl(null, Validators.required)
+            workplace: new FormControl(null, Validators.required),
+            type: new FormControl(null, Validators.required)
         });
     }
 

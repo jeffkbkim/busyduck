@@ -6,7 +6,8 @@ var schema = new Schema({
     lastName: {type: String, required: true},
     password: {type: String, required: true},
     email: {type: String, required: true, unique: true},
-    isAdmin: {type: Boolean, required: true}
+    isAdmin: {type: Boolean, required: true},
+    workPositions: [{type: Schema.Types.ObjectId, ref: 'Position'}]
 });
 
 schema.plugin(mongooseUniqueValidator);

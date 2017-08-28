@@ -15,6 +15,7 @@ console.log("Mongoose connection state " + mongoose.connection.readyState); // O
 
 var indexRoutes = require('./routes/index');
 var userRoutes = require('./routes/user');
+var workPositionRoutes = require('./routes/work-position');
 
 var app = express();
 
@@ -37,6 +38,7 @@ app.use(function(req, res, next) {
     next();
 });
 
+app.use('/work-position', workPositionRoutes);
 app.use('/user', userRoutes);
 app.use('/', indexRoutes);
 

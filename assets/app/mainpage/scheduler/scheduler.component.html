@@ -162,12 +162,12 @@
 
         <form [formGroup]="newJobForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
-                <label for="location">Where are you working?</label>
-                <input formControlName="location" type="text" id="location" class="form-control">
+                <label for="workplace">Where are you working?</label>
+                <input formControlName="workplace" type="text" id="workplace" class="form-control">
             </div>
             <div class="form-group">
-                <label for="position">For what position?</label>
-                <input formControlName="position" type="text" id="position" class="form-control">
+                <label for="type">For what position?</label>
+                <input formControlName="type" type="text" id="type" class="form-control">
             </div>
             <p>After submitting the application, please wait until your manager approves you into the team.</p>
             <button [disabled]="!newJobForm.valid" class="btn btn-primary" type="submit">Submit</button>

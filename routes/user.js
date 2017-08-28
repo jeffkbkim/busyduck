@@ -104,9 +104,6 @@ router.get('/', function (req, res, next) {
 });
 
 router.put('/updatePassword', function (req, res, next) {
-    console.log(req.body);
-    console.log(req.body.email);
-    console.log(req.body.newPassword);
 
     //if user does not exist
     User.findOne({email: req.body.email}, function(err, user) {
