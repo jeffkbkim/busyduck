@@ -7,7 +7,7 @@
 /*07889B*/
 
 .scheduler-container {
-  margin-top: 1%;
+  margin-top: 0%;
 }
 
 .square-box{
@@ -57,9 +57,13 @@ tr:nth-of-type(odd) {
   background: #eee; 
 }
 
+thead {
+    border: 0.1px solid #8C9A7C;
+}
+
 th { 
-  background: #02454E; 
-  color: white; 
+  background: #D6812D; 
+  color: #F8F8F8; 
   font-weight: bold; 
 }
 
@@ -110,5 +114,6 @@ th#Date, td#Date {
 .btn-warning.btn-outline:hover,
 .btn-danger.btn-outline:hover {
     background-color: #428bca;
-    color: white;
+    color: #F8F8F8;
 }
+

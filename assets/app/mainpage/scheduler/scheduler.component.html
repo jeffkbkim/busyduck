@@ -1,12 +1,13 @@
-<div style="margin:2% 1% 5% 1%;border: 0.3px solid #07889B; background-color:rgba(5,91,104,0)">
-<div class="header" style="background-color:#07889B; color:azure; height:40px;">
+<div style="margin:0% 0% 0% 0%;border: 0.3px solid #2177AA; background-color:rgba(33,119,170,0.1)">
+<div class="header" style="background-color:#2177AA; color:azure; height:10vh;">
 </div>
-<div class="scheduler-container" style="height:70vh; padding-top: 1%">
-    <div class="col-xs-2" style="height: 100%; padding-left: 2%; padding-top: 0.5%">
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#addModal" style="height: 6vh; width:9vw; margin-top: 2%; margin-bottom:3vh; border-radius: 3px; margin-left: 27%; border-bottom: 3px solid #A63F3C">
+
+<div class="scheduler-container" style="height:80vh; padding-top: 1%;">
+    <div class="col-xs-2" style="height: 100%; padding-left: 2%; padding-top: 1%">
+        <button type="button" class="btn btn" data-toggle="modal" data-target="#addModal" style=" margin-top: 2%; margin-bottom:3vh; border-radius: 3px; margin-left: 27%; border-bottom: 3px solid #A63F3C; background-color: #B73639; white-space: normal;">
             <div style="color: white">
                 <span class="glyphicon glyphicon-plus"></span>
-                <span id='new-text' style="text-align:middle;"> New job?</span>
+                <span id='new-text' style=""> Add Job</span>
             </div>
         </button>
 
@@ -41,7 +42,7 @@
                         </ng-template>
                     </div>
                     <ng-template #first>
-                    <div *ngIf="_preferred; else nohighlight" style="margin-left: 2vw; padding-top:1.3vh; color:#4360FF" id="text_div_{{i}}">
+                    <div *ngIf="_preferred; else nohighlight" style="margin-left: 2vw; padding-top:1.3vh; color:#2177AA" id="text_div_{{i}}">
                         <span [ngClass]="tempPosition.glyphicon"></span>
                         <span *ngIf="tempPosition.status === 'approved'; else waitingfirst" id='text_{{i}}' style="text-align: left;">{{tempPosition.workName}}</span>
                         <ng-template #waitingfirst>
@@ -93,25 +94,26 @@
 
     </div>
 
-    <div class="col-xs-10" style="height: 100%; padding-top: 0.9%">
+    <div class="col-xs-10" style="height: 100%;">
+            <div style="margin-left: 4%; background-color: rgba(94,70,37,0.1); height: 90%;padding-top: 2%;">
         <div class="col-xs-9" style="margin-left: 4%;">
             <div class="col-xs-4">  
                 <div class="btn-group" role="group" aria-label="Button group" style="padding-left: 10%">
-                    <button id="actualbutton" type="button" style="width:6.8vw" class="btn btn-primary btn-outline" (click)="buildActualSchedule()">Actual</button>
-                    <button id="preferredbutton" type="button" style="width:6.8vw" class="btn btn-primary btn-outline" (click)="buildPreferredSchedule()">Preferred</button>
+                    <button id="actualbutton" type="button" style="width:6.8vw; white-space: normal;" class="btn btn-primary btn-outline" (click)="buildActualSchedule()">Actual</button>
+                    <button id="preferredbutton" type="button" style="width:6.8vw; white-space: normal;" class="btn btn-primary btn-outline" (click)="buildPreferredSchedule()">Preferred</button>
                 </div>
             </div>
             <div class="col-xs-8" style="padding-top:1%">
             </div>
         </div> 
-        <div class="col-xs-3" style="margin-left:-4%;">
-            <div *ngIf="_preferred" class="button-container">
+        <div class="col-xs-3" style="margin-left:-7%;">
+            <div *ngIf="_preferred" class="button-container" style="margin: 0% 1% 0% 1%; text-align: center">
                 <button (click) = "clearAll()" class="btn btn" style="border: 1px solid #565CB2; color: #565CB2;">Clear</button>
                 <button (click) = "resetAll()" class="btn btn" style="margin-left: 0.3vw; border: 1px solid #FF773C; color: #FF773C;">Reset</button>
-                <button (click) = "saveAll()" class="btn btn" style="margin-left: 0.3vw; border: 1px solid #44B20F; color:#44B20F;">Save</button>
+                <button (click) = "saveAll()" class="btn btn" style="margin-left: 0.3vw; border: 1px solid #44B20F; color:#44B20F;"><span class="glyphicon glyphicon-floppy-disk"></span>Save</button>
             </div>
         </div>
-        <div class="col-xs-12" style="padding-left:5%; padding-top:2.3%">
+        <div class="col-xs-12" style="padding-left:3%; padding-top:2.3%">
         <table>
             <thead>
                 <tr>
@@ -143,12 +145,10 @@
             </tbody>
         </table>
         </div>
+            </div>
     </div>
 
 </div>
-
-
-
 
  <div class="modal" id="addModal" role="dialog">
     <div class="modal-dialog">
