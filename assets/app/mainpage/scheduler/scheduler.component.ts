@@ -221,7 +221,7 @@ export class SchedulerComponent implements OnInit {
             {"day" : "Sun", "id": 6}];
 
     // colorSchemaArray : Array<string> = ["#A8185F", "#E7D016", "#18A819", "#F47917", "#0091A7", "#414141", "#eee"];
-    colorSchemaArray : Array<string> = ["#933F3D","#CC5500","#D1BC00","#229100","#849C00","#414141","#eee"];
+    colorSchemaArray : Array<string> = ["#8CB19F","#E6C280","#C7E2D2","#F3E4C2","#849C00","#414141","#eee"];
     // last two elements are special
 
     tempPositions: any = [
@@ -250,7 +250,7 @@ export class SchedulerComponent implements OnInit {
 
     tempPositionsNew = this.tempPositions.map(
         function(x:any, index:number):object {
-            x.color = ["#933F3D","#CC5500","#D1BC00","#229100","#849C00","#414141","#eee"][index];
+            x.color = ["#8CB19F","#E6C280","#C7E2D2","#F3E4C2","#849C00","#414141","#eee"][index];
             x.glyphicon = {"cashier": "glyphicon glyphicon-credit-card",
                             "cook": "glyphicon glyphicon-cutlery",
                             "hair": "glyphicon glyphicon-scissors"
@@ -387,10 +387,12 @@ export class SchedulerComponent implements OnInit {
     buildPreferredSchedule(): void {
         this._actual = false;
         this._preferred = true;
-        document.getElementById("preferredbutton").style.backgroundColor = "#2177AA";
+        document.getElementById("preferredbutton").style.backgroundColor = "#595C57";
         document.getElementById("preferredbutton").style.color = "white";
+        document.getElementById("preferredbutton").style.border = "1px solid #595C57";
         document.getElementById("actualbutton").style.backgroundColor = "white";
-        document.getElementById("actualbutton").style.color = "#2177AA";
+        document.getElementById("actualbutton").style.color = "#595C57";
+        document.getElementById("actualbutton").style.border = "1px solid #595C57";
         let tds = document.getElementsByTagName("td");
         for(let i:number=0; i < tds.length; i++) {
             tds[i].style.cursor = "pointer";
@@ -415,10 +417,12 @@ export class SchedulerComponent implements OnInit {
     buildActualSchedule(): void {
         this._actual = true;
         this._preferred = false;
-        document.getElementById("actualbutton").style.backgroundColor = "#2177AA";
+        document.getElementById("actualbutton").style.backgroundColor = "#595C57";
         document.getElementById("actualbutton").style.color = "white";
+        document.getElementById("actualbutton").style.border = "1px solid #595C57";
         document.getElementById("preferredbutton").style.backgroundColor = "white";
-        document.getElementById("preferredbutton").style.color = "#2177AA";
+        document.getElementById("preferredbutton").style.color = "#595C57";
+        document.getElementById("preferredbutton").style.border = "1px solid #595C57";
         let tds = document.getElementsByTagName("td");
         for(let i:number=0; i < tds.length; i++) {
             tds[i].style.cursor = "default";
