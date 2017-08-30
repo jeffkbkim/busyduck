@@ -4,5 +4,5 @@ export class User {
                 public isAdmin: boolean,
                 public firstName?: string,
                 public lastName?: string,
-                public positions?: Array<Object>) {}
+                public workPositions?: Array<Object>) {}
 }

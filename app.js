@@ -5,6 +5,12 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
+mongoose.set('debug', function (coll, method, query, doc) {
+    console.log(coll + " " + method + " " + JSON.stringify(query) + " " + JSON.stringify(doc));
+});
+
+
 
 var uri = "mongodb://superuser:G2fOzqDqKIb8yTIC@pocha-shard-00-00-upvmz.mongodb.net:27017,pocha-shard-00-01-upvmz.mongodb.net:27017,pocha-shard-00-01-upvmz.mongodb.net:27017/busyduck?ssl=true&replicaSet=Pocha-shard-0&authSource=admin";
 mongoose.connect(uri, {

@@ -6,6 +6,7 @@ import {Observable} from "rxjs";
 @Injectable()
 
 export class WorkPositionService {
+    workPositions : WorkPosition[] = [];
 
     constructor(private http: Http) {}
 
@@ -16,6 +17,26 @@ export class WorkPositionService {
 
         return this.http.patch('http://localhost:3000/work-position/' + userId, body, {headers: headers})
             .map((response: Response) => response.json())
+            .catch((error: Response) => Observable.throw(error.json()));
+    }
+
+    getWorkPositions() {
+        const userId = localStorage.getItem('userId');
+        return this.http.get('http://localhost:3000/work-position/' + userId)
+            .map((response: Response) => {
+                const workPositions = response.json().obj;
+                let transformedWorkPositions: WorkPosition[] = [];
+                for (let workPosition of workPositions) {
+                    transformedWorkPositions.push(new WorkPosition(
+                        workPosition.workplace,
+                        workPosition.type,
+                        workPosition.status,
+                        workPosition.color
+                    ));
+                }
+                this.workPositions = transformedWorkPositions;
+                return transformedWorkPositions;
+            })
             .catch((error: Response) => Observable.throw(error.json()));
     }
 }

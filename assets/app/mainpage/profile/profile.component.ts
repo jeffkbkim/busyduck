@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from "@angular/core";
 import {CurrentUserService} from "../current-user.service";
 import {FormBuilder, FormGroup, Validators, FormControl} from "@angular/forms";
 import {User} from "../../user.model";
+import {WorkPositionService} from "../../work-position/work-position.service";
+import {WorkPosition} from "../../work-position/work-position.model";
 
 @Component({
     selector: "my-profile",
@@ -18,7 +20,7 @@ export class ProfileComponent implements OnInit {
 
     passwordForm : FormGroup;
     passwordConfirmed : boolean = true;
-
+    workPositions: WorkPosition[];
     tempPositions: any = [
         {
             "workid": "0xbed0",
@@ -54,7 +56,7 @@ export class ProfileComponent implements OnInit {
         }
     );
 
-    constructor(private currUserService : CurrentUserService, private fb: FormBuilder) {
+    constructor(private currUserService : CurrentUserService, private workPositionService : WorkPositionService, private fb: FormBuilder) {
         this.currUser = this.currUserService.curr_User;
 
         this.rForm = fb.group({
@@ -124,5 +126,16 @@ export class ProfileComponent implements OnInit {
             newPassword: new FormControl(null, Validators.required),
             confirmPassword: new FormControl(null, Validators.required)
         });
+
+        this.workPositionService.getWorkPositions()
+            .subscribe(
+                (workPositions : WorkPosition[]) => {
+                    console.log(workPositions);
+                    this.workPositions = workPositions;
+                },
+                    err => {
+                        console.log(err);
+                    }
+            );
     }
 }
