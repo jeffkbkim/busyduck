@@ -1,28 +1,36 @@
-@import url('https://fonts.googleapis.com/css?family=Muli:400, 700');
+@import url('https://fonts.googleapis.com/css?family=Roboto'); 
 
 html {
     min-height: 100%;
     margin:0;
     padding:0;
+    position: relative;
+    font-family: 'Roboto' !important;
 }
 
 /*Header Component Navigation Bar*/
 .navbar {
+    font-family: 'Roboto' !important;
+    font-weight: bold;
     letter-spacing: 3px;
     font-size: 12px;
     margin-bottom: 0;
 }
 
 body {
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-family: 'Roboto' !important;
     background-size: cover;
-    background-color: rgba(255, 241, 149, 0.1);
+    background-color: #DFEDE8;
     background: black;
-    height: 100%
+    height: 100%;
 }
 
 a {
   color: #00B7FF;
+}
+
+p {
+    color: #66585E;
 }
 
 /*Profile Component*/
@@ -32,5 +40,4 @@ a {
     height:100%;
     margin: 0;
     padding: 0;
-    font-family: 'Muli';
 }

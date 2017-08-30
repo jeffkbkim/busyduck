@@ -18,6 +18,8 @@ export class ProfileComponent implements OnInit {
     firstName : string = "";
     lastName : string = "";
 
+    isCollapsed : true;
+
     passwordForm : FormGroup;
     passwordConfirmed : boolean = true;
     workPositions: WorkPosition[];

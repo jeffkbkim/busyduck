@@ -2,12 +2,29 @@
     outline: 0 !important;
 }
 
+* {
+    color: #595C57
+}
+
+.main-main-container {
+    margin:0% 0% 0% 0%;
+    background-color:rgba(89, 92, 87, 0.1)
+}
+
+.header {
+    background-color:#595C57;
+    color:azure;
+    height:10vh;
+    font-size: 9vh; 
+    padding-left: 2%
+}
+
 /* Left side */
 
 /*07889B*/
 
 .scheduler-container {
-  margin-top: 1%;
+  margin-top: 0%;
 }
 
 .square-box{
@@ -36,7 +53,6 @@
     width: 16vw; 
     overflow-y: scroll; 
     margin-left: 10%;
-    border: 1px solid rgb(141,141,141);
 }
 
 #toolsCollapse {
@@ -58,9 +74,16 @@ tr:nth-of-type(odd) {
 }
 
 th { 
-  background: #02454E; 
-  color: white; 
+  background: #595C57; 
+  color: #F8F8F8; 
   font-weight: bold; 
+}
+
+td {
+    background-color: rgba(89, 92, 87, 0.5)
+}
+th {
+    background-color:rgb(89, 92, 87); 
 }
 
 td, th { 
@@ -70,6 +93,7 @@ td, th {
   padding: 4px; 
   border-bottom: 0.1px solid #ccc; border-right: 0.1px solid #ccc; 
   text-align: center; 
+  color: #F8F8F8;
 }
 
 th#Date, td#Date {
@@ -77,6 +101,10 @@ th#Date, td#Date {
 }
 
 /*Bootstrap button outline override*/
+.btn.btn.normal {
+    border: 2px solid #595C57
+}
+
 .btn-outline {
     background-color: transparent;
     color: inherit;
@@ -110,5 +138,6 @@ th#Date, td#Date {
 .btn-warning.btn-outline:hover,
 .btn-danger.btn-outline:hover {
     background-color: #428bca;
-    color: white;
+    color: #F8F8F8;
 }
+
