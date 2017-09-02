@@ -20,17 +20,12 @@ html {
 body {
     font-family: 'Roboto' !important;
     background-size: cover;
-    background-color: #DFEDE8;
     background: black;
     height: 100%;
 }
 
 a {
   color: #00B7FF;
-}
-
-p {
-    color: #66585E;
 }
 
 /*Profile Component*/

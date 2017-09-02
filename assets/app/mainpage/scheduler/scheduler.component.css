@@ -3,18 +3,15 @@
 }
 
 * {
-    color: #595C57
+    color: #1A2545
 }
 
 .main-main-container {
     margin:0% 0% 0% 0%;
-    background-color:rgba(89, 92, 87, 0.1)
 }
 
-.header {
-    background-color:#595C57;
-    color:azure;
-    height:10vh;
+.header {  
+    height:12vh;
     font-size: 9vh; 
     padding-left: 2%
 }
@@ -74,22 +71,22 @@ tr:nth-of-type(odd) {
 }
 
 th { 
-  background: #595C57; 
+  background: #12375C; 
   color: #F8F8F8; 
   font-weight: bold; 
 }
 
 td {
-    background-color: rgba(89, 92, 87, 0.5)
+    background-color: #12375C
 }
 th {
-    background-color:rgb(89, 92, 87); 
+    background-color:#12375C; 
 }
 
 td, th { 
   display:inline-block;
   width: 3.9vw; /*47px*/
-  height: 6.1vh;
+  height: 6.3vh;
   padding: 4px; 
   border-bottom: 0.1px solid #ccc; border-right: 0.1px solid #ccc; 
   text-align: center; 
@@ -102,7 +99,7 @@ th#Date, td#Date {
 
 /*Bootstrap button outline override*/
 .btn.btn.normal {
-    border: 2px solid #595C57
+    border: 2px solid #7568A5
 }
 
 .btn-outline {

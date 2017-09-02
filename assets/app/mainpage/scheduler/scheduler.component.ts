@@ -387,12 +387,12 @@ export class SchedulerComponent implements OnInit {
     buildPreferredSchedule(): void {
         this._actual = false;
         this._preferred = true;
-        document.getElementById("preferredbutton").style.backgroundColor = "#595C57";
+        document.getElementById("preferredbutton").style.backgroundColor = "#7568A5";
         document.getElementById("preferredbutton").style.color = "white";
-        document.getElementById("preferredbutton").style.border = "1px solid #595C57";
+        document.getElementById("preferredbutton").style.border = "1px solid #7568A5";
         document.getElementById("actualbutton").style.backgroundColor = "white";
-        document.getElementById("actualbutton").style.color = "#595C57";
-        document.getElementById("actualbutton").style.border = "1px solid #595C57";
+        document.getElementById("actualbutton").style.color = "#7568A5";
+        document.getElementById("actualbutton").style.border = "1px solid #7568A5";
         let tds = document.getElementsByTagName("td");
         for(let i:number=0; i < tds.length; i++) {
             tds[i].style.cursor = "pointer";
@@ -417,12 +417,12 @@ export class SchedulerComponent implements OnInit {
     buildActualSchedule(): void {
         this._actual = true;
         this._preferred = false;
-        document.getElementById("actualbutton").style.backgroundColor = "#595C57";
+        document.getElementById("actualbutton").style.backgroundColor = "#7568A5";
         document.getElementById("actualbutton").style.color = "white";
-        document.getElementById("actualbutton").style.border = "1px solid #595C57";
+        document.getElementById("actualbutton").style.border = "1px solid #7568A5";
         document.getElementById("preferredbutton").style.backgroundColor = "white";
-        document.getElementById("preferredbutton").style.color = "#595C57";
-        document.getElementById("preferredbutton").style.border = "1px solid #595C57";
+        document.getElementById("preferredbutton").style.color = "#7568A5";
+        document.getElementById("preferredbutton").style.border = "1px solid #7568A5";
         let tds = document.getElementsByTagName("td");
         for(let i:number=0; i < tds.length; i++) {
             tds[i].style.cursor = "default";
