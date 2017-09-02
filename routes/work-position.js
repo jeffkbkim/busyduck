@@ -18,8 +18,6 @@ router.get('/:userId', function(req, res, next) {
                     error: err
                 });
             }
-            console.log(userId);
-            console.log(workPositions);
             res.status(200).json({
                 message: 'Success',
                 obj: workPositions
