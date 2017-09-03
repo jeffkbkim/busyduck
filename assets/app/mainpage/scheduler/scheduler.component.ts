@@ -83,11 +83,13 @@ export class SchedulerComponent implements OnInit {
             this.clicked = true;
             this.colorCell(downId);
         }
-
     }
 
     affected: Array<string> = [];
+    hoverred: boolean;
+    cellObject = {"color": ""};
     colorCell(hover_id : string): void {
+        this.cellObject.color = document.getElementById(hover_id).style.backgroundColor;
         if (this.clicked) {
             try {
                 let hover_idArray : Array<string> = hover_id.split("_");
@@ -103,6 +105,20 @@ export class SchedulerComponent implements OnInit {
             } catch(e) {
                 // empty
             }
+        } else {
+            if (document.getElementById(hover_id).style.backgroundColor === "rgb(238, 238, 238)") {
+                this.hoverred = true;
+                let color: Object = this.hexToRgb(this.colorSchemaArray[this.paintColorIndex]);
+                let rgba: string = "rgba(rr,gg,bb,0.5)".replace("rr",color.r.toString());
+                rgba = rgba.replace("gg",color.g.toString()).replace("bb",color.b.toString());
+                document.getElementById(hover_id).style.backgroundColor = rgba;
+            }
+        }
+    }
+
+    resetCell(cellId: string):void {
+        if (!this.clicked) {
+            document.getElementById(cellId).style.backgroundColor = this.cellObject.color;
         }
     }
 
@@ -159,7 +175,15 @@ export class SchedulerComponent implements OnInit {
         } catch(e) {
             return "";
         }
+    }
 
+    hexToRgb(hex: string) {
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16)
+        } : null;
     }
 
     saveAll(): void {

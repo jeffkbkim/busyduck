@@ -134,7 +134,7 @@
             <tbody>
                 <tr *ngFor="let date of dates; let i = index" >
                     <td id="Date" (click)="entireDay(date.id)">{{ date.day }}</td>
-                    <td *ngFor="let hour of hours" class="tbody-boxes" id="{{hour}}_{{i}}" (click)="toggle($event)" (mousedown)="downAction(hour+'_'+i)" (mouseup)="upAction(hour+'_'+i)" (mouseover)="colorCell(hour+'_'+i)"></td>
+                    <td *ngFor="let hour of hours" class="tbody-boxes" id="{{hour}}_{{i}}" (click)="toggle($event)" (mousedown)="downAction(hour+'_'+i)" (mouseup)="upAction(hour+'_'+i)" (mouseover)="colorCell(hour+'_'+i)" (mouseout)="resetCell(hour+'_'+i)"></td>
                 </tr>
             </tbody>
         </table>
