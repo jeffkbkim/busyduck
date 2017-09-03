@@ -63,7 +63,7 @@ router.post('/signin', function(req, res, next) {
        }
 
        //if password is correct
-       var token = jwt.sign({user: user}, 'secret', {expiresIn: 7200});
+       var token = jwt.sign({user: user}, 'secret'/*, {expiresIn: 7200} */);
        res.status(200).json({
            message: 'Successfully logged in!',
            token: token,
@@ -73,19 +73,18 @@ router.post('/signin', function(req, res, next) {
    });
 });
 
-
-//
-// router.use('/', function (req, res, next) {
-//     jwt.verify(req.query.token, 'secret', function (err, decoded) {
-//         if (err) {
-//             return res.status(401).json({
-//                 title: 'HI Authenticated',
-//                 error: err
-//             });
-//         }
-//         next();
-//     })
-// });
+router.use('/', function (req, res, next) {
+    console.log(req.query.token);
+    jwt.verify(req.query.token, 'secret', function (err, decoded) {
+        if (err) {
+            return res.status(401).json({
+                title: 'Not Authenticated',
+                error: err
+            });
+        }
+        next();
+    })
+});
 
 router.get('/', function (req, res, next) {
     var decoded = jwt.decode(req.query.token);

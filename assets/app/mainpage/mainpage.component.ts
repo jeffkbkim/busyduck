@@ -4,7 +4,6 @@ import {CurrentUserService} from "./current-user.service";
 
 @Component ({
     selector: 'app-mainpage',
-    providers: [CurrentUserService],
     templateUrl: './mainpage.component.html'
 })
 

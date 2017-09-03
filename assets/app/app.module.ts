@@ -28,6 +28,7 @@ import {AdminSchedulerComponent} from "./mainpage/scheduler/admin-scheduler.comp
 import {EmployeesComponent} from "./mainpage/employees/employees.component";
 import {AdminGuardService} from "./mainpage/scheduler/admin-guard-service";
 import {WorkPositionService} from "./work-position/work-position.service";
+import {ProfileWorkPositionComponent} from "./mainpage/profile/profile.workposition.component";
 
 @NgModule ({
     declarations: [
@@ -48,7 +49,8 @@ import {WorkPositionService} from "./work-position/work-position.service";
         AdminSchedulerComponent,
         ChatComponent,
         EmployeesComponent,
-        ProfileComponent
+        ProfileComponent,
+        ProfileWorkPositionComponent
     ],
     imports: [BrowserModule,
         routing,
