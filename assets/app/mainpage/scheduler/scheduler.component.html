@@ -1,14 +1,14 @@
+<link rel="stylesheet" type="text/css" href="http://csshake.surge.sh/csshake.min.css">
+
 <div class="main-main-container">
 <div class="header">
     <h1>Schedule </h1>
 </div>
-<div class="scheduler-container" style="height:80vh;">
+<div class="scheduler-container" style="height:65vh; min-height: 65vh">
     <div class="col-xs-2" style="height: 100%; padding-left: 2%;">
         <button type="button" class="btn btn normal" data-toggle="modal" data-target="#addModal" style=" margin-top: 3%; margin-bottom:3vh; border-radius: 3px; margin-left: 33%; white-space: normal;">
-            <div style="color: #654756">
-                <span class="glyphicon glyphicon-plus"></span>
-                <span id='new-text'> Add Job</span>
-            </div>
+            <span class="glyphicon glyphicon-plus"></span>
+            <span id='new-text'> Add Job</span>
         </button>
 
         <div class="collapsable-panels-works" style="margin-top:5%">
@@ -107,8 +107,8 @@
                 <button (click) = "resetAll()" class="btn btn normal" style="margin-left: 0.3vw;"><span class="glyphicon glyphicon-repeat"></span>&nbsp;Reset</button>
                 <button (click) = "saveAll()" class="btn btn normal" style="margin-left: 0.3vw;"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;Save</button>
             </div>
-        <div class="col-xs-12" style="padding-left:3%; padding-top:2.3%">
-        <table>
+        <div class="col-xs-12 schedule" style="padding-left:3%; padding-top:2.3%">
+        <table class="schedule-table">
             <thead>
                 <tr>
                     <th id="Date"> </th>
@@ -134,7 +134,7 @@
             <tbody>
                 <tr *ngFor="let date of dates; let i = index" >
                     <td id="Date" (click)="entireDay(date.id)">{{ date.day }}</td>
-                    <td *ngFor="let hour of hours" class="tbody-boxes" id="{{hour}}_{{i}}" (click)="toggle($event)" (mousedown)="downAction(hour+'_'+i)" (mouseup)="upAction(hour+'_'+i)" (mouseover)="colorCell(hour+'_'+i)" (mouseout)="resetCell(hour+'_'+i)"></td>
+                    <td *ngFor="let hour of hours" class="tbody-boxes shake-slow" id="{{hour}}_{{i}}" (click)="toggle($event)" (mousedown)="downAction(hour+'_'+i)" (mouseup)="upAction(hour+'_'+i)" (mouseover)="colorCell(hour+'_'+i)" (mouseout)="resetCell(hour+'_'+i)"></td>
                 </tr>
             </tbody>
         </table>
@@ -143,6 +143,61 @@
     </div>
 
 </div>
+
+<div class="header">
+    <h1>Announcement</h1>
+</div>
+<div class="ancmt">
+<div class="col-xs-6 ancmt-col">
+    <h3>From manager...</h3>
+    <table class="table table-hover" style="margin-left: 3%; width: 97%">
+        <thead>
+            <tr style="background-color: #12375C;">
+                <th>#</th>
+                <th>Message</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>I need someone to work Wed 10am - 4pm</td>
+                <td>10/11/2017</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>I will be late on Thursday. Call me if you need me.</td>
+                <td>10/11/2017</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="col-xs-6 ancmt-col">
+    <h3>From coworkers...</h3>
+    <button type="button" data-toggle="modal" data-target="#addModal" style="position: absolute; right: 20px; top: 17px;border-radius: 3px; white-space: normal;">
+            <span id='new-text'> Add</span>
+    </button>
+    <table class="table table-hover" style="margin-left: 3%; width: 97%">
+        <thead>
+            <tr style="background-color: #12375C;">
+                <th>#</th>
+                <th>By</th>
+                <th>Message</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>John</td>
+                <td>Can anybody cover me next Monday 10-5pm?</td>
+                <td>10/12/2017</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+
 
  <div class="modal" id="addModal" role="dialog">
     <div class="modal-dialog">
@@ -171,8 +226,54 @@
         <div class="modal-footer">
           <button type="button" class="btn btn normal" data-dismiss="modal">Cancel</button>
         </div>
+      </div>      
+</div>
+  
+
+ <div class="modal" id="addAnnouncementModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Announcement</h4>
+        </div>
+        <div class="modal-body">
+
+        <form [formGroup]="newJobForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="workplace">What do you want to say?</label>
+                <input formControlName="workplace" type="text" id="workplace" class="form-control">
+            </div>
+            <p>Submit</p>
+            <button [disabled]="!newJobForm.valid" class="btn btn normal" type="submit">Submit</button>
+        </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn normal" data-dismiss="modal">Cancel</button>
+        </div>
       </div>
       
     </div>
   </div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
 </div>

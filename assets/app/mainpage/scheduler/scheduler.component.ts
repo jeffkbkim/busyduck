@@ -16,7 +16,7 @@ export class SchedulerComponent implements OnInit {
 
     newJobForm: FormGroup;
     onSubmit() {
-        const workPosition = new WorkPosition(this.newJobForm.value.workplace, this.newJobForm.value.type, 'approved', '#eee');
+        const workPosition = new WorkPosition(this.newJobForm.value.workplace, this.newJobForm.value.type, "approved", "#eee");
         this.workPositionService.requestPosition(workPosition)
             .subscribe(
                 (data) => {
@@ -42,7 +42,7 @@ export class SchedulerComponent implements OnInit {
                 document.getElementById("text_div_"+i).style.color = "#0a0a0a";
             }
         }
-        div.style.color = "#2177AA";
+        div.style.color = "cyan";
         document.getElementById("delete_color").style.color = "#0a0a0a";
         document.getElementById("blackout").style.color = "#0a0a0a";
         this.paintColorIndex = index;
@@ -56,7 +56,7 @@ export class SchedulerComponent implements OnInit {
 
     eraserFunc(): void {
         this.deleteColor();
-        document.getElementById("delete_color").style.color = "#2177AA";
+        document.getElementById("delete_color").style.color = "cyan";
         document.getElementById("blackout").style.color = "#0a0a0a";
         this.paintColorIndex = this.colorSchemaArray.length -1;
     }
@@ -64,7 +64,7 @@ export class SchedulerComponent implements OnInit {
     blackoutFunc(): void {
         this.deleteColor();
         document.getElementById("delete_color").style.color = "#0a0a0a";
-        document.getElementById("blackout").style.color = "#2177AA";
+        document.getElementById("blackout").style.color = "cyan";
         this.paintColorIndex = this.colorSchemaArray.length -2;
     }
     //
@@ -106,12 +106,14 @@ export class SchedulerComponent implements OnInit {
                 // empty
             }
         } else {
-            if (document.getElementById(hover_id).style.backgroundColor === "rgb(238, 238, 238)") {
-                this.hoverred = true;
-                let color: Object = this.hexToRgb(this.colorSchemaArray[this.paintColorIndex]);
-                let rgba: string = "rgba(rr,gg,bb,0.5)".replace("rr",color.r.toString());
-                rgba = rgba.replace("gg",color.g.toString()).replace("bb",color.b.toString());
-                document.getElementById(hover_id).style.backgroundColor = rgba;
+            if (this._preferred) {
+                if (document.getElementById(hover_id).style.backgroundColor === "rgb(238, 238, 238)") {
+                    this.hoverred = true;
+                    let color: Object = this.hexToRgb(this.colorSchemaArray[this.paintColorIndex]);
+                    let rgba: string = "rgba(rr,gg,bb,0.5)".replace("rr",color.r.toString());
+                    rgba = rgba.replace("gg",color.g.toString()).replace("bb",color.b.toString());
+                    document.getElementById(hover_id).style.backgroundColor = rgba;
+                }
             }
         }
     }
@@ -223,6 +225,7 @@ export class SchedulerComponent implements OnInit {
             }
         }
         alert(JSON.stringify(this.tempPreferredSchedule) + JSON.stringify(this.blackoutSchedule));
+        this.resetAll();
     }
     //
 
