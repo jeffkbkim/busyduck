@@ -2,146 +2,227 @@
     *:focus {
         outline: 0 !important;
     }
+
     * {
         color: #2A202B
     }
+
+    table th{
+        background-color: #12375C;
+        color: white;
+    }
+
+    tbody {
+        border: none;
+    }
+
+    .propic {
+        margin-left: 1rem !important;
+    }
+
+    .side-button-container {
+        background-color: #eee;
+    }
+
+    .btn {
+        width: 100% !important;
+        font-size: 0.9rem !important;
+        font-weight: bold !important;
+        font-family: 'Roboto' !important;
+    }
+
+    .btn:hover {
+        background-color: #12375C;
+        color: white;
+    }
+
+    .table-table {
+        margin-top: 1%;
+        margin-left: 2%;
+        width: 96%;
+    }
+
+    .table-table th {
+        background-color: white;
+        color: #12375C;
+    }
+
+    .table-table thead {
+        border: 0px solid white;
+        border-bottom: 1px solid #12375C;
+    }
+
     div.main-container {
-        background-color: rgba(142,187,192,0.9); 
-        height: 200vh; 
-        margin: 0% 15% 0% 15%
+        height: 40rem; 
+        margin: 0% 6% 0% 6%
     }
+
     label {
-        font-size: 1.2em
+        font-size: 0.9rem
     }
-    p.title-header {
-        padding: 2% 0% 0% 8%; 
-        font-size: 1.4em; 
-        font-family:sans-serif;
+
+    input#modify-profile {
+        height: 1.2rem;
     }
+
     .profile-change>label {
         width:30%; 
         float:left
     }
+
     .profile-change>input {
         width: 50%;
         margin-left: 40%;
         border-radius: 3px;
     }
+
+    #table-left {
+        width: 15%;
+    }
+
+    #table-right {
+        width: 70%;
+    }
+
+    #table-table-left {
+        width: 50%;
+    }
+
+    #table-table-right {
+        width: 50%;
+    }
+
+    tbody>tr>td#table-left {
+        border-right: 1px solid #ccc;
+    }
 </style>
 
-<div style="margin:0% 0% 0% 0%;border: 0px solid #2177AA; ">
-<div class="header" style="background-color:#2177AA; color:azure; height:10vh;">
+<div style="margin:0% 0% 0% 0%;">
+<div class="header">
+    <h1>Profile </h1>
 </div>
-<div class="container my-profile-body" style="height: 100%; border: 0.3px solid #07889B; background-color:rgba(5,91,104,0.1)">
-    <div class="col-xs-12" style="background-image: url('https://images.unsplash.com/photo-1502208703672-cd22f37691ed?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1200&h=600&fit=crop&s=eff7bea660bfff3d5b79d7c8de63fa57'); background-size: cover;">
-        <div class="main-container">
-            <p style="padding: 2% 5% 0% 5%; font-size: 1.5em; background-color: #C54C35; color: #E9B68C">Welcome {{ currUser?.firstName }}, please check your profile and workplaces here.</p>
-
-            <div class="col-xs-12">
-                <div class="col-xs-6">
-                    <p class="title-header"><span class="glyphicon glyphicon-user"> </span>&nbsp;My Profile</p>
-                </div>
-                <div class="col-xs-6" style="margin-top:1%">
-                    <div class="col-xs-6">
-                    <button type="button" class="btn btn" data-toggle="modal" data-target="#addModal" style="height: auto">Change Password</button>
-                    </div>
-                    <div class="col-xs-6">
-                    <button type="button" class="btn btn" (click)="isCollapsed = !isCollapsed"
-                            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample" style="border: 1px solid black">
-                        Edit Profile
-                    </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xs-6" style="padding: 2% 5% 3% 5%;">
-                <a style="width: 50%;" href="https://placeholder.com"><img style="border-radius: 50%" src="http://via.placeholder.com/1000x1000"></a>
-            </div>
-            <div class="col-xs-6" style="padding: 2% 5% 0% 0%;">
-                <div *ngIf="isCollapsed">
-                <div class="card" style="background-color:inherit; border: inherit;">
-                    <div class="card-body">
-                    <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
-                        <div class="profile-change">
-                            <label><b>First Name</b></label>
-                            <input type="text" formControlName="firstName" value="{{ currUser?.firstName }}">
-                            <label><b>Last Name</b></label>
-                            <input type="text" formControlName="lastName" value="{{ currUser?.lastName }}">
-                            <label><b>Email</b></label>
-                            <input type="text" formControlName="email" value="{{ currUser?.email }}">
-                            <hr>
-                            <label><b>Phone Number</b></label>
-                            <input type="text" formControlName="email" value="{{ currUser?.email }}">
-                            <label><b>Kakao Talk</b></label>
-                            <input type="text" formControlName="email" value="{{ currUser?.email }}">
-                            <div class="button-container">
-                            <div class="container col-xs-6 col-xs-offset-6"> 
-                                <input type="submit" class="btn btn" style="background-color: #39221A; color: #C4C2B3" value="Save Changes">
-                            </div>
-                            </div>
+<div class="container my-profile-body" style="height: 100%;">
+    <div class="main-container">
+        <table> 
+            <thead>
+                <tr>
+                    <th id="table-left">Welcome {{ currUser?.firstName }}</th>
+                    <th id="table-right">Check your profile and make any changes</th>
+                </tr>
+            </thead>
+            <tbody> 
+                <tr>
+                    <td id="table-left" valign="top">
+                        <span class="propic">
+                            <img src="http://via.placeholder.com/130x130" alt="" style="border-radius: 50%;">
+                        </span>
+                        <hr>
+                        <div class="side-button-container">
+                            <button type="button" class="btn btn" (click)="isCollapsed = false">My Profile</button>
+                            <button type="button" class="btn btn" (click)="isCollapsed = !isCollapsed"
+                                    [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+                                Edit Profile
+                            </button>
+                            <button type="button" class="btn btn" data-toggle="modal" data-target="#addModal">Change Password</button>
                         </div>
-                    </form>  
-                    </div>
-                </div>
-                </div>        
-                <div id="collapseExample" [ngbCollapse]="isCollapsed" style="padding: 2% 0% 0% 0%">
-                    <label><b>First Name: </b></label> {{ currUser?.firstName }}
-                    <label><b>Last Name: </b></label> {{ currUser?.lastName }}
-                    <label><b>Email: </b></label> {{ currUser?.email }}
-                    <hr>
-                    <label><b>Phone Number: </b></label>
-                    <label><b>Kakao Talk: </b></label>
-                    <hr>
-                    <label><b>Rating: </b></label>
-                    <label><b>Compliments: </b></label>
-                    <label><b> </b></label>
-                </div>
-
-            </div>
-
-            <div class="col-xs-12" style="margin-top: 2%">
-                <div class="col-xs-6">
-                    <p class="title-header"><span class="glyphicon glyphicon-music"> </span>&nbsp;My Workplaces</p>   
-                </div>
-                <div class="col-xs-6"></div>
-            </div>
-            <div class="container col-xs-12">
-                <div class="panel panel-primary text-center" style="border: 0; background-color: transparent;">
-                    <div class="panel-body">
-                        <div>
-                            <div class="list-group" style="width: 90%; margin: auto">   
-                                <div class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let tempPosition of tempPositionsNew; let i = index" [attr.data-index]="i">
-                                    <div *ngIf="tempPosition.status === 'approved'; else waiting">
-                                    <div class="d-flex w-100 justify-content-between" style="text-align:left; ">
-                                        <h5 class="mb-1" style="margin-left:0px">
-                                            <span class="{{ tempPosition.glyphicon }}" [style.color]="tempPosition.color"></span> {{ tempPosition.workName }}
-                                        </h5>
-                                        <small style="position: absolute; top:5px; right:50px"><a href="#">Edit</a></small>
-                                        <small style="position: absolute; top:5px; right:10px"><a href="#">Delete</a></small>
-                                    </div>
-                                    <p class="mb-1"> I'm the best <strong>{{ tempPosition.type }} </strong> ever </p> 
-                                    </div>
-
-                                    <ng-template #waiting>
-                                        <div class="d-flex w-100 justify-content-between" style="text-align: left;">
-                                            <h5 class="mb-1" style="margin-left: 0px" >  <span class="{{ tempPosition.glyphicon }}" [style.color]="tempPosition.color"></span> {{ tempPosition.workName }} </h5>
-                                            <small style="position: absolute; top:5px; right:50px"><a href="#">Remind</a></small>
-                                            <small style="position: absolute; top:5px; right:10px"><a href="#">Delete</a></small>
+                    </td>
+                    <td id="table-right">
+                        <table class="table-table">
+                            <thead>
+                                <tr>
+                                    <th id="table-table-left">Profile</th>
+                                    <th id="table-table-left">Workplaces</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="table-table-left" valign="top">
+                                        <div *ngIf="isCollapsed">
+                                            <div class="card" style="background-color:inherit; border: inherit;">
+                                                <div class="card-body">
+                                                <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+                                                    <div class="profile-change" style="padding: 2% 0% 0% 0%">
+                                                        <label><b>First Name</b></label>
+                                                        <input id="modify-profile" type="text" formControlName="firstName" value="{{ currUser?.firstName }}">
+                                                        <label><b>Last Name</b></label>
+                                                        <input id="modify-profile" type="text" formControlName="lastName" value="{{ currUser?.lastName }}">
+                                                        <label><b>Email</b></label>
+                                                        <input id="modify-profile" type="text" formControlName="email" value="{{ currUser?.email }}">
+                                                        
+                                                        <label><b>Phone Number</b></label>
+                                                        <input id="modify-profile" type="text" formControlName="email" value="{{ currUser?.email }}">
+                                                        <label><b>Kakao Talk</b></label>
+                                                        <input id="modify-profile" type="text" formControlName="email" value="{{ currUser?.email }}">
+                                                        <div class="button-container">
+                                                        <div class="container col-xs-6 col-xs-offset-6"> 
+                                                            <input type="submit" class="btn btn" style="background-color: #39221A; color: #C4C2B3" value="Save Changes">
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </form>  
+                                                </div>
+                                            </div>
+                                        </div>        
+                                        <div id="collapseExample" [ngbCollapse]="isCollapsed" style="padding: 2% 0% 0% 0%">
+                                            <label><b>First Name: </b></label> {{ currUser?.firstName }}
+                                            <label><b>Last Name: </b></label> {{ currUser?.lastName }}
+                                            <label><b>Email: </b></label> {{ currUser?.email }}
+                                            
+                                            <label><b>Phone Number: </b></label>
+                                            <label><b>Kakao Talk: </b></label>
+                                            
+                                            <label><b>Rating: </b></label>
+                                            <label><b>Compliments: </b></label>
+                                            <label><b> </b></label>
                                         </div>
-                                        <div class="mb-1" style="background-color:rgba(242,114,69,0.1);">
-                                            <p>Not yet the best {{tempPosition.type}}. Waiting for approval.</p>
+                                    </td>
+                                    <td id="table-table-left">
+                                        <div class="panel panel-primary text-center" style="border: 0; background-color: transparent;">
+                                            <div class="panel-body">
+                                                <div>
+                                                    <div class="list-group" style="width: 60%; margin: auto">   
+                                                        <div class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let tempPosition of tempPositionsNew; let i = index" [attr.data-index]="i">
+                                                            <div *ngIf="tempPosition.status === 'approved'; else waiting">
+                                                            <div class="d-flex w-100 justify-content-between" style="text-align:left; ">
+                                                                <h5 class="mb-1" style="margin-left:0px">
+                                                                    <span class="{{ tempPosition.glyphicon }}" [style.color]="tempPosition.color"></span> {{ tempPosition.workName }}
+                                                                </h5>
+                                                                <small style="position: absolute; top:5px; right:50px"><a href="#">Edit</a></small>
+                                                                <small style="position: absolute; top:5px; right:10px"><a href="#">Delete</a></small>
+                                                            </div>
+                                                            <p class="mb-1"> I'm the best <strong>{{ tempPosition.type }} </strong> ever </p> 
+                                                            </div>
+
+                                                            <ng-template #waiting>
+                                                                <div class="d-flex w-100 justify-content-between" style="text-align: left;">
+                                                                    <h5 class="mb-1" style="margin-left: 0px" >  <span class="{{ tempPosition.glyphicon }}" [style.color]="tempPosition.color"></span> {{ tempPosition.workName }} </h5>
+                                                                    <small style="position: absolute; top:5px; right:50px"><a href="#">Remind</a></small>
+                                                                    <small style="position: absolute; top:5px; right:10px"><a href="#">Delete</a></small>
+                                                                </div>
+                                                                <div class="mb-1" style="background-color:rgba(242,114,69,0.1);">
+                                                                    <p>Not yet the best {{tempPosition.type}}. Waiting for approval.</p>
+                                                                </div>
+                                                            </ng-template>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </ng-template>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>    
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    
+        
+
+
+
     </div>
-
-</div>
 
 
 
