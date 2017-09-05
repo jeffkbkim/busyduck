@@ -6,10 +6,6 @@
     color: #1A2545;
 }
 
-body {
-    overflow: scroll;
-}
-
 .main-main-container {
     margin:0% 0% 0% 0%;
 }
@@ -52,13 +48,18 @@ body {
 }
 
 ::-webkit-scrollbar {
-    width: 0px;
-    background: transparent; /* make scrollbar transparent */
+    width: 8px;
+    background-color: #eee; 
+     /*background: transparent;  make scrollbar transparent */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #aaa; 
 }
 
 #workplaceCollapse, #toolsCollapse {
     height: 21vh; 
-    width: 16vw; 
+    width: 14vw; 
     overflow-y: scroll; 
     margin-left: 10%;
 }
@@ -70,7 +71,7 @@ body {
 /* Right Side */
 
 .schedule-table { 
-  width: 100%;  /*OR auto */
+  width: 900px;  /*OR auto */
   border-collapse: collapse; 
   table-layout: fixed;
   display: block;
@@ -86,6 +87,7 @@ body {
   background: #12375C; 
   color: #F8F8F8; 
   font-weight: bold; 
+  vertical-align: top;
 }
 
 .schedule-table td, .schedule-table th {
@@ -94,9 +96,9 @@ body {
 
 .schedule-table td, .schedule-table th { 
   display:inline-block;
-  width: 3.9vw; /*47px*/
-  height: 6.4vh;
-  padding: 4px; 
+  width: 46px; /*47px*/
+  height: 34px;
+  padding: 0.1px; 
   text-align: center; 
   color: #F8F8F8;
   border-right: 0.1px solid #ccc
@@ -165,7 +167,7 @@ th#Date, td#Date {
 .ancmt{
     margin-left: 5%;
     margin-right: 5%;
-    height: 50vh;
+    height: 75vh;
 }
 
 .table th {

@@ -129,7 +129,11 @@ export class SchedulerComponent implements OnInit {
         let downIdArray : Array<string> = this.downId.split("_");
         let newID : string = upIdArray[0] + "_" + downIdArray[1];
 
-        this.colorCell(newID);
+        if (upIdArray[1] === downIdArray[1]) {
+            this.colorCell(newID);
+        } else {
+            this.colorCell(upId);
+        }
         let startTime: string = (Number(downIdArray[0]) + 7).toString();
         let startDay : number = Number(downIdArray[1]);
         let duration : string = (1 + Number(upIdArray[0]) - Number(downIdArray[0])).toString();
@@ -423,9 +427,10 @@ export class SchedulerComponent implements OnInit {
         document.getElementById("actualbutton").style.border = "2px solid #12375C";
         document.getElementById("actualbutton").style.borderBottom = "3px solid #0D2842";
 
-        let tds = document.getElementsByTagName("td");
+        let tds = document.getElementsByName("schedule");
         for(let i:number=0; i < tds.length; i++) {
             tds[i].style.cursor = "pointer";
+            tds[i].className += " shake-slow";
         }
         this.deleteColor();
         this.clearAll();
@@ -442,6 +447,8 @@ export class SchedulerComponent implements OnInit {
             }
         }
         this.buildBlackoutSchedule();
+
+
     }
 
     buildActualSchedule(): void {
@@ -458,6 +465,7 @@ export class SchedulerComponent implements OnInit {
         let tds = document.getElementsByTagName("td");
         for(let i:number=0; i < tds.length; i++) {
             tds[i].style.cursor = "default";
+            tds[i].className = tds[i].className.replace(" shake-slow", "");
         }
         this.clearAll();
         for (let i : number = 0; i < this. tempActualSchedule.length; i++) {

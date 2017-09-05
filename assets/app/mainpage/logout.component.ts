@@ -6,24 +6,31 @@ import {Router} from "@angular/router";
     template: `
     <style>
     .header {
-        background-color:#595C57;
-        color:azure;
-        height:10vh;
-        font-size: 9vh;
-        padding-left: 2%
+        height:14vh;
     }
+
+    .header>h1 {
+        font-size: 9vh;
+        padding-top: 0.6%;
+        padding-left: 3%;
+        text-align: left;
+        vertical-align: middle;
+        position: absolute;
+    }
+
     .btn.btn.normal {
         border: 2px solid #595C57
     }
+
     </style>
-    <div style="height: 90vh; background-color:rgba(89, 92, 87, 0.1)">
+    <div style="height: 90vh;">
     <div class="header">
-        Logout
+        <h1>Are you sure?</h1>
     </div>
     <div style='text-align:center;'>
-        <button class="btn btn normal" style='margin: auto; margin-top: 5%; display:block' (click)="onLogout()">
+        <button class="btn btn normal" style='margin: auto; display:block' (click)="onLogout()">
             😈
-            Logout
+            Yes
         </button>
     </div>
     </div>

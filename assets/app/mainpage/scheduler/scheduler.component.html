@@ -4,7 +4,7 @@
 <div class="header">
     <h1>Schedule </h1>
 </div>
-<div class="scheduler-container" style="height:65vh; min-height: 65vh">
+<div class="scheduler-container" style="height:65vh; min-height: 360px">
     <div class="col-xs-2" style="height: 100%; padding-left: 2%;">
         <button type="button" class="btn btn normal" data-toggle="modal" data-target="#addModal" style=" margin-top: 3%; margin-bottom:3vh; border-radius: 3px; margin-left: 33%; white-space: normal;">
             <span class="glyphicon glyphicon-plus"></span>
@@ -96,7 +96,7 @@
 
     <div class="col-xs-10" style="height: 100%;padding-top: 0.2%;">
         <div style="margin-left: 4%; height: 90%; ">
-            <div class="col-xs-8">  
+            <div class="col-xs-6">  
                 <div class="btn-group" role="group" aria-label="Button group" style="padding-left: 5%">
                     <button id="actualbutton" type="button" style="width:6.8vw; white-space: normal;" class="btn btn-primary btn-outline" (click)="buildActualSchedule()">Actual</button>
                     <button id="preferredbutton" type="button" style="width:6.8vw; white-space: normal;" class="btn btn-primary btn-outline" (click)="buildPreferredSchedule()">Preferred</button>
@@ -134,7 +134,7 @@
             <tbody>
                 <tr *ngFor="let date of dates; let i = index" >
                     <td id="Date" (click)="entireDay(date.id)">{{ date.day }}</td>
-                    <td *ngFor="let hour of hours" class="tbody-boxes shake-slow" id="{{hour}}_{{i}}" (click)="toggle($event)" (mousedown)="downAction(hour+'_'+i)" (mouseup)="upAction(hour+'_'+i)" (mouseover)="colorCell(hour+'_'+i)" (mouseout)="resetCell(hour+'_'+i)"></td>
+                    <td *ngFor="let hour of hours" class="tbody-boxes" name = "schedule" id="{{hour}}_{{i}}" (click)="toggle($event)" (mousedown)="downAction(hour+'_'+i)" (mouseup)="upAction(hour+'_'+i)" (mouseover)="colorCell(hour+'_'+i)" (mouseout)="resetCell(hour+'_'+i)"></td>
                 </tr>
             </tbody>
         </table>
@@ -174,8 +174,8 @@
 </div>
 <div class="col-xs-6 ancmt-col">
     <h3>From coworkers...</h3>
-    <button type="button" data-toggle="modal" data-target="#addModal" style="position: absolute; right: 20px; top: 17px;border-radius: 3px; white-space: normal;">
-            <span id='new-text'> Add</span>
+    <button type="button" data-toggle="modal" data-target="#" style="position: absolute; right: 20px; top: 17px;border-radius: 3px; white-space: normal;">
+            <span id='new-text'> &#43;Add</span>
     </button>
     <table class="table table-hover" style="margin-left: 3%; width: 97%">
         <thead>
@@ -229,36 +229,6 @@
       </div>      
 </div>
   
-
- <div class="modal" id="addAnnouncementModal" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Announcement</h4>
-        </div>
-        <div class="modal-body">
-
-        <form [formGroup]="newJobForm" (ngSubmit)="onSubmit()">
-            <div class="form-group">
-                <label for="workplace">What do you want to say?</label>
-                <input formControlName="workplace" type="text" id="workplace" class="form-control">
-            </div>
-            <p>Submit</p>
-            <button [disabled]="!newJobForm.valid" class="btn btn normal" type="submit">Submit</button>
-        </form>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn normal" data-dismiss="modal">Cancel</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-
-
 
 
 
