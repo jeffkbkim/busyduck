@@ -98,10 +98,8 @@
 </style>
 
 <div style="margin:0% 0% 0% 0%;">
-<div class="header">
-    <h1>Profile </h1>
-</div>
-<div class="container my-profile-body" style="height: 100%;">
+
+<div class="container my-profile-body" style="height: 100%; margin-top: 3%">
     <div class="main-container">
         <table> 
             <thead>
@@ -131,7 +129,7 @@
                             <thead>
                                 <tr>
                                     <th id="table-table-left">Profile</th>
-                                    <th id="table-table-left">Workplaces</th>
+                                    <th id="table-table-right">Workplaces</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -176,41 +174,36 @@
                                             <label><b> </b></label>
                                         </div>
                                     </td>
-                                    <td id="table-table-left">
-                                        <div class="panel panel-primary text-center" style="border: 0; background-color: transparent;">
-                                            <div class="panel-body">
-                                                <div>
-                                                    <div class="list-group" style="width: 60%; margin: auto">   
-                                                        <div class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let tempPosition of tempPositionsNew; let i = index" [attr.data-index]="i">
-                                                            <div *ngIf="tempPosition.status === 'approved'; else waiting">
-                                                            <div class="d-flex w-100 justify-content-between" style="text-align:left; ">
-                                                                <h5 class="mb-1" style="margin-left:0px">
-                                                                    <span class="{{ tempPosition.glyphicon }}" [style.color]="tempPosition.color"></span> {{ tempPosition.workName }}
-                                                                </h5>
-                                                                <small style="position: absolute; top:5px; right:50px"><a href="#">Edit</a></small>
-                                                                <small style="position: absolute; top:5px; right:10px"><a href="#">Delete</a></small>
-                                                            </div>
-                                                            <p class="mb-1"> I'm the best <strong>{{ tempPosition.type }} </strong> ever </p> 
-                                                            </div>
-
-                                                            <ng-template #waiting>
-                                                                <div class="d-flex w-100 justify-content-between" style="text-align: left;">
-                                                                    <h5 class="mb-1" style="margin-left: 0px" >  <span class="{{ tempPosition.glyphicon }}" [style.color]="tempPosition.color"></span> {{ tempPosition.workName }} </h5>
-                                                                    <small style="position: absolute; top:5px; right:50px"><a href="#">Remind</a></small>
-                                                                    <small style="position: absolute; top:5px; right:10px"><a href="#">Delete</a></small>
-                                                                </div>
-                                                                <div class="mb-1" style="background-color:rgba(242,114,69,0.1);">
-                                                                    <p>Not yet the best {{tempPosition.type}}. Waiting for approval.</p>
-                                                                </div>
-                                                            </ng-template>
-                                                        </div>
-                                                    </div>
+                                    <td id="table-table-right"> 
+                                        <ngb-tabset [justify]="justified">
+                                            <ngb-tab title={{tempPosition.workName}} *ngFor="let tempPosition of tempPositionsNew; let i = index" [attr.data-index]="i">
+                                                <ng-template ngbTabContent>
+                                            <div *ngIf="tempPosition.status === 'approved'; else waiting">
+                                                <div style="text-align:left; ">
+                                                    <h5 class="mb-1" style="margin-left:0px">
+                                                        <span class="{{ tempPosition.glyphicon }}" [style.color]="tempPosition.color"></span> {{ tempPosition.workName }}
+                                                    </h5>
+                                                    <small style="position: absolute; top:5px; right:50px"><a href="#">Edit</a></small>
+                                                    <small style="position: absolute; top:5px; right:10px"><a href="#">Delete</a></small>
                                                 </div>
-                                            </div>
-                                        </div>
+                                                <p class="mb-1"> I'm the best <strong>{{ tempPosition.type }} </strong> ever </p> 
+                                                </div>
+
+                                                <ng-template #waiting>
+                                                    <div style="text-align: left;">
+                                                        <h5 class="mb-1" style="margin-left: 0px" >  <span class="{{ tempPosition.glyphicon }}" [style.color]="tempPosition.color"></span> {{ tempPosition.workName }} </h5>
+                                                        <small style="position: absolute; top:5px; right:50px"><a href="#">Remind</a></small>
+                                                        <small style="position: absolute; top:5px; right:10px"><a href="#">Delete</a></small>
+                                                    </div>
+                                                    <div class="mb-1" style="background-color:rgba(242,114,69,0.1);">
+                                                        <p>Not yet the best {{tempPosition.type}}. Waiting for approval.</p>
+                                                    </div>
+                                                </ng-template>
+                                                </ng-template>
+                                            </ngb-tab>
+                                        </ngb-tabset>
                                     </td>
                                 </tr>
-
                             </tbody>
                         </table>
                     </td>
