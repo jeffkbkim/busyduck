@@ -10,19 +10,6 @@
     margin:0% 0% 0% 0%;
 }
 
-.header {  
-    height:14vh;
-}
-
-.header>h1 {
-    font-size: 9vh; 
-    padding-top: 0.6%;
-    padding-left: 3%;
-    text-align: left;
-    vertical-align: middle;
-    position: absolute;
-}
-
 /* Left side */
 
 /*07889B*/
@@ -34,14 +21,14 @@
 .square-box{
     position: relative;
     width: 3%;
-    height: 5vh;
+    height: 1.8rem;
     border-radius: 7px 7px 7px 7px;
     margin: 1%;
     margin-left: 0%;
 }
 
 .box-item {
-    height:7vh;
+    height:2.5rem;
     padding-left:1.2vw;
     padding-top: 0.4vh; 
     cursor: pointer;
@@ -58,20 +45,20 @@
 }
 
 #workplaceCollapse, #toolsCollapse {
-    height: 21vh; 
-    width: 14vw; 
+    height: 6.5rem; 
+    width: 12rem; 
     overflow-y: scroll; 
     margin-left: 10%;
 }
 
 #toolsCollapse {
-    height: 14vh;
+    height: 4.3rem;
 }
 
 /* Right Side */
 
 .schedule-table { 
-  width: 900px;  /*OR auto */
+  width: 880px;  /*OR auto */
   border-collapse: collapse; 
   table-layout: fixed;
   display: block;
@@ -87,7 +74,6 @@
   background: #12375C; 
   color: #F8F8F8; 
   font-weight: bold; 
-  vertical-align: top;
 }
 
 .schedule-table td, .schedule-table th {
@@ -105,8 +91,12 @@
 }
 
 th#Date, td#Date {
-    width:6.5vw;
+    width:73px;
     border-bottom: 0.1px solid #ccc;
+}
+
+th#th-top, td#Date {
+    padding-top:0.4rem;
 }
 
 .tbody-boxes {
@@ -115,21 +105,21 @@ th#Date, td#Date {
 
 /*Bootstrap button outline override*/
 .btn.btn.normal {
-    border: 2px solid #12375C;
-    border-bottom: 3px solid #0D2842
+    border: 1.3px solid #12375C;
+    border-bottom: 2px solid #0D2842
 }
 
 .btn.btn.normal:hover {
-    border: 2px solid #12375C;
+    border: 1.3px solid #12375C;
     background-color: rgba(18,55,92,0.2);
-    border-bottom: 3px solid #0D2842
+    border-bottom: 2px solid #0D2842
 }
 
 .btn-outline {
     background-color: transparent;
     color: inherit;
     transition: all .1s;
-    border-radius: 3px;
+    border-radius: 2px;
 }
 
 .btn-primary.btn-outline {

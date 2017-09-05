@@ -4,14 +4,14 @@
 <div class="header">
     <h1>Schedule </h1>
 </div>
-<div class="scheduler-container" style="height:65vh; min-height: 360px">
+<div class="scheduler-container" style="height:20rem; min-height: 350px">
     <div class="col-xs-2" style="height: 100%; padding-left: 2%;">
-        <button type="button" class="btn btn normal" data-toggle="modal" data-target="#addModal" style=" margin-top: 3%; margin-bottom:3vh; border-radius: 3px; margin-left: 33%; white-space: normal;">
+        <button type="button" class="btn btn normal" data-toggle="modal" data-target="#addModal" style=" margin-top: 3%; margin-bottom:1rem; border-radius: 3px; margin-left: 40%; white-space: normal;">
             <span class="glyphicon glyphicon-plus"></span>
             <span id='new-text'> Add Job</span>
         </button>
 
-        <div class="collapsable-panels-works" style="margin-top:5%">
+        <div class="collapsable-panels-works" style="margin-top: 3%">
             <button type="button" class="btn btn" style="border-radius:3px; margin-left: 2%;" (click)="workplaceIsCollapsed = !workplaceIsCollapsed" [attr.aria-expanded]="!workplaceIsCollapsed" aria-controls="collapseExample">
                 <div *ngIf="workplaceIsCollapsed;else workplaceIsnotCollapsed">
                 <span class="glyphicon glyphicon-collapse-down"> </span> Your workplaces
@@ -25,7 +25,7 @@
                 <div *ngFor="let tempPosition of tempPositionsNew; let i = index" [attr.data-index]="i" class="box-item" (click)=paintColor(i)>
                     <div class='square-box' [style.backgroundColor]="tempPosition.color" id='work_box_{{i}}' style="float:left">
                     </div>
-                    <div *ngIf="i!==0;else first" style="margin-left: 2vw; padding-top:1.3vh;" id="text_div_{{i}}">
+                    <div *ngIf="i!==0;else first" style="margin-left: 1.6rem; padding-top:0.5rem;" id="text_div_{{i}}">
                         <div *ngIf="_actual;else preferred1" style="color:#414141">
                             <span [ngClass]="tempPosition.glyphicon"></span>
                             <span *ngIf="tempPosition.status === 'approved'; else waiting1" id='text_{{i}}' style="text-align: left;">{{tempPosition.workName}}</span>
@@ -42,29 +42,29 @@
                         </ng-template>
                     </div>
                     <ng-template #first>
-                    <div *ngIf="_preferred; else nohighlight" style="margin-left: 2vw; padding-top:1.3vh; color:#2177AA" id="text_div_{{i}}">
-                        <span [ngClass]="tempPosition.glyphicon"></span>
-                        <span *ngIf="tempPosition.status === 'approved'; else waitingfirst" id='text_{{i}}' style="text-align: left;">{{tempPosition.workName}}</span>
-                        <ng-template #waitingfirst>
-                            <span id='text_{{i}}' style="text-align: left;">{{tempPosition.workName}} - not approved</span>
-                        </ng-template>
-                    </div>
-                    <ng-template #nohighlight>
-                        <div style="margin-left: 2vw; padding-top:1.3vh; color: #414141" id="text_div_{{i}}">
-                        <span [ngClass]="tempPosition.glyphicon"></span>
-                        <span *ngIf="tempPosition.status === 'approved'; else waitingfirst" id='text_{{i}}' style="text-align: left;">{{tempPosition.workName}}</span>
-                        <ng-template #waitingfirst>
-                            <span id='text_{{i}}' style="text-align: left; background-color: rgba(242,114,69,0.1)">{{tempPosition.workName}} - not approved</span>
-                        </ng-template>
+                        <div *ngIf="_preferred; else nohighlight" style="margin-left: 1.6rem; padding-top:0.5rem; color:#2177AA" id="text_div_{{i}}">
+                            <span [ngClass]="tempPosition.glyphicon"></span>
+                            <span *ngIf="tempPosition.status === 'approved'; else waitingfirst" id='text_{{i}}' style="text-align: left;">{{tempPosition.workName}}</span>
+                            <ng-template #waitingfirst>
+                                <span id='text_{{i}}' style="text-align: left;">{{tempPosition.workName}} - not approved</span>
+                            </ng-template>
                         </div>
-                    </ng-template>
+                        <ng-template #nohighlight>
+                            <div style="margin-left: 1.6rem; padding-top:0.5rem; color: #414141" id="text_div_{{i}}">
+                            <span [ngClass]="tempPosition.glyphicon"></span>
+                            <span *ngIf="tempPosition.status === 'approved'; else waitingfirst" id='text_{{i}}' style="text-align: left;">{{tempPosition.workName}}</span>
+                            <ng-template #waitingfirst>
+                                <span id='text_{{i}}' style="text-align: left; background-color: rgba(242,114,69,0.1)">{{tempPosition.workName}} - not approved</span>
+                            </ng-template>
+                            </div>
+                        </ng-template>
                     </ng-template>
                 </div>
             </div>
         </div>
 
         <div *ngIf="_preferred" class="collapsable-panels-tools">
-            <button type="button" class="btn btn" style="border-radius:3px; margin-left: 2%; margin-top: 2.5vh" (click)="funcIsCollapsed = !funcIsCollapsed" [attr.aria-expanded]="!funcIsCollapsed" aria-controls="collapseExample">
+            <button type="button" class="btn btn" style="border-radius:3px; margin-left: 2%; margin-top: 1.3rem" (click)="funcIsCollapsed = !funcIsCollapsed" [attr.aria-expanded]="!funcIsCollapsed" aria-controls="collapseExample">
                 <div *ngIf="funcIsCollapsed;else funcIsnotCollapsed">
                 <span class="glyphicon glyphicon-collapse-down"> </span> Schedule Tools
                 </div>
@@ -76,7 +76,7 @@
                 <div class="box-item" (click)=eraserFunc()>
                     <div class='square-box' id='work_box_{{i}}' style="float:left; background-color: white">
                     </div>
-                    <div style="margin-left: 2vw; padding-top:1.3vh;">
+                    <div style="margin-left: 1.6rem; padding-top:0.5rem;">
                         <span class="glyphicon glyphicon-erase"></span>
                         <span id='delete_color' style="text-align: left;">Eraser</span>
                     </div>
@@ -84,7 +84,7 @@
                 <div class="box-item" (click)=blackoutFunc()>
                     <div class='square-box' id='work_box_{{i}}' style="float:left; background-color: #414141">
                     </div>
-                    <div style="margin-left: 2vw; padding-top:1.3vh;">
+                    <div style="margin-left: 1.6rem; padding-top:0.5rem;">
                         <span class="glyphicon glyphicon-lock"></span>
                         <span id='blackout' style="text-align: left;">Blackout</span>
                     </div>
@@ -94,46 +94,46 @@
 
     </div>
 
-    <div class="col-xs-10" style="height: 100%;padding-top: 0.2%;">
-        <div style="margin-left: 4%; height: 90%; ">
+    <div class="col-xs-10" style="height: 100%;padding-top: 0.4%;">
+        <div style="margin-left: 4rem; height: 90%; ">
             <div class="col-xs-6">  
                 <div class="btn-group" role="group" aria-label="Button group" style="padding-left: 5%">
-                    <button id="actualbutton" type="button" style="width:6.8vw; white-space: normal;" class="btn btn-primary btn-outline" (click)="buildActualSchedule()">Actual</button>
-                    <button id="preferredbutton" type="button" style="width:6.8vw; white-space: normal;" class="btn btn-primary btn-outline" (click)="buildPreferredSchedule()">Preferred</button>
+                    <button id="actualbutton" type="button" style="width:5.5rem; white-space: normal;" class="btn btn-primary btn-outline" (click)="buildActualSchedule()">Actual</button>
+                    <button id="preferredbutton" type="button" style="width:5.5rem; white-space: normal;" class="btn btn-primary btn-outline" (click)="buildPreferredSchedule()">Preferred</button>
                 </div>
             </div>
-            <div *ngIf="_preferred" class="button-container" style="margin: 0% 1% -1% 1%; text-align: center">
+            <div *ngIf="_preferred" class="button-container" style="text-align: center">
                 <button (click) = "clearAll()" class="btn btn normal"><span class="glyphicon glyphicon-trash"></span>&nbsp;Clear</button>
-                <button (click) = "resetAll()" class="btn btn normal" style="margin-left: 0.3vw;"><span class="glyphicon glyphicon-repeat"></span>&nbsp;Reset</button>
-                <button (click) = "saveAll()" class="btn btn normal" style="margin-left: 0.3vw;"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;Save</button>
+                <button (click) = "resetAll()" class="btn btn normal" style="margin-left: 0.3rem;"><span class="glyphicon glyphicon-repeat"></span>&nbsp;Reset</button>
+                <button (click) = "saveAll()" class="btn btn normal" style="margin-left: 0.3rem;"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;Save</button>
             </div>
         <div class="col-xs-12 schedule" style="padding-left:3%; padding-top:2.3%">
         <table class="schedule-table">
             <thead>
                 <tr>
                     <th id="Date"> </th>
-                    <th>8</th>
-                    <th>9</th>
-                    <th>10</th>
-                    <th>11</th>
-                    <th>12</th>
-                    <th>1</th>
-                    <th>2</th>
-                    <th>3</th>
-                    <th>4</th>
-                    <th>5</th>
-                    <th>6</th>
-                    <th>7</th>
-                    <th>8</th>
-                    <th>9</th>
-                    <th>10</th>
-                    <th>11</th>
-                    <th>12</th>
+                    <th id="th-top">8</th>
+                    <th id="th-top">9</th>
+                    <th id="th-top">10</th>
+                    <th id="th-top">11</th>
+                    <th id="th-top">12</th>
+                    <th id="th-top">1</th>
+                    <th id="th-top">2</th>
+                    <th id="th-top">3</th>
+                    <th id="th-top">4</th>
+                    <th id="th-top">5</th>
+                    <th id="th-top">6</th>
+                    <th id="th-top">7</th>
+                    <th id="th-top">8</th>
+                    <th id="th-top">9</th>
+                    <th id="th-top">10</th>
+                    <th id="th-top">11</th>
+                    <th id="th-top">12</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let date of dates; let i = index" >
-                    <td id="Date" (click)="entireDay(date.id)">{{ date.day }}</td>
+                    <td id="Date" name="schedule" (click)="entireDay(date.id)">{{ date.day }}</td>
                     <td *ngFor="let hour of hours" class="tbody-boxes" name = "schedule" id="{{hour}}_{{i}}" (click)="toggle($event)" (mousedown)="downAction(hour+'_'+i)" (mouseup)="upAction(hour+'_'+i)" (mouseover)="colorCell(hour+'_'+i)" (mouseout)="resetCell(hour+'_'+i)"></td>
                 </tr>
             </tbody>
@@ -145,7 +145,7 @@
 </div>
 
 <div class="header">
-    <h1>Announcement</h1>
+    <h1>Announcements</h1>
 </div>
 <div class="ancmt">
 <div class="col-xs-6 ancmt-col">
@@ -235,11 +235,6 @@
 
 
 </div>
-
-
-
-
-
 
 
 

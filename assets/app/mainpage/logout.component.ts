@@ -5,19 +5,6 @@ import {Router} from "@angular/router";
     selector: 'app-logout',
     template: `
     <style>
-    .header {
-        height:14vh;
-    }
-
-    .header>h1 {
-        font-size: 9vh;
-        padding-top: 0.6%;
-        padding-left: 3%;
-        text-align: left;
-        vertical-align: middle;
-        position: absolute;
-    }
-
     .btn.btn.normal {
         border: 2px solid #595C57
     }

@@ -15,8 +15,8 @@ export class SchedulerComponent implements OnInit {
     funcIsCollapsed = false;
 
     newJobForm: FormGroup;
-    onSubmit() {
-        const workPosition = new WorkPosition(this.newJobForm.value.workplace, this.newJobForm.value.type, "approved", "#eee");
+    onSubmit(): void {
+        const workPosition : any = new WorkPosition(this.newJobForm.value.workplace, this.newJobForm.value.type, "approved", "#eee");
         this.workPositionService.requestPosition(workPosition)
             .subscribe(
                 (data) => {
@@ -27,7 +27,7 @@ export class SchedulerComponent implements OnInit {
                     console.log(error);
                 }
             );
-        //alert(this.newJobForm.value.workplace + this.newJobForm.value.type);
+        // alert(this.newJobForm.value.workplace + this.newJobForm.value.type);
     }
 
     _actual: boolean = true;
@@ -42,7 +42,7 @@ export class SchedulerComponent implements OnInit {
                 document.getElementById("text_div_"+i).style.color = "#0a0a0a";
             }
         }
-        div.style.color = "cyan";
+        div.style.color = "#DDAB28";
         document.getElementById("delete_color").style.color = "#0a0a0a";
         document.getElementById("blackout").style.color = "#0a0a0a";
         this.paintColorIndex = index;
@@ -56,7 +56,7 @@ export class SchedulerComponent implements OnInit {
 
     eraserFunc(): void {
         this.deleteColor();
-        document.getElementById("delete_color").style.color = "cyan";
+        document.getElementById("delete_color").style.color = "#DDAB28";
         document.getElementById("blackout").style.color = "#0a0a0a";
         this.paintColorIndex = this.colorSchemaArray.length -1;
     }
@@ -64,7 +64,7 @@ export class SchedulerComponent implements OnInit {
     blackoutFunc(): void {
         this.deleteColor();
         document.getElementById("delete_color").style.color = "#0a0a0a";
-        document.getElementById("blackout").style.color = "cyan";
+        document.getElementById("blackout").style.color = "#DDAB28";
         this.paintColorIndex = this.colorSchemaArray.length -2;
     }
     //
@@ -183,8 +183,8 @@ export class SchedulerComponent implements OnInit {
         }
     }
 
-    hexToRgb(hex: string) {
-        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    hexToRgb(hex: string): any {
+        var result : any = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
         return result ? {
             r: parseInt(result[1], 16),
             g: parseInt(result[2], 16),
@@ -301,7 +301,7 @@ export class SchedulerComponent implements OnInit {
                 }
             ]
         }
-    ]
+    ];
 
     @Input() tempPreferredSchedule = [
         {
@@ -420,14 +420,14 @@ export class SchedulerComponent implements OnInit {
         this._preferred = true;
         document.getElementById("preferredbutton").style.backgroundColor = "#12375C";
         document.getElementById("preferredbutton").style.color = "white";
-        document.getElementById("preferredbutton").style.border = "2px solid #12375C";
-        document.getElementById("preferredbutton").style.borderBottom = "3px solid #0D2842";
+        document.getElementById("preferredbutton").style.border = "1.3px solid #12375C";
+        document.getElementById("preferredbutton").style.borderBottom = "2px solid #0D2842";
         document.getElementById("actualbutton").style.backgroundColor = "white";
         document.getElementById("actualbutton").style.color = "#12375C";
-        document.getElementById("actualbutton").style.border = "2px solid #12375C";
-        document.getElementById("actualbutton").style.borderBottom = "3px solid #0D2842";
+        document.getElementById("actualbutton").style.border = "1.3px solid #12375C";
+        document.getElementById("actualbutton").style.borderBottom = "2px solid #0D2842";
 
-        let tds = document.getElementsByName("schedule");
+        let tds : NodeListOf<HTMLElement> = document.getElementsByName("schedule");
         for(let i:number=0; i < tds.length; i++) {
             tds[i].style.cursor = "pointer";
             tds[i].className += " shake-slow";
@@ -456,13 +456,13 @@ export class SchedulerComponent implements OnInit {
         this._preferred = false;
         document.getElementById("actualbutton").style.backgroundColor = "#12375C";
         document.getElementById("actualbutton").style.color = "white";
-        document.getElementById("actualbutton").style.border = "2px solid #12375C";
-        document.getElementById("actualbutton").style.borderBottom = "3px solid #0D2842";
+        document.getElementById("actualbutton").style.border = "1.3px solid #12375C";
+        document.getElementById("actualbutton").style.borderBottom = "2px solid #0D2842";
         document.getElementById("preferredbutton").style.backgroundColor = "white";
         document.getElementById("preferredbutton").style.color = "#12375C";
-        document.getElementById("preferredbutton").style.border = "2px solid #12375C";
-        document.getElementById("preferredbutton").style.borderBottom = "3px solid #0D2842";
-        let tds = document.getElementsByTagName("td");
+        document.getElementById("preferredbutton").style.border = "1.3px solid #12375C";
+        document.getElementById("preferredbutton").style.borderBottom = "2px solid #0D2842";
+        let tds : NodeListOf<HTMLElement> = document.getElementsByTagName("td");
         for(let i:number=0; i < tds.length; i++) {
             tds[i].style.cursor = "default";
             tds[i].className = tds[i].className.replace(" shake-slow", "");
