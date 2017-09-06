@@ -1,18 +1,76 @@
 <link rel="stylesheet" type="text/css" href="http://csshake.surge.sh/csshake.min.css">
 
-<div class="main-main-container">
+<div class="main-main-main-container" style="background-color: rgb(249, 248, 243);"> 
+<div class="main-main-container" >
+
+<div class="header">
+    <h1>Schedule Overview</h1>
+    <h5>테이블 스케쥴</h5>
+</div>
+<div class="ancmt schedule-overview" style="height:20rem; min-height: 350px;">
+<div class="col-xs-6 ancmt-col" style="padding: 0; width: 50%; padding-right: 5%">
+    <h3>By Day</h3>
+    <table class="table table-hover" style="width: 97%">
+        <thead>
+            <tr style="background-color: #12375C;">
+                <th>Day</th>
+                <th>Schedule</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let days of func()">
+                <td>{{dates[days.day].day}}</td>
+                <td>
+                    <span *ngFor="let work of days.schedule">
+                        {{work.work}} {{work.start}} - {{work.start + work.duration}}
+                        <br>
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="col-xs-6 ancmt-col" style="padding: 0;  width: 50%">
+    <h3>By Workplaces</h3>
+    <table class="table table-hover" style="width: 97%">
+        <thead>
+            <tr style="background-color: #12375C;">
+                <th>Workplace</th>
+                <th>Schedule</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let workplaces of tempActualSchedule">
+                <td>{{workplaces.work}}</td>
+                <td>
+                    <span *ngFor="let sch of workplaces.schedule">
+                    {{dates[sch.day].day}} {{sch.start}} - {{sch.start + sch.duration}} <br>
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>  
+
+
+<div class="hbar"> 
+    <span></span>
+</div>
+
 <div class="header">
     <h1>Schedule </h1>
+    <h5>스케쥴 관리</h5>
 </div>
-<div class="scheduler-container" style="height:20rem; min-height: 350px">
-    <div class="col-xs-2" style="height: 100%; padding-left: 2%;">
-        <button type="button" class="btn btn normal" data-toggle="modal" data-target="#addModal" style=" margin-top: 3%; margin-bottom:1rem; border-radius: 3px; margin-left: 40%; white-space: normal;">
+<div class="scheduler-container" style="height:20rem; min-height: 350px;">
+    <div class="col-xs-2" style="height: 100%; padding: 0">
+        <button type="button" class="btn btn normal" data-toggle="modal" data-target="#addModal" style=" margin-top: 3%; margin-bottom:0.8rem; border-radius: 3px;white-space: normal; margin-left: 20%">
             <span class="glyphicon glyphicon-plus"></span>
             <span id='new-text'> Add Job</span>
         </button>
 
         <div class="collapsable-panels-works" style="margin-top: 3%">
-            <button type="button" class="btn btn" style="border-radius:3px; margin-left: 2%;" (click)="workplaceIsCollapsed = !workplaceIsCollapsed" [attr.aria-expanded]="!workplaceIsCollapsed" aria-controls="collapseExample">
+            <button type="button" class="btn btn" style="border-radius:3px;" (click)="workplaceIsCollapsed = !workplaceIsCollapsed" [attr.aria-expanded]="!workplaceIsCollapsed" aria-controls="collapseExample">
                 <div *ngIf="workplaceIsCollapsed;else workplaceIsnotCollapsed">
                 <span class="glyphicon glyphicon-collapse-down"> </span> Your workplaces
                 </div>
@@ -63,8 +121,8 @@
             </div>
         </div>
 
-        <div *ngIf="_preferred" class="collapsable-panels-tools">
-            <button type="button" class="btn btn" style="border-radius:3px; margin-left: 2%; margin-top: 1.3rem" (click)="funcIsCollapsed = !funcIsCollapsed" [attr.aria-expanded]="!funcIsCollapsed" aria-controls="collapseExample">
+        <div class="collapsable-panels-tools">
+            <button type="button" class="btn btn" style="border-radius:3px; margin-top: 1.3rem" (click)="funcIsCollapsed = !funcIsCollapsed" [attr.aria-expanded]="!funcIsCollapsed" aria-controls="collapseExample">
                 <div *ngIf="funcIsCollapsed;else funcIsnotCollapsed">
                 <span class="glyphicon glyphicon-collapse-down"> </span> Schedule Tools
                 </div>
@@ -94,20 +152,20 @@
 
     </div>
 
-    <div class="col-xs-10" style="height: 100%;padding-top: 0.4%;">
-        <div style="margin-left: 4rem; height: 90%; ">
-            <div class="col-xs-6">  
-                <div class="btn-group" role="group" aria-label="Button group" style="padding-left: 5%">
+    <div class="col-xs-10" style="height: 100%; padding: 0; padding-top: 0.4%;">
+        <div style="height: 90%; ">
+            <div class="col-xs-6" style="padding: 0; padding-left: 7%">  
+                <div class="btn-group" role="group" aria-label="Button group" >
                     <button id="actualbutton" type="button" style="width:5.5rem; white-space: normal;" class="btn btn-primary btn-outline" (click)="buildActualSchedule()">Actual</button>
                     <button id="preferredbutton" type="button" style="width:5.5rem; white-space: normal;" class="btn btn-primary btn-outline" (click)="buildPreferredSchedule()">Preferred</button>
                 </div>
             </div>
-            <div *ngIf="_preferred" class="button-container" style="text-align: center">
-                <button (click) = "clearAll()" class="btn btn normal"><span class="glyphicon glyphicon-trash"></span>&nbsp;Clear</button>
-                <button (click) = "resetAll()" class="btn btn normal" style="margin-left: 0.3rem;"><span class="glyphicon glyphicon-repeat"></span>&nbsp;Reset</button>
-                <button (click) = "saveAll()" class="btn btn normal" style="margin-left: 0.3rem;"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;Save</button>
+            <div class="button-container" style="text-align: center; position: absolute; right: 2rem">
+                <button [disabled]="_actual" (click) = "clearAll()" class="btn btn normal"><span class="glyphicon glyphicon-trash"></span>&nbsp;Clear</button>
+                <button [disabled]="_actual" (click) = "resetAll()" class="btn btn normal" style="margin-left: 0.3rem;"><span class="glyphicon glyphicon-repeat"></span>&nbsp;Reset</button>
+                <button [disabled]="_actual" (click) = "saveAll()" class="btn btn normal" style="margin-left: 0.3rem;"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;Save</button>
             </div>
-        <div class="col-xs-12 schedule" style="padding-left:3%; padding-top:2.3%">
+        <div class="col-xs-12 schedule" style="padding: 0; padding-left:7%; padding-top:2.3%; ">
         <table class="schedule-table">
             <thead>
                 <tr>
@@ -144,13 +202,18 @@
 
 </div>
 
+<div class="hbar"> 
+    <span></span>
+</div>
+
 <div class="header">
     <h1>Announcements</h1>
+    <h5>광고</h5>
 </div>
 <div class="ancmt">
-<div class="col-xs-6 ancmt-col">
+<div class="col-xs-6 ancmt-col" style="padding: 0; width: 50%; padding-right: 5%">
     <h3>From the manager...</h3>
-    <table class="table table-hover" style="margin-left: 3%; width: 97%">
+    <table class="table table-hover" style="width: 97%">
         <thead>
             <tr style="background-color: #12375C;">
                 <th>#</th>
@@ -172,12 +235,12 @@
         </tbody>
     </table>
 </div>
-<div class="col-xs-6 ancmt-col">
+<div class="col-xs-6 ancmt-col" style="padding: 0;  width: 50%">
     <h3>From the coworkers...</h3>
     <button type="button" data-toggle="modal" data-target="#" style="position: absolute; right: 20px; top: 17px;border-radius: 3px; white-space: normal;">
             <span id='new-text'> &#43;Add</span>
     </button>
-    <table class="table table-hover" style="margin-left: 3%; width: 97%">
+    <table class="table table-hover" style="width: 97%">
         <thead>
             <tr style="background-color: #12375C;">
                 <th>#</th>
@@ -196,7 +259,7 @@
         </tbody>
     </table>
 </div>
-</div>
+</div>  
 
 
  <div class="modal" id="addModal" role="dialog">
@@ -242,3 +305,5 @@
 
 
 </div>
+
+ </div>

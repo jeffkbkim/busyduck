@@ -1,16 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto'); 
+@import url('https://fonts.googleapis.com/css?family=Merriweather');
+@import url('https://fonts.googleapis.com/css?family=Arimo');
 
 html {
     min-height: 100%;
     margin:0;
     padding:0;
     position: relative;
-    font-family: 'Roboto' !important;
+    font-family: 'Merriweather' !important;
 }
 
 /*Header Component Navigation Bar*/
 .navbar {
-    font-family: 'Roboto' !important;
+    font-family: 'Merriweather' !important;
     font-weight: bold;
     letter-spacing: 3px;
     font-size: 12px;
@@ -18,10 +20,18 @@ html {
 }
 
 body {
-    font-family: 'Roboto' !important;
+    font-family: 'Arimo' !important;
     background-size: cover;
     background: black;
     height: 100%;
+}
+
+.hbar {
+    border: 1px solid rgb(0, 193, 207);
+    margin: auto;
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 a {
@@ -40,14 +50,35 @@ a {
 
 /* headers */
 .header {  
-    height:5.2rem;
+    height:7rem;
 }
 
 .header>h1 {
-    font-size: 3.2rem; 
+    font-family: 'Arimo' !important;
+    font-weight: 400;
+    font-size: 2.4rem; 
     padding-top: 0.6%;
-    padding-left: 3%;
     text-align: left;
     vertical-align: middle;
     position: absolute;
+}
+
+.header>h5 {
+    font-family: 'Arimo' !important;
+    font-weight: bold;
+    font-size: 1.3rem; 
+    padding-top: 3.8rem;
+    padding-left: 0.1rem;
+    text-align: left;
+    vertical-align: middle;
+    position: absolute;
+}
+
+h3 {
+    font-family: 'Arimo' !important;
+    font-size: 1.3rem !important;
+}
+
+btn {
+    font-family: 'Arimo' !important;
 }

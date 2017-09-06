@@ -28,7 +28,7 @@
         width: 100% !important;
         font-size: 0.9rem !important;
         font-weight: bold !important;
-        font-family: 'Roboto' !important;
+        font-family: 'Merriweather' !important;
     }
 
     .btn:hover {
@@ -62,7 +62,10 @@
     }
 
     input#modify-profile {
-        height: 1.2rem;
+        height: 1.3rem;
+        border: 1px solid white;
+        background-color: #eee;
+        box-shadow: none;
     }
 
     .profile-change>label {
@@ -95,6 +98,7 @@
     tbody>tr>td#table-left {
         border-right: 1px solid #ccc;
     }
+
 </style>
 
 <div style="margin:0% 0% 0% 0%;">
@@ -128,8 +132,8 @@
                         <table class="table-table">
                             <thead>
                                 <tr>
-                                    <th id="table-table-left">Profile</th>
-                                    <th id="table-table-right">Workplaces</th>
+                                    <th id="table-table-left"><span class="glyphicon glyphicon-stats"></span>&nbsp; Profile</th>
+                                    <th id="table-table-right"><span class="glyphicon glyphicon-list"></span>&nbsp; Workplaces</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -151,10 +155,8 @@
                                                         <input id="modify-profile" type="text" formControlName="email" value="{{ currUser?.email }}">
                                                         <label><b>Kakao Talk</b></label>
                                                         <input id="modify-profile" type="text" formControlName="email" value="{{ currUser?.email }}">
-                                                        <div class="button-container">
-                                                        <div class="container col-xs-6 col-xs-offset-6"> 
-                                                            <input type="submit" class="btn btn" style="background-color: #39221A; color: #C4C2B3" value="Save Changes">
-                                                        </div>
+                                                        <div class="button-container" style="width: 8rem; margin-left: 14rem">
+                                                            <input type="submit" class="btn btn" value="Save Changes">
                                                         </div>
                                                     </div>
                                                 </form>  
@@ -175,33 +177,29 @@
                                         </div>
                                     </td>
                                     <td id="table-table-right"> 
-                                        <ngb-tabset [justify]="justified">
-                                            <ngb-tab title={{tempPosition.workName}} *ngFor="let tempPosition of tempPositionsNew; let i = index" [attr.data-index]="i">
-                                                <ng-template ngbTabContent>
-                                            <div *ngIf="tempPosition.status === 'approved'; else waiting">
-                                                <div style="text-align:left; ">
-                                                    <h5 class="mb-1" style="margin-left:0px">
-                                                        <span class="{{ tempPosition.glyphicon }}" [style.color]="tempPosition.color"></span> {{ tempPosition.workName }}
-                                                    </h5>
-                                                    <small style="position: absolute; top:5px; right:50px"><a href="#">Edit</a></small>
+                                        <div title={{tempPosition.workName}} *ngFor="let tempPosition of tempPositionsNew; let i = index" [attr.data-index]="i">
+                                        <div *ngIf="tempPosition.status === 'approved'; else waiting">
+                                            <div style="text-align:left;">
+                                                <h6 style="margin-left:0px">
+                                                    <span class="{{ tempPosition.glyphicon }}" [style.color]="tempPosition.color"></span> {{ tempPosition.workName }}
+                                                </h6>
+                                                <small style="position: absolute; top:5px; right:50px"><a href="#">Edit</a></small>
+                                                <small style="position: absolute; top:5px; right:10px"><a href="#">Delete</a></small>
+                                            </div>
+                                            <p> I'm the best <strong>{{ tempPosition.type }} </strong> ever </p> 
+                                            </div>
+
+                                            <ng-template #waiting>
+                                                <div style="text-align: left;">
+                                                    <h6 style="margin-left: 0px" >  <span class="{{ tempPosition.glyphicon }}" [style.color]="tempPosition.color"></span> {{ tempPosition.workName }} </h6>
+                                                    <small style="position: absolute; top:5px; right:50px"><a href="#">Remind</a></small>
                                                     <small style="position: absolute; top:5px; right:10px"><a href="#">Delete</a></small>
                                                 </div>
-                                                <p class="mb-1"> I'm the best <strong>{{ tempPosition.type }} </strong> ever </p> 
+                                                <div style="background-color:rgba(242,114,69,0.1);">
+                                                    <p>Not yet the best {{tempPosition.type}}. Waiting for approval.</p>
                                                 </div>
-
-                                                <ng-template #waiting>
-                                                    <div style="text-align: left;">
-                                                        <h5 class="mb-1" style="margin-left: 0px" >  <span class="{{ tempPosition.glyphicon }}" [style.color]="tempPosition.color"></span> {{ tempPosition.workName }} </h5>
-                                                        <small style="position: absolute; top:5px; right:50px"><a href="#">Remind</a></small>
-                                                        <small style="position: absolute; top:5px; right:10px"><a href="#">Delete</a></small>
-                                                    </div>
-                                                    <div class="mb-1" style="background-color:rgba(242,114,69,0.1);">
-                                                        <p>Not yet the best {{tempPosition.type}}. Waiting for approval.</p>
-                                                    </div>
-                                                </ng-template>
-                                                </ng-template>
-                                            </ngb-tab>
-                                        </ngb-tabset>
+                                            </ng-template>
+                                        </div>
                                     </td>
                                 </tr>
                             </tbody>
@@ -210,14 +208,8 @@
                 </tr>
             </tbody>
         </table>
-    
-        
-
-
 
     </div>
-
-
 
 
  <div class="modal" id="addModal" role="dialog">
@@ -243,8 +235,8 @@
                         </label>
                         <div class="alert alert-danger" *ngIf="!passwordConfirmed">Password does not match</div>
                         <div class="button-container">
-                        <div class="container col-xs-6">
-                            <button [disabled]="!passwordForm.valid" type="submit" class="btn btn">Save Changes</button>
+                        <div style="width: 10rem;">
+                            <button [disabled]="!passwordForm.valid" type="submit" class="btn btn" style="border: 1px solid #12375C">Save Changes</button>
                         </div>
                         </div>
                     </div>

@@ -402,6 +402,57 @@ export class SchedulerComponent implements OnInit {
         }
     ];
 
+    func() {
+        let sortedtempActualSchedule : Array<Object> = [
+            {
+                "day": 0,
+                "schedule": [
+                ]
+            },
+            {
+                "day": 1,
+                "schedule": [
+                ]
+            },
+            {
+                "day": 2,
+                "schedule": [
+                ]
+            },
+            {
+                "day": 3,
+                "schedule": [
+                ]
+            },
+            {
+                "day": 4,
+                "schedule": [
+                ]
+            },
+            {
+                "day": 5,
+                "schedule": [
+                ]
+            },
+            {
+                "day": 6,
+                "schedule": [
+                ]
+            },
+        ];
+        for (let i=0; i < this.tempActualSchedule.length; i++) {
+            for (let j=0; j < this.tempActualSchedule[i].schedule.length; j++) {
+                sortedtempActualSchedule[this.tempActualSchedule[i].schedule[j].day].schedule.push({
+                    "work": this.tempActualSchedule[i].work,
+                    "start": this.tempActualSchedule[i].schedule[j].start,
+                    "duration": this.tempActualSchedule[i].schedule[j].duration
+                });
+            }
+        }
+        // sort by day
+        return sortedtempActualSchedule;
+    }
+
     buildBlackoutSchedule(): void {
         for (let j : number = 0; j < this.blackoutSchedule[0].schedule.length; j++) {
             let day : number = this.blackoutSchedule[0].schedule[j].day;
