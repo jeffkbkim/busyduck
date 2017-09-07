@@ -12,14 +12,14 @@
     <h3>By Day</h3>
     <table class="table table-hover" style="width: 97%">
         <thead>
-            <tr style="background-color: #12375C;">
+            <tr style="background-color: #2A4469;">
                 <th>Day</th>
                 <th>Schedule</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let days of func()">
-                <td>{{dates[days.day].day}}</td>
+                <td style="font-weight: bold">{{dates[days.day].day}}</td>
                 <td>
                     <span *ngFor="let work of days.schedule">
                         {{work.work}} {{work.start}} - {{work.start + work.duration}}
@@ -34,14 +34,14 @@
     <h3>By Workplaces</h3>
     <table class="table table-hover" style="width: 97%">
         <thead>
-            <tr style="background-color: #12375C;">
+            <tr style="background-color: #2A4469;">
                 <th>Workplace</th>
                 <th>Schedule</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let workplaces of tempActualSchedule">
-                <td>{{workplaces.work}}</td>
+                <td style="font-weight: bold">{{workplaces.work}}</td>
                 <td>
                     <span *ngFor="let sch of workplaces.schedule">
                     {{dates[sch.day].day}} {{sch.start}} - {{sch.start + sch.duration}} <br>
@@ -69,8 +69,8 @@
             <span id='new-text'> Add Job</span>
         </button>
 
-        <div class="collapsable-panels-works" style="margin-top: 3%">
-            <button type="button" class="btn btn" style="border-radius:3px;" (click)="workplaceIsCollapsed = !workplaceIsCollapsed" [attr.aria-expanded]="!workplaceIsCollapsed" aria-controls="collapseExample">
+        <div class="collapsable-panels-works" style="margin-top: 2%">
+            <button type="button" class="btn btn" style="border-radius:3px; font-weight: bold" (click)="workplaceIsCollapsed = !workplaceIsCollapsed" [attr.aria-expanded]="!workplaceIsCollapsed" aria-controls="collapseExample">
                 <div *ngIf="workplaceIsCollapsed;else workplaceIsnotCollapsed">
                 <span class="glyphicon glyphicon-collapse-down"> </span> Your workplaces
                 </div>
@@ -122,7 +122,7 @@
         </div>
 
         <div class="collapsable-panels-tools">
-            <button type="button" class="btn btn" style="border-radius:3px; margin-top: 1.3rem" (click)="funcIsCollapsed = !funcIsCollapsed" [attr.aria-expanded]="!funcIsCollapsed" aria-controls="collapseExample">
+            <button type="button" class="btn btn" style="border-radius:3px; margin-top: 1.3rem; font-weight: bold" (click)="funcIsCollapsed = !funcIsCollapsed" [attr.aria-expanded]="!funcIsCollapsed" aria-controls="collapseExample">
                 <div *ngIf="funcIsCollapsed;else funcIsnotCollapsed">
                 <span class="glyphicon glyphicon-collapse-down"> </span> Schedule Tools
                 </div>
@@ -208,14 +208,14 @@
 
 <div class="header">
     <h1>Announcements</h1>
-    <h5>광고</h5>
+    <h5>공지</h5>
 </div>
 <div class="ancmt">
 <div class="col-xs-6 ancmt-col" style="padding: 0; width: 50%; padding-right: 5%">
     <h3>From the manager...</h3>
     <table class="table table-hover" style="width: 97%">
         <thead>
-            <tr style="background-color: #12375C;">
+            <tr style="background-color: #2A4469;">
                 <th>#</th>
                 <th>Message</th>
                 <th>Date</th>
@@ -242,7 +242,7 @@
     </button>
     <table class="table table-hover" style="width: 97%">
         <thead>
-            <tr style="background-color: #12375C;">
+            <tr style="background-color: #2A4469;">
                 <th>#</th>
                 <th>By</th>
                 <th>Message</th>

@@ -39,7 +39,7 @@
 }
 
 #workplaceCollapse, #toolsCollapse {
-    height: 6.5rem; 
+    height: 7.6rem; 
     width: 12rem; 
     overflow-y: scroll; 
 }
@@ -65,13 +65,13 @@
 }
 
 .schedule-table th { 
-  background: #12375C; 
+  background: #2A4469; 
   color: #F8F8F8; 
   font-weight: bold; 
 }
 
 .schedule-table td, .schedule-table th {
-    background-color: #12375C
+    background-color: #2A4469
 }
 
 .schedule-table td, .schedule-table th { 
@@ -103,12 +103,12 @@ th#th-top, td#Date {
 }
 
 .btn.btn.normal {
-    border: 1.3px solid #12375C;
+    border: 1.3px solid #2A4469; /* #12375c */
     border-bottom: 2px solid #0D2842
 }
 
 .btn.btn.normal:hover {
-    border: 1.3px solid #12375C;
+    border: 1.3px solid #2A4469;
     background-color: rgba(18,55,92,0.2);
     border-bottom: 2px solid #0D2842
 }

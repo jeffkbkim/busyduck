@@ -469,13 +469,13 @@ export class SchedulerComponent implements OnInit {
     buildPreferredSchedule(): void {
         this._actual = false;
         this._preferred = true;
-        document.getElementById("preferredbutton").style.backgroundColor = "#12375C";
+        document.getElementById("preferredbutton").style.backgroundColor = "#2A4469";
         document.getElementById("preferredbutton").style.color = "white";
-        document.getElementById("preferredbutton").style.border = "1.3px solid #12375C";
+        document.getElementById("preferredbutton").style.border = "1.3px solid #2A4469";
         document.getElementById("preferredbutton").style.borderBottom = "2px solid #0D2842";
         document.getElementById("actualbutton").style.backgroundColor = "white";
-        document.getElementById("actualbutton").style.color = "#12375C";
-        document.getElementById("actualbutton").style.border = "1.3px solid #12375C";
+        document.getElementById("actualbutton").style.color = "#2A4469";
+        document.getElementById("actualbutton").style.border = "1.3px solid #2A4469";
         document.getElementById("actualbutton").style.borderBottom = "2px solid #0D2842";
 
         let tds : NodeListOf<HTMLElement> = document.getElementsByName("schedule");
@@ -505,13 +505,13 @@ export class SchedulerComponent implements OnInit {
     buildActualSchedule(): void {
         this._actual = true;
         this._preferred = false;
-        document.getElementById("actualbutton").style.backgroundColor = "#12375C";
+        document.getElementById("actualbutton").style.backgroundColor = "#2A4469";
         document.getElementById("actualbutton").style.color = "white";
-        document.getElementById("actualbutton").style.border = "1.3px solid #12375C";
+        document.getElementById("actualbutton").style.border = "1.3px solid #2A4469";
         document.getElementById("actualbutton").style.borderBottom = "2px solid #0D2842";
         document.getElementById("preferredbutton").style.backgroundColor = "white";
-        document.getElementById("preferredbutton").style.color = "#12375C";
-        document.getElementById("preferredbutton").style.border = "1.3px solid #12375C";
+        document.getElementById("preferredbutton").style.color = "#2A4469";
+        document.getElementById("preferredbutton").style.border = "1.3px solid #2A4469";
         document.getElementById("preferredbutton").style.borderBottom = "2px solid #0D2842";
         let tds : NodeListOf<HTMLElement> = document.getElementsByTagName("td");
         for(let i:number=0; i < tds.length; i++) {
