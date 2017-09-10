@@ -94,18 +94,6 @@ export class ProfileComponent implements OnInit {
                     }
                 );
         }
-        // if (this.currUserService.curr_User == null) {
-        //     this.currUserService.getCurrUser()
-        //         .subscribe(
-        //             (curr_user) => {
-        //                 this.currUserService.setCurrUser(curr_user);
-        //                 this.currUser = curr_user;
-        //             },
-        //             err => {
-        //                 console.log(err);
-        //             }
-        //         );
-        // }
         this.passwordForm.reset();
     }
 

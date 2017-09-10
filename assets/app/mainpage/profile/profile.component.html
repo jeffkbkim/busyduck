@@ -81,9 +81,81 @@
         border-radius: 3px;
     }
 
+<<<<<<< Updated upstream
     #table-left {
         width: 15%;
     }
+=======
+<my-profile-workPosition *ngFor="let workPosition of workPositions" [workPosition]="workPosition"></my-profile-workPosition>
+
+<div style="margin:0% 0% 0% 0%;border: 0px solid #2177AA; ">
+<div class="header" style="background-color:#2177AA; color:azure; height:10vh;">
+</div>
+<div class="container my-profile-body" style="height: 100%; border: 0.3px solid #07889B; background-color:rgba(5,91,104,0.1)">
+    <div class="col-xs-12" style="background-image: url('https://images.unsplash.com/photo-1502208703672-cd22f37691ed?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1200&h=600&fit=crop&s=eff7bea660bfff3d5b79d7c8de63fa57'); background-size: cover;">
+        <div class="main-container">
+            <p style="padding: 2% 5% 0% 5%; font-size: 1.5em; background-color: #C54C35; color: #E9B68C">Welcome {{ currUser?.firstName }}, please check your profile and workplaces here.</p>
+
+            <div class="col-xs-12">
+                <div class="col-xs-6">
+                    <p class="title-header"><span class="glyphicon glyphicon-user"> </span>&nbsp;My Profile</p>
+                </div>
+                <div class="col-xs-6" style="margin-top:1%">
+                    <div class="col-xs-6">
+                    <button type="button" class="btn btn" data-toggle="modal" data-target="#addModal" style="height: auto">Change Password</button>
+                    </div>
+                    <div class="col-xs-6">
+                    <button type="button" class="btn btn" (click)="isCollapsed = !isCollapsed"
+                            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample" style="border: 1px solid black">
+                        Edit Profile
+                    </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6" style="padding: 2% 5% 3% 5%;">
+                <a style="width: 50%;" href="https://placeholder.com"><img style="border-radius: 50%" src="http://via.placeholder.com/1000x1000"></a>
+            </div>
+            <div class="col-xs-6" style="padding: 2% 5% 0% 0%;">
+                <div *ngIf="isCollapsed">
+                <div class="card" style="background-color:inherit; border: inherit;">
+                    <div class="card-body">
+                    <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+                        <div class="profile-change">
+                            <label><b>First Name</b></label>
+                            <input type="text" formControlName="firstName" value="{{ currUser?.firstName }}">
+                            <label><b>Last Name</b></label>
+                            <input type="text" formControlName="lastName" value="{{ currUser?.lastName }}">
+                            <label><b>Email</b></label>
+                            <input type="text" formControlName="email" value="{{ currUser?.email }}">
+                            <hr>
+                            <label><b>Phone Number</b></label>
+                            <input type="text" formControlName="email" value="{{ currUser?.email }}">
+                            <label><b>Kakao Talk</b></label>
+                            <input type="text" formControlName="email" value="{{ currUser?.email }}">
+                            <div class="button-container">
+                            <div class="container col-xs-6 col-xs-offset-6"> 
+                                <input type="submit" class="btn btn" style="background-color: #39221A; color: #C4C2B3" value="Save Changes">
+                            </div>
+                            </div>
+                        </div>
+                    </form>  
+                    </div>
+                </div>
+                </div>        
+                <div id="collapseExample" [ngbCollapse]="isCollapsed" style="padding: 2% 0% 0% 0%">
+                    <label><b>First Name: </b></label> {{ currUser?.firstName }}
+                    <label><b>Last Name: </b></label> {{ currUser?.lastName }}
+                    <label><b>Email: </b></label> {{ currUser?.email }}
+                    <hr>
+                    <label><b>Phone Number: </b></label>
+                    <label><b>Kakao Talk: </b></label>
+                    <hr>
+                    <label><b>Rating: </b></label>
+                    <label><b>Compliments: </b></label>
+                    <label><b> </b></label>
+                </div>
+>>>>>>> Stashed changes
 
     #table-right {
         width: 70%;

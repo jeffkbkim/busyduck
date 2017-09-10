@@ -1,5 +1,5 @@
 import {Component, Input} from "@angular/core";
-import {WorkPosition} from "../../work-position/work-position.model"
+import {WorkPosition} from "./work-position.model"
 
 @Component({
     selector: 'my-profile-workPosition',
@@ -7,5 +7,5 @@ import {WorkPosition} from "../../work-position/work-position.model"
 })
 
 export class ProfileWorkPositionComponent {
-    @Input
+    @Input() workPosition : WorkPosition;
 }

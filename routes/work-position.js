@@ -5,6 +5,7 @@ var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
 var User = require('../models/user');
+var WorkPlace = require('../models/workplace');
 
 var WorkPosition = require('../models/work-position');
 
@@ -18,6 +19,23 @@ router.get('/:userId', function(req, res, next) {
                     error: err
                 });
             }
+
+            for (var i = 0; i<workPositions.length; i++) {
+                WorkPlace.find({_id : workPositions}, function (err, workplace) {
+                    if (err) {
+                        return res.status(500).json({
+                            title: 'an error has occurred',
+                            error: err
+                        });
+                    }
+                    console.log(workPositions[i]);
+                    console.log("helloooo");
+                    console.log(workplace);
+                });
+            }
+
+
+
             res.status(200).json({
                 message: 'Success',
                 obj: workPositions
