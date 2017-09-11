@@ -20,26 +20,27 @@ router.get('/:userId', function(req, res, next) {
                 });
             }
 
-            for (var i = 0; i<workPositions.length; i++) {
-                WorkPlace.find({_id : workPositions}, function (err, workplace) {
+            for (var i = 0; i < workPositions.length; i++) {
+                WorkPlace.find({_id : workPositions[i].workplace}, function (err, workplace) {
                     if (err) {
                         return res.status(500).json({
                             title: 'an error has occurred',
                             error: err
                         });
                     }
-                    console.log(workPositions[i]);
-                    console.log("helloooo");
-                    console.log(workplace);
+                    workPositions.push(workplace[0]);
+                    console.log(i * 2);
+                    console.log(workPositions.length);
+                    if (i * 2 == workPositions.length) {
+                        console.log(workPositions);
+                        res.status(200).json({
+                            message: 'Success',
+                            obj: workPositions
+                        });
+                    }
                 });
             }
 
-
-
-            res.status(200).json({
-                message: 'Success',
-                obj: workPositions
-            });
         });
 });
 
