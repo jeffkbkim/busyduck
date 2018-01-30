@@ -1,0 +1,214 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h3 {
+    font-family: Arial;
+    font-style: italic;
+    text-align: center;
+}
+.name {
+    text-align: center;
+}
+.container {
+    width:100%;
+    height: 480px;
+    background: whitesmoke;
+    padding: 0;
+    margin: 0;
+}
+
+.leftDiv {
+    width : 338.4px;
+    height: 94%;
+    float: left;
+    padding: 1%;
+    margin-right: 9%;
+}
+
+.rightDiv {
+    padding: 10%;
+}
+
+.leftFFFF00 {
+    width : 46%;
+    height: 60%;
+    float: left;
+    padding: 1%;
+    overflow: hidden;
+}
+
+.rightFFFF00 {
+    width : 50%;
+    height: 60%;
+    padding : 1%;
+    overflow: hidden;
+}
+
+.bottomFFFF00 {
+    padding: 4%;
+}
+
+/* Remove margins and padding from the list, and add a black background color */
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+/* Float the list items side by side */
+ul.topnav li {
+    float: left;
+}
+
+/* Style the links inside the list items */
+ul.topnav li a {
+    display: inline-block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of links on hover */
+ul.topnav li a:hover {
+    background-color: #555;
+}
+
+/* Hide the list item that contains the link that should open and close the topnav on small screens */
+ul.topnav li.icon {
+    display: none;
+}
+
+/* When the screen is less than 680 pixels wide, hide all list items, except for the first one ("Home"). Show the list item that contains the link to open and close the topnav (li.icon) */
+@media screen and (max-width: 480px) {
+    ul.topnav li:not(:first-child) {display: none;}
+    ul.topnav li.icon {
+        float: right;
+        display: inline-block;
+    }
+}
+
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens */
+@media screen and (max-width: 480px) {
+    ul.topnav.responsive {
+        position: relative;
+    }
+
+    ul.topnav.responsive li.icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    ul.topnav.responsive li {
+        float: none;
+        display: inline;
+    }
+
+    ul.topnav.responsive li a {
+        display: block;
+        text-align: left;
+    }
+}
+
+
+/*ABOUT PAGE*/
+.aboutContainer {
+    height: 400px;
+    background: whitesmoke;
+    padding: 0;
+    margin: 0;
+}
+
+.aboutLeft {
+    padding: 10%;
+    float: left;
+    width:35%;
+    overflow: hidden;
+}
+
+.aboutRight {
+    height: 100%;
+    width:25%;
+    padding: 10%;
+    overflow: hidden;
+}
+
+.hoverLink {
+    color: black;
+    text-decoration: none;
+}
+
+.hoverLink:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+/*Contact page*/
+
+h2 {
+    padding:3%;
+    text-align: center;
+}
+
+.contactContainer {
+    height: 300px;
+    background: whitesmoke;
+    width:100%;
+    padding: 0;
+    margin: 0;
+}
+
+.contactSpace {
+    padding-top: 5%;
+}
+
+.contactLeft {
+    padding: 5%;
+    width:100%;
+    overflow: hidden;
+}
+
+
+.emailForm {
+    width:100%;
+}
+
+.inputSizes {
+    width:150px;
+}
+
+.emailContent {
+    width:300px;
+    height:200px;
+}
+
+/*projects CSS*/
+
+.leftProject {
+    width : 35%;
+    height: 89%;
+    float: left;
+    padding: 2%;
+    margin-left:10%;
+    overflow: hidden;
+}
+
+.rightProject {
+    width : 35%;
+    height: 89%;
+    padding : 2%;
+    overflow: hidden;
+}
