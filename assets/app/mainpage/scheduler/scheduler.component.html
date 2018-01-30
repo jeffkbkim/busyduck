@@ -1,0 +1,153 @@
+<div style="margin:2% 0% 2% 0%;border: 0.3px solid #07889B; background-color:rgba(5,91,104,0)">
+<div class="header" style="background-color:#07889B; color:azure; height:40px;">
+</div>
+<div class="scheduler-container" style="height:70vh">
+    <div class="col-xs-2" style="height: 100%;">
+        <p style="margin-bottom:0"><b>Your workplaces</b></p>
+        <div *ngFor="let tempPosition of tempPositionsNew; let i = index" [attr.data-index]="i" style="height:8vh; padding-left:1vw; padding-top: 1.8vh; cursor: pointer" (click)=paintColor(i)>
+            <div class='square-box' [style.backgroundColor]="tempPosition.color" id='work_box_{{i}}' style="float:left">
+            </div>
+            <div *ngIf="i!==0;else first" style="margin-left: 2vw; padding-top:1.3vh;" id="text_div_{{i}}">
+                <div *ngIf="_actual;else preferred1" style="color:#414141">
+                    <span [ngClass]="tempPosition.glyphicon"></span>
+                    <span *ngIf="tempPosition.status === 'approved'; else waiting1" id='text_{{i}}' style="text-align: left;">{{tempPosition.workName}}</span>
+                    <ng-template #waiting1>
+                        <span id='text_{{i}}' style="text-align: left;">{{tempPosition.workName}} - not approved</span>
+                    </ng-template>
+                </div>
+                <ng-template #preferred1>
+                    <span [ngClass]="tempPosition.glyphicon"></span>
+                    <span *ngIf="tempPosition.status === 'approved'; else waiting" id='text_{{i}}' style="text-align: left;">{{tempPosition.workName}}</span>
+                    <ng-template #waiting>
+                        <span id='text_{{i}}' style="text-align: left;">{{tempPosition.workName}} - not approved</span>
+                    </ng-template>
+                </ng-template>
+            </div>
+            <ng-template #first>
+            <div *ngIf="_preferred; else nohighlight" style="margin-left: 2vw; padding-top:1.3vh; color:#4360FF" id="text_div_{{i}}">
+                <span [ngClass]="tempPosition.glyphicon"></span>
+                <span *ngIf="tempPosition.status === 'approved'; else waitingfirst" id='text_{{i}}' style="text-align: left;">{{tempPosition.workName}}</span>
+                <ng-template #waitingfirst>
+                    <span id='text_{{i}}' style="text-align: left;">{{tempPosition.workName}} - not approved</span>
+                </ng-template>
+            </div>
+            <ng-template #nohighlight>
+                <div style="margin-left: 2vw; padding-top:1.3vh; color: #414141" id="text_div_{{i}}">
+                <span [ngClass]="tempPosition.glyphicon"></span>
+                <span *ngIf="tempPosition.status === 'approved'; else waitingfirst" id='text_{{i}}' style="text-align: left;">{{tempPosition.workName}}</span>
+                <ng-template #waitingfirst>
+                    <span id='text_{{i}}' style="text-align: left; background-color: rgba(242,114,69,0.1)">{{tempPosition.workName}} - not approved</span>
+                </ng-template>
+                </div>
+            </ng-template>
+            </ng-template>
+        </div>
+        <div *ngIf="_preferred" style="height:8vh; padding-left:1vw; padding-top: 1.8vh; cursor: pointer" (click)=eraserFunc()>
+            <div class='square-box' id='work_box_{{i}}' style="float:left; background-color: #eee">
+            </div>
+            <div style="margin-left: 2vw; padding-top:1.3vh;">
+                <span class="glyphicon glyphicon-erase"></span>
+                <span id='delete_color' style="text-align: left;">Schedule Eraser</span>
+            </div>
+        </div>
+        <button *ngIf="_preferred" type="button" data-toggle="modal" data-target="#addModal" style="height: 7vh; margin-top: 4.5vh; border: 4px dashed rgba(81,81,81,0.7); width:15vw; margin-left: 0vw">
+            <div style="margin-left:2vw; float:left">
+                <span class="glyphicon glyphicon-plus" style="color: #414141; "></span>
+                <span id='new-text' style="color: #414141; text-align:left;"> Got a new job?</span>
+            </div>
+        </button>
+    </div>
+
+    <div class="col-xs-10" style="height: 100%;">
+        <div class="col-xs-9">
+            <div class="col-xs-4">  
+                <div class="btn-group" role="group" aria-label="Button group">
+                    <button type="button" class="btn btn-primary btn-outline" (click)="buildActualSchedule()">Actual</button>
+                    <button type="button" class="btn btn-primary btn-outline" (click)="buildPreferredSchedule()">Preferred</button>
+                </div>
+            </div>
+            <div class="col-xs-8">
+                <p *ngIf="_actual; else preferred" style="font-size: 14px; margin-left: 2%">This is your <b>actual </b>schedule</p>
+                <ng-template #preferred>
+                    <p style="font-size: 14px; margin-left: 2%">Indicate your <b>preferred</b> schedule or add a new job</p> 
+                </ng-template>
+            </div>
+        </div> 
+        <div class="col-xs-3">
+            <div *ngIf="_preferred" class="button-container">
+                <button (click) = "clearAll()" style="margin-left: 1vw; border: 1px solid #565CB2; color: white; background-color: #565CB2;width: 4vw; height: 4vh">Clear</button>
+                <button (click) = "resetAll()" style="margin-left: 0.5vw; border: 1px solid #FF773C; color: white; background-color: #FF773C;width: 4vw; height: 4vh">Reset</button>
+                <button (click) = "saveAll()" style="margin-left: 0.5vw; border: 1px solid #44B20F; color: white; background-color: #44B20F; width: 4vw; height: 4vh">Save</button>
+            </div>
+        </div>
+        <div class="col-xs-12" style="margin-left:4%; margin-top:1%">
+        <table>
+            <thead>
+                <tr>
+                    <th id="Date"> </th>
+                    <th>8</th>
+                    <th>9</th>
+                    <th>10</th>
+                    <th>11</th>
+                    <th>12</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                    <th>7</th>
+                    <th>8</th>
+                    <th>9</th>
+                    <th>10</th>
+                    <th>11</th>
+                    <th>12</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let date of dates; let i = index" >
+                    <td id="Date" (click)="entireDay(date.id)">{{ date.day }}</td>
+                    <td *ngFor="let hour of hours" id="{{hour}}_{{i}}" (click)="toggle($event)" (mousedown)="downAction(hour+'_'+i)" (mouseup)="upAction(hour+'_'+i)" (mouseover)="colorCell(hour+'_'+i)"></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+ <div class="modal" id="addModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Congratulations on getting a new job!</h4>
+        </div>
+        <div class="modal-body">
+
+        <form [formGroup]="newJobForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="location">Where are you working?</label>
+                <input formControlName="location" type="text" id="location" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="position">For what position?</label>
+                <input formControlName="position" type="text" id="position" class="form-control">
+            </div>
+            <p>After submitting the application, please wait until your manager approves you into the team.</p>
+            <button [disabled]="!newJobForm.valid" class="btn btn-primary" type="submit">Submit</button>
+        </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<head>
+    <title>Busyduck</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<nav class="navbar navbar-default bg-faded navbar-toggleable-sm">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle navbar-toggle-right"
+                    (click)="isCollapsed = !isCollapsed">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" [routerLink]="['/']">Busyduck</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar" [collapse]="isCollapsed">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a [routerLink] = "['/auth/signup']" *ngIf="!isLoggedIn()" (click)="isCollapsed = true"><span class="glyphicon glyphicon-user"></span> SIGN UP</a></li>
+                <li><a [routerLink] = "['/auth/signin']" *ngIf="!isLoggedIn()" (click)="isCollapsed = true"><span class="glyphicon glyphicon-log-in"></span> LOGIN</a></li>
+                <li><a [routerLink] = "['/mainpage/scheduler']" *ngIf="isLoggedIn()" (click)="isCollapsed = true"><span class="glyphicon glyphicon-calendar"></span> SCHEDULE</a></li>
+                <li><a [routerLink] = "['/mainpage/chat']" *ngIf="isLoggedIn()" (click)="isCollapsed = true"><span class="fa fa-comment-o"></span> CHAT</a></li>
+                <li><a [routerLink] = "['/mainpage/profile']" *ngIf="isLoggedIn()" (click)="isCollapsed = true"><span class="fa fa-user-circle"></span> PROFILE</a></li>
+                <li><a [routerLink] = "['/mainpage/logout']" *ngIf="isLoggedIn()" (click)="isCollapsed = true"><span class="glyphicon glyphicon-log-out"></span> LOGOUT</a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+</body>

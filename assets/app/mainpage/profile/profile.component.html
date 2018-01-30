@@ -1,0 +1,140 @@
+<div style="margin:2% 4% 2% 4%;">
+
+<div class="header" style="background-color:#07889B; color:azure; height: 40px">
+    <p style="font-size: 20px; padding-top:0.4%; margin-left: 2%">Check and manage your profile</p>
+</div>
+<div class="container my-profile-body" style="height: 100vh; border: 0.3px solid #07889B; background-color:rgba(5,91,104,0.1)">
+    <div class="container col-xs-6" style="margin-top: 30px">
+        <div class="panel panel-primary text-center" style="border: 0">
+            <div class="panel-heading" style="background-color: #02454E; border: 0">
+                My Profile
+            </div>
+            <div class="panel-body" style= "border: 0.3px solid #02454E">
+                <div>
+                    <span class="glyphicon glyphicon-user" style="color: #414141; font-size: 6em"></span>
+                </div>
+                <div *ngIf="!firstName; else forminfo">
+                    <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+                        <div>
+                            <div class="row columns">
+                                <label>First Name
+                                    <input type="text" formControlName="firstName" value="{{ currUser?.firstName }}">
+                                </label>
+                                <label>Last Name
+                                    <input type="text" formControlName="lastName" value="{{ currUser?.lastName }}">
+                                </label>
+                                <label>Email
+                                    <input type="text" formControlName="email" value="{{ currUser?.email }}">
+                                </label>
+
+                                <div class="button-container">
+                                <div class="container col-xs-6">
+                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addModal" style="height: 7vh;">Change Password</button>
+                                </div>
+                                <div class="container col-xs-6">
+                                    <input type="submit" class="button btn-primary" value="Save Changes" style="height: 7vh">
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <ng-template #forminfo>
+                    <div class="form-container">
+                        <div class="row columns">
+                            <h1> {{ firstName }} </h1>
+                            <h1> {{ lastName }} </h1>
+                            <p> {{ description }} </p>
+                        </div>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+
+    <div class="container col-xs-6" style="margin-top: 30px">
+        <div class="panel panel-primary text-center" style="border: 0">
+            <div class="panel-heading" style="background-color: #02454E; border: 0">
+                My Work
+            </div>
+            <div class="panel-body" style= "border: 0.3px solid #02454E">
+                <div>
+                    <span class="glyphicon glyphicon-briefcase" style="color: #414141; font-size: 6em"></span>
+                </div>
+                <div style="margin-top:3%">
+                    <div class="list-group">   
+                        <div class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let tempPosition of tempPositionsNew; let i = index" [attr.data-index]="i">
+                            <div *ngIf="tempPosition.status === 'approved'; else waiting">
+                            <div class="d-flex w-100 justify-content-between" style="text-align:left; ">
+                                <h5 class="mb-1" style="margin-left:0px">
+                                    <span class="{{ tempPosition.glyphicon }}" [style.color]="tempPosition.color"></span> {{ tempPosition.workName }}
+                                </h5>
+                                <small style="position: absolute; top:5px; right:50px"><a href="#">Edit</a></small>
+                                <small style="position: absolute; top:5px; right:10px"><a href="#">Delete</a></small>
+                            </div>
+                            <p class="mb-1"> I'm the best <strong>{{ tempPosition.type }} </strong> ever </p> 
+                            </div>
+
+                            <ng-template #waiting>
+                                <div class="d-flex w-100 justify-content-between" style="text-align: left;">
+                                    <h5 class="mb-1" style="margin-left: 0px" >  <span class="{{ tempPosition.glyphicon }}" [style.color]="tempPosition.color"></span> {{ tempPosition.workName }} </h5>
+                                    <small style="position: absolute; top:5px; right:50px"><a href="#">Remind</a></small>
+                                    <small style="position: absolute; top:5px; right:10px"><a href="#">Delete</a></small>
+                                </div>
+                                <div class="mb-1" style="background-color:rgba(242,114,69,0.1);">
+                                    <p>Not yet the best {{tempPosition.type}}. Waiting for approval.</p>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+ <div class="modal" id="addModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Please enter your new password</h4>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="passwordForm" (ngSubmit)="submitPassword(passwordForm.value)">
+                <div>
+                    <div class="row columns">
+                        <label>Current Password
+                            <input type="password" formControlName="oldPassword">
+                        </label>
+                        <label>New Password
+                            <input type="password" formControlName="newPassword">
+                        </label>
+                        <label>Confirm New Password
+                            <input type="password" formControlName="confirmPassword">
+                        </label>
+                        <div class="alert alert-danger" *ngIf="!passwordConfirmed">Password does not match</div>
+                        <div class="button-container">
+                        <div class="container col-xs-6">
+                            <button [disabled]="!passwordForm.valid" type="submit" class="button btn-primary" style="height: 7vh">Save Changes</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    
+  </div>
+</div>
+
+</div>
